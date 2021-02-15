@@ -1,0 +1,54 @@
+.machine-data {
+  @include content-box();
+  @include background();
+
+  &__box {
+    @include row();
+    padding: 25px;
+    border-top: 1px solid #565656;
+  }
+
+  &__model {
+    float: left;
+    width: calc(100% - 90px);
+  }
+
+  &__year {
+    float: right;
+    width: 80px;
+  }
+
+  &__add-feature {
+    @include row();
+    padding-bottom: 20px;
+
+    input {
+      float: left;
+      width: calc(100% - 40px) !important;
+    }
+
+    a {
+      float: left;
+      width: 40px;
+      height: 40px;
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+  }
+
+  &__feature {
+    @include row();
+    border-top: 1px solid #565656;
+    padding: 15px 0;
+
+    &:nth-last-child(1) {
+      padding-bottom: 0;
+    }
+  }
+}

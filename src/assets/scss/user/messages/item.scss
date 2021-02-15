@@ -1,0 +1,78 @@
+.messages__item {
+  @include row();
+  padding: 20px 0;
+  border-bottom: 1px solid $grey;
+  position: relative;
+
+  .news-message {
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    line-height: 17px;
+    text-align: center;
+    background: $primary-color;
+    z-index: 2;
+    border-radius: 10px;
+
+    svg,
+    img {
+      width: 11px;
+    }
+  }
+
+  &__image {
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__data {
+    float: left;
+    width: calc(100% - 85px);
+    padding-left: 15px;
+
+    * {
+      color: $white;
+    }
+  }
+
+  &__place {
+    text-transform: uppercase;
+  }
+
+  &__btn {
+    float: right;
+    width: 35px;
+
+    span {
+      @include row();
+      height: 35px;
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+      }
+
+      &:hover {
+
+        svg {
+          g {
+            fill: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}

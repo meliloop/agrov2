@@ -1,0 +1,35 @@
+label {
+  @include row();
+  @extend .small-title;
+}
+
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+select,
+textarea {
+  @include row();
+  @extend .h3;
+  border: 1px solid $white;
+  padding: 0 10px;
+  height: 40px;
+  line-height: 40px;
+  background: none;
+  color: $white;
+}
+
+textarea {
+  height: 100px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* background-image: url(./images/select.svg);*/
+  background-size: 14px auto;
+  background-repeat: no-repeat;
+  background-position: 90% center;
+}
+
+.form-group {
+  @include row();
+  margin-bottom: 25px;
+}

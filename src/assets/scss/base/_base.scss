@@ -1,0 +1,349 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-weight: 400;
+//  transition: all 1s ease;
+}
+
+body {
+  @include default-font();
+  font-size: 16px;
+  background: $black;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.site {
+  @include row();
+  overflow: hidden;
+}
+
+section {
+  @include row();
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="text"],input[type="email"],input[type="search"], input[type="submit"], textarea, button {
+  @include default-font();
+  -webkit-appearance:none;
+  border-radius:0;
+}
+select {  @include default-font();}
+
+h1,
+.h1,
+.h1 p {
+  font-size: map-get($font-sizes, h1);
+
+  @include responsive('desktop-m'){
+    font-size: map-get($font-sizes-desktop-m, h1);
+  }
+
+  @include responsive('tablet-h'){
+    font-size: map-get($font-sizes-tablet, h1);
+  }
+  @include responsive('mobile-v'){
+    font-size: map-get($font-sizes-mobile, h1);
+  }
+}
+h2,
+.h2,
+.h2 p {
+  font-size: map-get($font-sizes, h2);
+
+  @include responsive('desktop-m'){
+    font-size: map-get($font-sizes-desktop-m, h2);
+  }
+
+  @include responsive('tablet-h'){
+    font-size: map-get($font-sizes-tablet, h2);
+  }
+  @include responsive('mobile-v'){
+    font-size: map-get($font-sizes-mobile, h2);
+  }
+}
+h3,
+.h3,
+.h3 p {
+  font-size: map-get($font-sizes, h3);
+
+  @include responsive('desktop-m'){
+    font-size: map-get($font-sizes-desktop-m, h3);
+  }
+
+  @include responsive('tablet-h'){
+    font-size: map-get($font-sizes-tablet, h3);
+  }
+  @include responsive('mobile-v'){
+    font-size: map-get($font-sizes-mobile, h3);
+  }
+}
+h4,
+.h4,
+.h4 p {
+  font-size: map-get($font-sizes, h4);
+
+  @include responsive('desktop-m'){
+    font-size: map-get($font-sizes-desktop-m, h4);
+  }
+
+  @include responsive('tablet-h'){
+    font-size: map-get($font-sizes-tablet, h4);
+  }
+  @include responsive('mobile-v'){
+    font-size: map-get($font-sizes-mobile, h4);
+  }
+}
+h5,
+.h5,
+.h5 p {
+  font-size: map-get($font-sizes, h5);
+
+  @include responsive('desktop-m'){
+    font-size: map-get($font-sizes-desktop-m, h5);
+  }
+
+  @include responsive('tablet-h'){
+    font-size: map-get($font-sizes-tablet, h5);
+  }
+  @include responsive('mobile-v'){
+    font-size: map-get($font-sizes-mobile, h5);
+  }
+}
+
+h6,
+.h6,
+.h6 p {
+  font-size: map-get($font-sizes, h6);
+
+  @include responsive('desktop-m'){
+    font-size: map-get($font-sizes-desktop-m, h6);
+  }
+
+  @include responsive('tablet-h'){
+    font-size: map-get($font-sizes-tablet, h6);
+  }
+  @include responsive('mobile-v'){
+    font-size: map-get($font-sizes-mobile, h6);
+  }
+}
+
+a {color:$primary-color;}
+
+figure,
+li {
+  @include default-font();
+  font-weight: 500;
+
+  a {
+    color:$primary-color;
+    position: relative;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+
+
+b,
+strong,
+strong * {
+  font-weight: 700;
+}
+
+:hover {
+//  transition: all 0.3s ease;
+}
+
+*:focus {
+  outline: none;
+}
+
+
+.row {
+   @include row();
+}
+
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.container {
+  width: map-get($site-widths, full-width);
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 25px;
+ }
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+.centerDiv {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.image-background {
+  @include image-background();
+}
+
+.iframe-wrapper {
+  @include row();
+  padding-top: 56.25%;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.section-title {
+  @include row();
+  @extend .h1;
+  color: $white;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.small-title {
+  @include row();
+  @extend .h4;
+  color: $primary-color;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 700;
+
+  &--white {
+    color: $white;
+  }
+}
+
+.slick-arrow,
+.slick-dots button {
+  cursor: pointer;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  border-top: 1px solid #bbbbbb;
+  border-left: 1px solid #bbbbbb;
+  width: 30px;
+  height: 30px;
+  text-indent: 5000px;
+  overflow: hidden;
+  background: none;
+  transform: translate(0,-50%) rotate(-45deg);
+
+  @include responsive('desktop-m') {
+    width: 20px;
+    height: 20px;
+    left: -10px;
+  }
+
+  @include responsive('mobile-v') {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.slick-next {
+  border-left: none;
+  border-right: 1px solid #bbbbbb;
+  transform:  translate(0,-50%) rotate(45deg);
+  left: auto;
+  right: -20px;
+
+  @include responsive('desktop-m') {
+    left: auto;
+    right: -10px;
+  }
+}
+
+.slick-dots {
+  @include row();
+  text-align: center;
+  margin-top: 35px;
+
+  li {
+    display: inline-block;
+    margin: 5px;
+
+    button {
+      float: left;
+      width: 25px;
+      height: 25px;
+      overflow: hidden;
+      text-indent: 5000px;
+      list-style: none;
+      border-radius: 12.5px;
+      background: none;
+      border: 1px solid #8a8a8a;
+
+      &:hover {
+        background: $secondary-color;
+        border: 1px solid $secondary-color;
+      }
+    }
+
+    &.slick-active {
+      button {
+        background: $secondary-color;
+        border: 1px solid $secondary-color;
+      }
+    }
+  }
+}

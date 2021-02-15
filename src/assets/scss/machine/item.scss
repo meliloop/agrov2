@@ -1,0 +1,80 @@
+.machine {
+
+  &__calendar-data-cont {
+    @include row();
+    display: flex;
+  }
+
+  &__calendar-data {
+    float: left;
+    width: calc(100% - 90px);
+    background: $primary-color;
+    padding: 15px 25px;
+  }
+
+  &__icon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    position: relative;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__location {
+    float: right;
+    width: 90px;
+    /*width: 100%;*/
+    background: $secondary-color;
+    padding: 0 15px;
+    /*padding: 15px;*/
+    @include centerDiv();
+    text-align: right;
+    /*text-align: left;*/
+  }
+
+  &__item {
+    @include row();
+    padding: 20px 0;
+    border-bottom: 1px solid $grey;
+
+    &__data {
+      float: left;
+      width: calc(100% - 75px);
+      padding-left: 15px;
+
+      * {
+        color: $white;
+      }
+    }
+
+    &__btn {
+      float: right;
+      width: 35px;
+
+      span {
+        @include row();
+        height: 35px;
+        position: relative;
+
+        svg {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+
+        &:hover {
+
+          svg {
+            g {
+              fill: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

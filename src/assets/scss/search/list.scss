@@ -1,0 +1,79 @@
+.machines__list {
+  @include row();
+  text-align: left;
+
+  div {
+    @include row();
+    background: rgba(255, 255, 255, 0.07);
+    /*display: none;*/
+    
+    div {
+      @include row();
+    }
+  }
+
+  &__item {
+    @include row();
+    padding: 20px 25px;
+    position: relative;
+    border-top: 1px solid #565656;
+
+    .check {
+      float: left;
+      width: 20px;
+      height: 20px;
+      border: 1px solid $white;
+      margin-right: 15px;
+      position: relative;
+
+      &.checked {
+        &:before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 12px;
+          height: 12px;
+          background: $primary-color;
+          transform: translate(-50%,-50%);
+          content: '';
+        }
+      }
+    }
+
+    .name {
+      float: left;
+      width: calc(100% - 75px);
+      height: 20px;
+      line-height: 20px;
+    }
+
+    .open-submenu {
+      float: right;
+      top: 0;
+      right: 10px;
+      width: 40px;
+      height: 60px;
+      position: absolute;
+
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+    }
+
+    &.no-check {
+      .name {
+        width: calc(100% - 40px);
+      }
+    }
+  }
+}

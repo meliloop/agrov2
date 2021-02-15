@@ -1,0 +1,108 @@
+import * as actionTypes from './actionTypes';
+import axios from '../../axios-instance';
+
+export const fetchSearchSuccess = ( items ) => {
+    return {
+        type: actionTypes.FETCH_SEARCH_SUCCESS,
+        items: items
+    };
+};
+
+export const fetchSearchFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_SEARCH_FAIL,
+        error: error
+    };
+};
+
+export const fetchSearchStart = () => {
+    return {
+        type: actionTypes.FETCH_SEARCH_START
+    };
+};
+
+export const userLocated = ( position ) => {
+    return {
+        type: actionTypes.USER_LOCATION_DETECTED,
+        position: position
+    };
+};
+
+export const setPlace = ( place ) => {
+    return {
+        type: actionTypes.CHANGE_SEARCH_PLACE,
+        place: place
+    };
+};
+
+export const viewModeChanged = ( mode ) => {
+    return {
+        type: actionTypes.CHANGE_SEARCH_MODE,
+        mode: mode
+    };
+};
+
+export const activeMarkerChanged = ( marker ) => {
+    return {
+        type: actionTypes.CHANGE_ACTIVE_MARKER,
+        marker: marker
+    };
+};
+
+export const showingPopupChanged = ( status ) => {
+    return {
+        type: actionTypes.CHANGE_SEARCH_POPUP,
+        status: status
+    };
+};
+
+export const toggleShowingFilters = () => {
+    return {
+        type: actionTypes.CHANGE_SEARCH_OPENFILTERS
+    };
+};
+
+export const filtersChanged = ( filters ) => {
+    switch( filters.key ){
+        case 'padreTipo':
+            return { type: actionTypes.CHANGE_SEARCH_PADRETIPOFILTERS, tipo: filters.value };
+        case 'tipo':
+            return { type: actionTypes.CHANGE_SEARCH_TIPOFILTERS, tipo: filters.value };
+        case 'fechaDesde':
+            return { type: actionTypes.CHANGE_SEARCH_DESDEFILTERS, fecha: filters.value };
+        case 'fechaHasta':
+            return { type: actionTypes.CHANGE_SEARCH_HASTAFILTERS, fecha: filters.value };
+        case 'distancia':
+            return { type: actionTypes.CHANGE_SEARCH_DISTANCIAFILTERS, distancia: filters.value };                        
+        default:
+            return {};
+    }
+};
+
+export const initSearchLocation = (position) => {
+    return dispatch => {
+        const filters = {
+            ubicacion: position,
+            distancia: 1000,
+            cabezales: [],
+        };
+        dispatch(userLocated(position));
+        dispatch(fetchSearch(filters));
+    };
+};
+
+export const fetchSearch = (filters) => {
+    return dispatch => {
+        dispatch(fetchSearchStart());
+        axios.post("/agro/v1/search",filters)
+            .then( res => {
+                if( res.data.result === 'ok' )
+                    dispatch(fetchSearchSuccess(res.data.maquinarias));
+                else 
+                    dispatch(fetchSearchFail(res.data.err));
+            } )
+            .catch( err => {
+                dispatch(fetchSearchFail(err));
+            } );
+    };
+};

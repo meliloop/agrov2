@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+/*
+Theme Name: Agro
+Text Domain: twentysixteen
+*/
+
+// 1. Configuration and helpers
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins';
+
+// 2. Base stuff
+@import
+  'base/typography',
+  'base/base';
+
+// 3. Layout-related sections
+@import
+  'layout/header',
+  'layout/footer';
+
+// 4. Components
+@import
+  'components/button',
+  'components/animations',
+  'components/forms';
+
+// 5. Pages
+  @import
+    'pages/pages';
+
+// 6. Machine
+  @import
+    'machine/popup',
+    'machine/item',
+    'machine/single',
+    'machine/machine',
+    'machine/calendar';
+
+// 6. user
+  @import
+    'user/item',
+    'user/single',
+    'user/dashboard';
+
+// 6. Message
+  @import
+    'user/messages/item';
+
+// 6. Search
+  @import
+    'search/page',
+    'search/list';

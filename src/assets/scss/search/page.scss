@@ -1,0 +1,43 @@
+.search-cont {
+  @include content-box();
+  @include background();
+
+  &__disponibility {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    @include background();
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+
+    label {
+      width: 55px;
+      line-height: 40px;
+      margin-bottom: 0;
+    }
+
+    input {
+      width: calc(50% - 33px) !important;
+      margin-right: 10px;
+
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
+    }
+
+    .distance {
+      @include row();
+      margin-top: 20px;
+
+      select {
+        width: calc(40% - 33px) !important;
+        margin-right: 10px;
+      }
+
+      input {
+        width: calc(60% - 33px) !important;
+        margin-right: 0;
+      }
+    }
+  }
+}

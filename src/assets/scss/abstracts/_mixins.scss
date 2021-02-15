@@ -1,0 +1,109 @@
+@mixin default-font(){
+  font-family: $default-font;
+  font-size: 16px;
+  font-weight: 400;
+  color: $white;
+}
+
+@mixin row(){
+  float:left;
+  width:100%;
+}
+
+@mixin left(){
+  float:left;
+}
+
+@mixin right(){
+  float:right;
+}
+
+@mixin section(){
+  float: left;
+  width: 100%;
+}
+
+@mixin inline(){
+  display: inline-block;
+}
+
+@mixin centerDiv(){
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+@mixin cover(){
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@mixin image-background(){
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height: 100%;
+
+  img {
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@mixin content(){
+  width: 1364px;
+  max-width: 100%;
+}
+
+@mixin content-box() {
+  @include row();
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+@mixin background() {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22; /* Old browsers */
+  background: -moz-linear-gradient(left, #191c22 0%, #2a2d33 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #191c22 0%,#2a2d33 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%,#2a2d33 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191c22', endColorstr='#2a2d33',GradientType=1 ); /* IE6-9 */
+}
+
+@mixin padding() {
+  padding: 20px 0;
+}
+
+// Media Query Map
+@mixin responsive($width){
+	@if map-has-key($breakpoints, $width){
+		$width: map-get($breakpoints, $width);
+		@media only screen and (max-width: $width){
+			@content;
+		}
+	} @else {
+		@warn "No value could be retrieved from `#{$width}`. Available breakpoints are: #{map-keys($breakpoints)}.";
+	}
+}
+
+@mixin responsiveto($width){
+	@if map-has-key($breakpoints, $width){
+		$width: map-get($breakpoints, $width);
+		@media only screen and (min-width: $width){
+			@content;
+		}
+	} @else {
+		@warn "No value could be retrieved from `#{$width}`. Available breakpoints are: #{map-keys($breakpoints)}.";
+	}
+}

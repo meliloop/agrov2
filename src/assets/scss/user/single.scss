@@ -1,0 +1,83 @@
+.single-user {
+  @include content-box();
+  @include background();
+
+  .user__image {
+    @include row();
+    padding-top: 88%;
+    position: relative;
+    border-radius: 0;
+  }
+
+  &-cont {
+    @include row();
+    padding-bottom: 25px;
+  }
+
+  &__data {
+    @include row();
+    @include background();
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+    padding: 20px;
+    padding-bottom: 0;
+    text-align: center;
+    margin-top: -70px;
+    position: relative;
+    z-index: 2;
+  
+    .user__image {
+      display: none;
+    }
+
+    .user__item {
+      padding: 0;
+
+      &__name {
+        @extend .h2;
+      }
+
+      &__place {
+        color: $primary-color;
+      }
+
+      &__description {
+        @include row();
+        display: block;
+        margin-top: 10px;
+      }
+
+      &__data {
+        @include row();
+        padding: 0;
+      }
+
+      &__btn {
+        display: none;
+      }
+    }
+
+    .buttons-cont {
+      @include row();
+      text-align: center;
+      transform: translate(0,50%);
+
+      .calendar-btn {
+        display: none;
+      }
+
+      .contact-btn {
+        float: none;
+        display: inline-block;
+      }
+    }
+  }
+
+  &__machines {
+    @include row();
+    padding-top: 50px;
+
+    .small-title {
+      margin-bottom: 0;
+    }
+  }
+}

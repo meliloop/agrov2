@@ -1,0 +1,26 @@
+.footer {
+  @include row();
+
+  &__logo {
+    float: right;
+    width: 250px;
+
+    img {
+      @include row();
+      height: auto;
+    }
+  }
+
+  &__columns {
+    float: left;
+    width: 24%;
+
+    &:nth-child(4) {
+      width: 28%;
+    }
+
+    ul {
+      list-style: none;
+    }
+  }
+}

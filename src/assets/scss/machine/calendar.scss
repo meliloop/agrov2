@@ -1,0 +1,57 @@
+.machine-calendar {
+  @include content-box();
+  @include background();
+}
+
+.calendar-cont {
+  @include row();
+
+  .calendar {
+    @include row();
+    margin-bottom: 30px;
+  }
+
+  &__add {
+    @extend .h3;
+    @include row();
+    border-top: 1px solid #565656;
+    height: 74px;
+    line-height: 74px;
+    color: $primary-color;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -3px;
+      height: 18px;
+      margin-right: 5px;
+
+      g {
+        fill: $primary-color;
+       }
+    }
+
+    &:hover {
+      background: #565656;
+    }
+  }
+
+  &__list {
+    @include row();
+
+    &__item {
+      @extend .h3;
+      @include row();
+      border-top: 1px solid #565656;
+      padding: 20px 0;
+      line-height: 1.4;
+
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+}

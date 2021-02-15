@@ -1,0 +1,14 @@
+const config = {
+    style: [{"stylers":[{"color":"#A3A3A3"}]},{"elementType":"geometry","stylers":[{"color":"#212121"}]},{"elementType":"labels","stylers":[{"color":"#737373"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#737373"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#212121"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#757575"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#ADADAD"}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"color":"#9E9E9E"}]},{"featureType":"administrative.land_parcel","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#BDBDBD"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#181818"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"poi.park","elementType":"labels.text.stroke","stylers":[{"color":"#1B1B1B"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#2C2C2C"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#8A8A8A"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#373737"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#3C3C3C"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#525252"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"color":"#525252"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry","stylers":[{"color":"#4E4E4E"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"transit","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#525252"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#3D3D3D"}]}],
+    default_center: { lat:-34.603722, lng: -58.381592 },
+    userIcon: {
+        path:
+        'M12.75 0l-2.25 2.25 2.25 2.25-5.25 6h-5.25l4.125 4.125-6.375 8.452v0.923h0.923l8.452-6.375 4.125 4.125v-5.25l6-5.25 2.25 2.25 2.25-2.25-11.25-11.25zM10.5 12.75l-1.5-1.5 5.25-5.25 1.5 1.5-5.25 5.25z',
+        fillColor: '#0000ff',
+        fillOpacity: 1.0,
+        strokeWeight: 0,
+        scale: 1
+    }
+};
+
+export {config};

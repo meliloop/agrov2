@@ -1,0 +1,25 @@
+.machine-popup {
+  @include row();
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  @include background();
+
+  &-cont {
+    @include row();
+    padding-bottom: 25px;
+  }
+
+  .user__image,
+  .user__item__place {
+    display: none;
+  }
+
+  .user__item__name {
+    * { font-weight: 400 !important;}
+  }
+
+  .user__item__btn a {
+    height: 20px;
+  }
+}
