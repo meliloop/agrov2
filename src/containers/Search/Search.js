@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import { useDispatch, useSelector } from "react-redux";
 import Switch from '@material-ui/core/Switch';
 
@@ -6,15 +7,20 @@ import Aux from '../../hoc/Auxiliar/Auxiliar';
 import { config } from '../../components/Map/Config';
 import Map from '../../components/Map/Map';
 import { setCurrentNavigation, fetchSearch, userLocated, setPlace, initSearchLocation } from '../../store/actions/index';
-import { viewModeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters, filtersChanged } from '../../store/actions/index';
-import { fetchMachineTypes } from '../../store/actions/index';
+import { viewModeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters } from '../../store/actions/index';
+import { fetchMachineTypes, filtersChanged } from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import Listing from '../../components/Listing/Listing';
+import Empty from '../../components/Listing/Empty';
 import Popup from '../../components/Machine/Popup/Popup';
 import Filters from '../../components/Machine/Search/Filters';
+import SmallTitle from '../../components/UI/Title/Small';
+import Machine from '../../components/Machine/Item';
+import Distance from '../../components/Machine/Distance/Distance';
+import NewMessages from '../../components/Chat/Unread';
 import { IconSearch } from '../../components/UI/Icon/Icon';
 
-const Search = (props) => {
+const Search = () => {
+    const [orderType, setOrderType] = useState('distancia');
     const searchState   = useSelector(state => state.search);
     const formState     = useSelector(state => state.machine);
     const dispatch      = useDispatch();
@@ -36,12 +42,42 @@ const Search = (props) => {
         dispatch( filtersChanged({key: 'padreTipo', value: id}) );
     };
 
+    const compareValues = (key, order = 'asc') => {
+        return function innerSort(a, b) {
+            if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key))
+                return 0;
+
+            const varA = (typeof a[key] === 'string')
+                ? a[key].toUpperCase() : a[key];
+            const varB = (typeof b[key] === 'string')
+                ? b[key].toUpperCase() : b[key];
+      
+            let comparison = 0;
+            if (varA > varB) {
+                comparison = 1;
+            } else if (varA < varB) {
+                comparison = -1;
+            }
+
+            return (
+                (order === 'desc') ? (comparison * -1) : comparison
+            );
+        };
+    };
+
     const handleMarkerClick = (props, marker, e) => {
         dispatch( activeMarkerChanged(marker) );
         dispatch( showingPopupChanged(true) );
     };
 
-    const handleFiltersSubmit = () => {
+    const handleOrderChange = (e) => {
+        setOrderType(e.target.value);
+        searchState.items.sort(compareValues(e.target.value, 'asc'));
+    };
+
+    const handleFiltersSubmit = (event) => {
+        event.preventDefault();
+
         const filters = {
             ubicacion: searchState.userLocation,
             cabezales: searchState.filterCabezales,
@@ -67,13 +103,14 @@ const Search = (props) => {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            console.log(currentPosition);
+            
             dispatch( initSearchLocation(currentPosition) );
         },error => {
             dispatch( initSearchLocation(config.default_center) );
         });
 
         dispatch( fetchMachineTypes() );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -81,6 +118,15 @@ const Search = (props) => {
             {searchState.loading ?
                 <Spinner />:
                 <div className="search--results">
+                    <div className="buttons--container">
+                        {formState.tipos &&
+                        <div className="openFilters" onClick={handleToggleFilters}>
+                            <IconSearch />
+                        </div>}
+
+                        <NewMessages />
+                    </div>
+
                     {searchState.showingFilters && 
                         <Filters 
                           items={formState.tipos}
@@ -88,6 +134,7 @@ const Search = (props) => {
                           handlePadreSelected={handlePadreSelected}
                           parentSelected={searchState.filterPadreTipo}
                           childsSelected={searchState.filterCabezales}
+                          handleFiltersClose={handleToggleFilters}
                           handleSubmit={handleFiltersSubmit}
                           handleSelectPlace={handleSelectPlace}
                           handleFechaDesdeChange={handleFechaDesdeChange}
@@ -104,10 +151,6 @@ const Search = (props) => {
                             name="view_type"
                             inputProps={{ 'aria-label': 'secondary checkbox' }}
                         />
-                        {formState.tipos &&
-                        <div className="openFilters" onClick={handleToggleFilters}>
-                            <IconSearch />
-                        </div>}
                     </div>
 
                     <div className="results--container">
@@ -122,7 +165,23 @@ const Search = (props) => {
                             {searchState.showingPopup && <Popup data={searchState.activeMarker.data} />}
                         </div>
                         <div className={`list--container ${searchState.viewType === 'map' && 'hidden'}`}>
-                            <Listing type="machine" items={searchState.items} />
+                            <div className="order-container">
+                                <SmallTitle text="ORDENAR POR" />
+                                <div className="orderby--container">
+                                    <select className="distance-dropdown" value={orderType} onChange={handleOrderChange}>
+                                        <option key="0" value="distancia">DISTANCIA</option>
+                                        <option key="1" value="modelo">MODELO</option>
+                                        <option key="2" value="year">AÑO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {searchState.items ?
+                                searchState.items.map(item => ( <Link key={item.id} to={"/maquina/id/"+item.id}>
+                                                                    <Machine data={item}>
+                                                                        <Distance data={item.distancia} />
+                                                                    </Machine>
+                                                                </Link>)):
+                                <Empty />}
                         </div>
                     </div>
                 </div>
@@ -132,104 +191,3 @@ const Search = (props) => {
 };
 
 export default Search;
-
-/*
-class Search extends Component {
-    constructor (props) {
-        super(props);
-
-        this.handleModeChange   =   this.handleModeChange.bind(this);
-        this.handleMapClick     =   this.handleMapClick.bind(this);
-        this.handleMarkerClick  =   this.handleMarkerClick.bind(this);
-    }
-
-    componentDidMount () {
-        this.props.onSetCurrentNavigation('search');
-        this.props.onFetchMachines(this.props.filters);
-
-        navigator.geolocation.getCurrentPosition(position => {
-            const currentPosition = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            }
-            this.props.onUserPositionDetected(currentPosition);
-        });
-    }
-
-    handleModeChange (event) {
-        let mode    =   event.target.checked ? 'map':'list';
-        this.props.onModeChange(mode);
-    } 
-
-    handleMapClick(){
-        this.props.onPopupChange(false);
-        console.log('map click')
-    }
-    
-    handleMarkerClick(props, marker, e) {
-        this.props.onActiveMarkerChange(marker);
-        this.props.onPopupChange(true);
-        marker.setIcon('https://www.google.com/mapfiles/marker_green.png');
-    }
-
-    render () {
-        return (
-            <Aux>
-                {this.props.loading ?
-                    <Spinner />:
-                    <div className="search--results">
-                        <div className="switch--container">
-                            <Switch
-                                checked={this.props.viewType === 'map'}
-                                onChange={this.handleModeChange}
-                                name="view_type"
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
-                        </div>
-
-                        <div className="results--container">
-                            <div className={`map--container ${this.props.viewType !== 'map' && 'hidden'}`}>
-                                <Map 
-                                  markers={this.props.items}
-                                  userLocation={this.props.userLocation}
-                                  markerClick={this.handleMarkerClick} 
-                                  mapClick={this.handleMapClick}
-                                  />
-                            </div>
-                            <div className={`list--container ${this.props.viewType === 'map' && 'hidden'}`}>
-                                <Listing type="machine" items={this.props.items} />
-                            </div>
-                        </div>
-
-                        {this.props.showingPopup && <Popup data={this.props.activeMarker.data} />}
-                    </div>
-                }
-            </Aux>
-        );
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        items: state.search.items,
-        loading: state.search.loading,
-        filters: state.search.filters,
-        userLocation: state.search.userLocation,
-        viewType: state.search.viewType,
-        showingPopup: state.search.showingPopup,
-        activeMarker: state.search.activeMarker
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSetCurrentNavigation: () => dispatch( actions.setCurrentNavigation('search') ),
-        onFetchMachines: (filters) => dispatch( actions.fetchSearch(filters) ),
-        onUserPositionDetected: (position) => dispatch( actions.userLocated(position) ),
-        onModeChange: (mode) => dispatch( actions.viewModeChanged(mode) ),
-        onPopupChange: (status) => dispatch( actions.showingPopupChanged(status) ),
-        onActiveMarkerChange: (data) => dispatch( actions.activeMarkerChanged(data) ),
-    };
-};
-
-export default connect( mapStateToProps, mapDispatchToProps )( withErrorHandler( Search, axios ) );*/

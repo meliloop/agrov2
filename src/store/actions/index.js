@@ -45,6 +45,5 @@ export {
     fetchChats,
     fetchMessages,
     fetchUnreadMessages,
-    setReadedMessages,
     sendMessage
 } from './messenger';

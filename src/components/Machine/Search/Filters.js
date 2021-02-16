@@ -6,7 +6,7 @@ import SectionTitle from '../../UI/Title/Primary';
 import SmallTitle from '../../UI/Title/Small';
 import { IconBackArrow } from '../../UI/Icon/Icon';
 
-const Search = (props) => {
+const Filters = (props) => {
     const place = props.place;
     const onPlaceSelect = (place) => {
         geocodeByPlaceId(place.value.place_id)
@@ -21,7 +21,9 @@ const Search = (props) => {
             <section className="search-cont">
                 <section className="header header--boxes">
                     <div className="container">
-                        <IconBackArrow />
+                        <div onClick={props.handleFiltersClose}>
+                            <IconBackArrow />
+                        </div>
                         
                         <button type="submit" className="button button--small">
                             Buscar
@@ -47,7 +49,7 @@ const Search = (props) => {
                     }
                 </div>
                     
-                <div className="search-cont__disponibility" style={{height: '400px'}}>
+                <div className="search-cont__disponibility" style={{height: '270px'}}>
                     <div className="date">
                         <label>Fecha</label>
                         <input type="text" placeholder="Desde" onChange={props.handleFechaDesdeChange} />
@@ -65,7 +67,7 @@ const Search = (props) => {
                     </div>
                     <div className="distance">
                         <GooglePlacesAutocomplete
-                            selectProps={{place, onChange: onPlaceSelect}}
+                            selectProps={{place, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Seleccione...', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                             autocompletionRequest={{componentRestrictions: {country: ['ar']}}} />
                     </div>
                 </div>
@@ -74,4 +76,4 @@ const Search = (props) => {
     );
 };
 
-export default Search;
+export default Filters;

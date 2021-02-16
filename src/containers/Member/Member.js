@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMember, setCurrentNavigation } from '../../store/actions/index';
@@ -16,14 +17,14 @@ const Member = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch( setCurrentNavigation('member') );
+        dispatch( setCurrentNavigation('single') );
         dispatch( fetchMember( { id: props.match.params.usuarioId } ) );
     },[dispatch, props.match.params.usuarioId]);
 
     return (
         <Aux>
             <section className="single-user">
-                {memberState.loading ? 
+                {(memberState.loading || !memberState.member) ? 
                     <Spinner />:
                     <>
                         <div className="user__image">
@@ -47,10 +48,12 @@ const Member = (props) => {
                                     </div>
 
                                     <div className="buttons-cont">
-                                        <div className="button contact-btn">
+                                        <Link 
+                                            to={"/mi-cuenta/chat/usuario/"+memberState.member.id} 
+                                            className="button contact-btn">
                                             <IconContact />
                                             <span>Contactar</span>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                                     

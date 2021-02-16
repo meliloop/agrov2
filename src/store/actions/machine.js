@@ -29,7 +29,7 @@ export const fetchMachine = (data) => {
          .then((res) => {
             if( res.data.result === 'ok' ){
                dispatch(fetchMachineSuccess(res.data.maquinaria));
-
+                  
                res.data.maquinaria.caracteristicas && dispatch( setCaracteristicas(res.data.maquinaria.caracteristicas) );
                res.data.maquinaria.tipo_maquinaria && dispatch( setTipoPadre(res.data.maquinaria.tipo_maquinaria.id) );
                res.data.maquinaria.cabezales && res.data.maquinaria.cabezales.map(item => dispatch( setTipos(item.id) ) );

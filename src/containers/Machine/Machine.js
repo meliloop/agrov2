@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMachine,setCurrentNavigation } from '../../store/actions/index';
@@ -20,14 +20,17 @@ const Machine = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch( setCurrentNavigation('machine') );
+        dispatch( setCurrentNavigation('single') );
         dispatch( fetchMachine( { id: props.match.params.maquinaId} ) );
     },[dispatch, props.match.params.maquinaId]);
-        console.log(machineState.loading);
+        
+    if( machineState.error !== null )
+        return <Redirect to="/" />;
+
     return (
         <Aux>
             <section className="single-machine">
-                {machineState.loading ? 
+                {(machineState.loading || !machineState.machine) ? 
                     <Spinner />:
                     <>
                         {machineState.machine.imagen &&
@@ -50,11 +53,11 @@ const Machine = (props) => {
                                     </div>
                                 }
 
-                                {machineState.machine.tipo_maquinaria &&
+                                {machineState.machine.cabezales &&
                                     <div className="single-machine__features">
                                         <SmallTitle text="Tipos de cultivo" />
                                             
-                                        <Listing type="machine-type-list" items={machineState.machine.tipo_maquinaria} />
+                                        <Listing type="machine-type-list" items={machineState.machine.cabezales} />
                                     </div>
                                 }
 
@@ -86,11 +89,11 @@ const Machine = (props) => {
                                         <IconCalendar />
                                         <span>Calendario</span>
                                     </div>
-
-                                    <div className="button contact-btn">
+                                        
+                                    <Link to={"/mi-cuenta/chat/usuario/"+machineState.member.id} className="button contact-btn">
                                         <IconContact />
                                         <span>Contactar</span>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 import React,{ useEffect, useState } from "react";
+import { Redirect } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentNavigation, fetchMachine, fetchMachineTypes, } from '../../../store/actions/index';
@@ -6,21 +7,33 @@ import { setTipoPadre, setTipos, addCaracteristica, removeCaracteristica } from 
 import { updateMachine, createMachine } from '../../../store/actions/index';
 import { useForm } from "react-hook-form";
 
+import GooglePlacesAutocomplete, { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete';
+
 import Aux from '../../../hoc/Auxiliar/Auxiliar';
 import SectionTitle from '../../../components/UI/Title/Primary';
 import SmallTitle from '../../../components/UI/Title/Small';
 import { IconPlus } from '../../../components/UI/Icon/Icon';
 import Listing from '../../../components/Listing/Listing';
 import BackgroundImage from '../../../components/UI/Background/Image';
-import CalendarItem from '../../../components/Machine/Calendar/Item';
+//import CalendarItem from '../../../components/Machine/Calendar/Item';
 
 const FormMachine = (props) => {
     const { register, handleSubmit, errors } = useForm();
     const [image, setImage] = useState(null);
+    const [locationAddress, setLocationAddress] = useState('');
+    const [location, setLocation] = useState(null);
     const [caracteristicaText, setCaracteristicaText] = useState('');
-    const [fetchingMachine, setFetchingMachine] = useState(true);
     const formState = useSelector(state => state.machine);
     const dispatch  = useDispatch();
+
+    const onPlaceSelect = (place) => {
+        setLocationAddress(place.label);
+        geocodeByPlaceId(place.value.place_id)
+            .then(results => getLatLng(results[0]))
+            .then(({ lat, lng }) => {
+                setLocation({ lat, lng });
+            });
+    };
 
     const onFileUpload = (event) => {
         event.preventDefault();
@@ -53,7 +66,9 @@ const FormMachine = (props) => {
         data.caracteristicas = formState.caracteristicas;
         data.parentSelected  = formState.selectedTipoPadre;
         data.childsSelected  = formState.selectedTipos;
-
+        data.address         = locationAddress;
+        data.location        = location;
+        
         if( props.match ){
             data.id =   props.match.params.maquinaId;
             dispatch(updateMachine( localStorage.getItem('token'), data ));
@@ -63,8 +78,6 @@ const FormMachine = (props) => {
     };
 
     useEffect( () => {
-        dispatch( fetchMachineTypes() );
-
         if( props.match ){
             dispatch( setCurrentNavigation('edit-machine') );
                 
@@ -73,8 +86,13 @@ const FormMachine = (props) => {
         }else{
             dispatch( setCurrentNavigation('new-machine') );
         }
+
+        dispatch( fetchMachineTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[dispatch]);
+    },[]);
+
+    if( formState.error !== null )
+        return <Redirect to="/mi-cuenta/" />;
 
     return (
         <Aux>
@@ -99,7 +117,7 @@ const FormMachine = (props) => {
                                 childsSelected={formState.selectedTipos}
                                 parentClick={handlePadreSelected}
                                 childClick={handleTipoSelected} />
-                        </div>}
+                    </div>}
 
                     <div className="machine-data__box">
                         <div className="machine-data__model">
@@ -187,6 +205,22 @@ const FormMachine = (props) => {
                     </div>
 
                     <div className="machine-data__box">
+                        <label htmlFor="ubicacion">Ubicación actual</label>
+                        {formState.machine?.ubicacion &&
+                        <div className="ubicacion--actual">
+                            {formState.machine?.ubicacion.address}
+                        </div>}
+
+                        <div className="ubicacion--actual">
+                            Ingrese su ubicación actualizada
+                            <GooglePlacesAutocomplete
+                                apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}
+                                selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Seleccione...', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
+                                autocompletionRequest={{componentRestrictions: {country: ['ar']}}} />
+                        </div>
+                    </div>
+
+                    <div className="machine-data__box">
                         <SmallTitle text="Caracteristicas" />
 
                         <div className="machine-data__add-feature">
@@ -216,7 +250,7 @@ const FormMachine = (props) => {
                             </div>}
                         </div>
                     </div>
-
+                    {/*
                     <div className="machine-data__box">
                         <SmallTitle text="Calendario de Maquina" />
 
@@ -234,7 +268,7 @@ const FormMachine = (props) => {
                                 <CalendarItem />
                             </div>
                         </div>
-                    </div>
+                    </div>*/}
                         
                     {formState.selectedTipos.length > 0 && 
                     <div className="machine-data__box">

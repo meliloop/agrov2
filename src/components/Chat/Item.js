@@ -9,7 +9,7 @@ const Item = (props) => {
         
     return (
         <Link className="messages__item" to={`/mi-cuenta/chat/usuario/${data.contact.id}`}>
-            {data.unread && 
+            {(data.unread > 0) && 
             <span className="news-message">
                 <IconContact />
             </span>}

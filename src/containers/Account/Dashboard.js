@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentNavigation, fetchUser, fetchChats, fetchUnreadMessages } from '../../store/actions/index';
+import { setCurrentNavigation, fetchUser } from '../../store/actions/index';
 
 import Aux from '../../hoc/Auxiliar/Auxiliar';
 import UserItem from '../../components/User/Item';
@@ -14,39 +14,38 @@ import EmptyList from '../../components/Listing/Empty';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('machine');
-    const authState= useSelector(state => state.auth);
-    const msgState = useSelector(state => state.messenger);
-
+    const userState= useSelector(state => state.auth);
     const dispatch = useDispatch();
 
     useEffect( () => {
         dispatch( setCurrentNavigation('account') );
 
-        //dispatch( fetchUnreadMessages(authState.token,authState.userId) );
-        //dispatch( fetchUser(authState.token, authState.userId) );
-        //dispatch( fetchChats(authState.token,authState.userId) );
+        dispatch( fetchUser(localStorage.getItem('token'), localStorage.getItem('userId')) );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dispatch]);
+        
+    if( userState.error !== null )
+        return <Redirect to="/" />;
 
     return (
         <Aux>
+            {(!userState.loading && userState.data) &&
             <section className="dashboard">
-                {authState.data &&
                 <div className="dashboard-cont">
                     <div className="container">
                         <div className="user__item">
-                            {authState.data.avatar &&
+                            {userState.data.avatar &&
                             <div className="user__image">
                                 <BackgroundImage 
-                                    alt={authState.data.name} 
-                                    path={authState.data.avatar}
+                                    alt={userState.data.name} 
+                                    path={userState.data.avatar}
                                 />
                             </div>}
 
                             <UserItem 
-                                name={authState.data.name} 
-                                location={authState.data.lugar} 
-                                description={authState.data.descripcion}
+                                name={userState.data.name} 
+                                location={userState.data.lugar} 
+                                description={userState.data.descripcion}
                             />
                         </div>
 
@@ -57,7 +56,7 @@ const Dashboard = () => {
                             </Link>
                         </div>
                     </div>
-                </div>}
+                </div>
                 
                 <div className="dashboard__tabs">
                     <div 
@@ -73,8 +72,8 @@ const Dashboard = () => {
                     >
                         <IconContact />
                         <span>Mensajes</span>
-                        {msgState.unread && 
-                            <span className="new">{msgState.unread}</span>}
+                        {userState.data.unread > 0 && 
+                            <span className="new">{userState.data.unread}</span>}
                     </div>
                 </div>
                     
@@ -87,28 +86,28 @@ const Dashboard = () => {
                             AGREGAR MAQUINARIA NUEVA
                         </Link>
                     </div>
-                    {authState.data && authState.data.maquinarias && 
+                    {userState.data && userState.data.maquinarias && 
                     <Listing
                         type="machine" 
                         action="edit" 
-                        items={authState.data.maquinarias} 
+                        items={userState.data.maquinarias} 
                     />}
                 </div>
 
                 <div 
                     className={`dashboard__tab${activeTab === 'chat' ? ' active':''}`}
                 >
-                    {msgState.loading ?
+                    {userState.loading ?
                         <Spinner/>:
-                        (msgState.chats ?
+                        (userState.data.chats ?
                             <Listing
                                 type="chat"  
-                                items={msgState.chats}
+                                items={userState.data.chats}
                             />:
                             <EmptyList text="No tenes chats"/>)
                     }
                 </div>
-            </section>
+            </section>}
         </Aux>
     );
 };

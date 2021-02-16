@@ -74,25 +74,6 @@ export const sendMessageFail = (error) => {
     };
 };
 
-export const setReadedMessagesStart = () => {
-    return {
-       type: actionTypes.SET_READED_MESSAGE_START
-    };
-};
- 
-export const setReadedMessagesSuccess = () => {
-    return {
-       type: actionTypes.SET_READED_MESSAGE_SUCCESS
-    };
-};
- 
-export const setReadedMessagesFail = (error) => {
-    return {
-       type: actionTypes.SET_READED_MESSAGE_FAIL,
-       error: error
-    };
-};
-
 export const fetchUnreadMessagesFail = (error) => {
     return {
        type: actionTypes.FETCH_UNREAD_MESSAGES_FAIL,
@@ -157,26 +138,6 @@ export const fetchUnreadMessages = (token, userId) => {
     }
 };
 
-export const setReadedMessages = (token, data) => {
-    return dispatch => {
-        dispatch(setReadedMessagesStart());
-
-        axios.post("/simple-jwt-authentication/v1/chat/leidos",data,{
-            headers: { 'Authorization': 'Bearer ' + token } 
-        })
-        .then((res) => {
-            if( res.data.result === 'ok' ){
-                dispatch(setReadedMessagesSuccess());
-            }else{
-                dispatch(setReadedMessagesFail(res.data.err));
-            }
-        })
-        .catch((err) => {
-            dispatch(setReadedMessagesFail(err));
-        });
-    }
-};
-
 export const sendMessage = (token, data) => {
     return dispatch => {
         dispatch(sendMessageStart());
@@ -187,7 +148,7 @@ export const sendMessage = (token, data) => {
         .then((res) => {
             if( res.data.result === 'ok' ){
                 dispatch(sendMessageSuccess());
-                //dispatch(fetchMessages(token, {'me': data.from, 'other': data.to}));
+                dispatch(fetchMessages(token, {'me': data.from, 'other': data.to}));
             }else{
                 dispatch(sendMessageFail(res.data.err));
             }

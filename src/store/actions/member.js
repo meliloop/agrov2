@@ -5,21 +5,21 @@ export const fetchMemberStart = () => {
     return {
        type: actionTypes.FETCH_MEMBER_START
     };
- };
- 
- export const fetchMemberSuccess = (data) => {
+};
+
+export const fetchMemberSuccess = (data) => {
     return {
-       type: actionTypes.FETCH_MEMBER_SUCCESS,
-       member: data
+        type: actionTypes.FETCH_MEMBER_SUCCESS,
+        member: data
     };
- };
- 
- export const fetchMemberFail = (error) => {
+};
+
+export const fetchMemberFail = (error) => {
     return {
-       type: actionTypes.FETCH_MEMBER_FAIL,
-       error: error
+        type: actionTypes.FETCH_MEMBER_FAIL,
+        error: error
     };
- };
+};
 
 export const fetchMember = (data) => {
     return dispatch => {
@@ -35,5 +35,5 @@ export const fetchMember = (data) => {
             .catch((err) => {
                 dispatch(fetchMemberFail(err));
             });
-    }
-}
+    };
+};

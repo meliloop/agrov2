@@ -121,7 +121,7 @@ export const auth = (email, password) => {
 
       axios.post('/simple-jwt-authentication/v1/token', authData)
          .then(response => {
-            const expirationDate = new Date(new Date().getTime() + response.data.token_expires * 1000);
+            const expirationDate = new Date(response.data.token_expires*1000);
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('expirationDate', expirationDate);
             localStorage.setItem('userId', response.data.user_id);
@@ -151,16 +151,11 @@ export const authCheckState = () => {
          dispatch(logout());
       } else {
          const expirationDate = new Date(localStorage.getItem('expirationDate'));
-         
          if (expirationDate <= new Date()) {
             dispatch(logout());
          } else {
-            console.log('success');
             const userId = localStorage.getItem('userId');
-            console.log('token '+token);
-            console.log('userId '+userId);
             dispatch(authSuccess(token, userId));
-            //dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
          }   
       }
    };

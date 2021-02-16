@@ -38,10 +38,6 @@ const fetchUnreadMessagesSuccess  = ( state, action ) => {
     });
 };
 
-const setReadedMessagesStart    = ( state, action ) => updateObject( state, { loading: true } );
-const setReadedMessagesFail     = ( state, action ) => updateObject( state, { loading: false } );
-const setReadedMessagesSuccess  = ( state, action ) => updateObject( state, { loading: false } );
-
 const setSendMessageStart       = ( state, action ) => updateObject( state, { loading: true } );
 const setSendMessageFail        = ( state, action ) => updateObject( state, { loading: false } );
 const setSendMessageSuccess     = ( state, action ) => updateObject( state, { loading: false } );
@@ -66,12 +62,6 @@ const reducer = ( state = initialState, action ) => {
             return fetchUnreadMessagesSuccess(state, action);
         case actionTypes.FETCH_UNREAD_MESSAGES_FAIL:
             return fetchUnreadMessagesFail(state, action);
-        case actionTypes.SET_READED_MESSAGE_START:
-            return setReadedMessagesStart(state, action);
-        case actionTypes.SET_READED_MESSAGE_SUCCESS:
-            return setReadedMessagesSuccess(state, action);
-        case actionTypes.SET_READED_MESSAGE_FAIL:
-            return setReadedMessagesFail(state, action);
         case actionTypes.SEND_MESSAGE_START:
             return setSendMessageStart(state, action);
         case actionTypes.SEND_MESSAGE_SUCCESS:

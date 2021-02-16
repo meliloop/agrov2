@@ -6,9 +6,15 @@ import { IconPlus, IconMinus } from '../../UI/Icon/Icon';
 
 const Item = (props) => {
     const {id, title, childs} = props.data;
-    const isOpen =  ( typeof(props.parentSelected) === 'object' ) ?
-                        Object.values(props.parentSelected).includes(id):
-                        ((props.parentSelected === id ) ? true:false);
+    let isOpen  =   false;
+
+    if( props.parentSelected ){
+        if( typeof(props.parentSelected) === 'number' )
+            isOpen = ( props.parentSelected === id ) ? true:false;
+
+        if( typeof(props.parentSelected) === 'object' )
+            isOpen = Object.values(props.parentSelected).includes(id);
+    }
         
     const handleSetOpen = () => {
         props.parentClick(id);

@@ -2,6 +2,8 @@ import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
 export const fetchSearchSuccess = ( items ) => {
+    items.sort((a, b) => (a.distancia > b.distancia) ? 1 : -1)
+
     return {
         type: actionTypes.FETCH_SEARCH_SUCCESS,
         items: items
