@@ -48,3 +48,36 @@
     display: inline-block;
   }
 }
+
+.openFilters {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  z-index: 100;
+  transform: translate(-50%, 0);
+}
+
+.mesasge__btn_header {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 100;
+}
+
+.switch--container {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 100;
+}
+
+.MuiButton-text {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 100;
+}
+
+.MuiSvgIcon-colorPrimary {
+  color: $white !important;
+}

@@ -1,0 +1,1518 @@
+/*
+Theme Name: Agro
+Text Domain: twentysixteen
+*/
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-weight: 400;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  background: #000;
+}
+body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.site {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+}
+
+section {
+  float: left;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type=text], input[type=email], input[type=search], input[type=submit], textarea, button {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+select {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+h1,
+.h1,
+.section-title,
+.h1 p,
+.section-title p {
+  font-size: 21px;
+}
+@media only screen and (max-width: 1770px) {
+  h1,
+.h1,
+.section-title,
+.h1 p,
+.section-title p {
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  h1,
+.h1,
+.section-title,
+.h1 p,
+.section-title p {
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h1,
+.h1,
+.section-title,
+.h1 p,
+.section-title p {
+    font-size: 21px;
+  }
+}
+
+h2,
+.h2,
+.dashboard .user__item__name,
+.single-user__data .user__item__name,
+.h2 p,
+.dashboard .user__item__name p,
+.single-user__data .user__item__name p {
+  font-size: 20px;
+}
+@media only screen and (max-width: 1770px) {
+  h2,
+.h2,
+.dashboard .user__item__name,
+.single-user__data .user__item__name,
+.h2 p,
+.dashboard .user__item__name p,
+.single-user__data .user__item__name p {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  h2,
+.h2,
+.dashboard .user__item__name,
+.single-user__data .user__item__name,
+.h2 p,
+.dashboard .user__item__name p,
+.single-user__data .user__item__name p {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h2,
+.h2,
+.dashboard .user__item__name,
+.single-user__data .user__item__name,
+.h2 p,
+.dashboard .user__item__name p,
+.single-user__data .user__item__name p {
+    font-size: 20px;
+  }
+}
+
+h3,
+.h3,
+.calendar-cont__list__item,
+.calendar-cont__add,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+select,
+textarea,
+.button,
+.h3 p,
+.calendar-cont__list__item p,
+.calendar-cont__add p,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
+select p,
+textarea p,
+.button p {
+  font-size: 16px;
+}
+@media only screen and (max-width: 1770px) {
+  h3,
+.h3,
+.calendar-cont__list__item,
+.calendar-cont__add,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+select,
+textarea,
+.button,
+.h3 p,
+.calendar-cont__list__item p,
+.calendar-cont__add p,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
+select p,
+textarea p,
+.button p {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  h3,
+.h3,
+.calendar-cont__list__item,
+.calendar-cont__add,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+select,
+textarea,
+.button,
+.h3 p,
+.calendar-cont__list__item p,
+.calendar-cont__add p,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
+select p,
+textarea p,
+.button p {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h3,
+.h3,
+.calendar-cont__list__item,
+.calendar-cont__add,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+select,
+textarea,
+.button,
+.h3 p,
+.calendar-cont__list__item p,
+.calendar-cont__add p,
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
+select p,
+textarea p,
+.button p {
+    font-size: 16px;
+  }
+}
+
+h4,
+.h4,
+.small-title,
+label,
+.h4 p,
+.small-title p,
+label p {
+  font-size: 14px;
+}
+@media only screen and (max-width: 1770px) {
+  h4,
+.h4,
+.small-title,
+label,
+.h4 p,
+.small-title p,
+label p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  h4,
+.h4,
+.small-title,
+label,
+.h4 p,
+.small-title p,
+label p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h4,
+.h4,
+.small-title,
+label,
+.h4 p,
+.small-title p,
+label p {
+    font-size: 14px;
+  }
+}
+
+h5,
+.h5,
+.h5 p {
+  font-size: 12px;
+}
+@media only screen and (max-width: 1770px) {
+  h5,
+.h5,
+.h5 p {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  h5,
+.h5,
+.h5 p {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h5,
+.h5,
+.h5 p {
+    font-size: 12px;
+  }
+}
+
+h6,
+.h6,
+.h6 p {
+  font-size: 12px;
+}
+@media only screen and (max-width: 1770px) {
+  h6,
+.h6,
+.h6 p {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  h6,
+.h6,
+.h6 p {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  h6,
+.h6,
+.h6 p {
+    font-size: 12px;
+  }
+}
+
+a {
+  color: #72B230;
+}
+
+figure,
+li {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  font-weight: 500;
+}
+figure a,
+li a {
+  color: #72B230;
+  position: relative;
+}
+figure a:hover,
+li a:hover {
+  color: #47701C;
+}
+
+b,
+strong,
+strong * {
+  font-weight: 700;
+}
+
+*:focus {
+  outline: none;
+}
+
+.row {
+  float: left;
+  width: 100%;
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 25px;
+}
+@media only screen and (min-width: 1024px) {
+  .container {
+    width: 1024px;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+.centerDiv {
+  display: flex;
+  align-items: center;
+}
+
+.image-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.image-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.iframe-wrapper {
+  float: left;
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+}
+.iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.section-title {
+  float: left;
+  width: 100%;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.small-title, label {
+  float: left;
+  width: 100%;
+  color: #72B230;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.small-title--white {
+  color: #ffffff;
+}
+
+.slick-arrow,
+.slick-dots button {
+  cursor: pointer;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  border-top: 1px solid #bbbbbb;
+  border-left: 1px solid #bbbbbb;
+  width: 30px;
+  height: 30px;
+  text-indent: 5000px;
+  overflow: hidden;
+  background: none;
+  transform: translate(0, -50%) rotate(-45deg);
+}
+@media only screen and (max-width: 1770px) {
+  .slick-arrow {
+    width: 20px;
+    height: 20px;
+    left: -10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .slick-arrow {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.slick-next {
+  border-left: none;
+  border-right: 1px solid #bbbbbb;
+  transform: translate(0, -50%) rotate(45deg);
+  left: auto;
+  right: -20px;
+}
+@media only screen and (max-width: 1770px) {
+  .slick-next {
+    left: auto;
+    right: -10px;
+  }
+}
+
+.slick-dots {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-top: 35px;
+}
+.slick-dots li {
+  display: inline-block;
+  margin: 5px;
+}
+.slick-dots li button {
+  float: left;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  text-indent: 5000px;
+  list-style: none;
+  border-radius: 12.5px;
+  background: none;
+  border: 1px solid #8a8a8a;
+}
+.slick-dots li button:hover {
+  background: #47701C;
+  border: 1px solid #47701C;
+}
+.slick-dots li.slick-active button {
+  background: #47701C;
+  border: 1px solid #47701C;
+}
+
+.header {
+  float: left;
+  width: 100%;
+  padding: 25px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#80000000", endColorstr="#00000000",GradientType=0 );
+  /* IE6-9 */
+  z-index: 2;
+  text-align: center;
+}
+.header--boxes {
+  position: static;
+}
+.header .settings {
+  float: right;
+}
+.header .button--small {
+  float: right;
+}
+.header .back-arrow {
+  float: left;
+}
+.header .text-icon {
+  float: right;
+  position: relative;
+}
+.header .text-icon .new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #72B230;
+  transform: translate(50%, -50%);
+}
+.header .search-btn {
+  display: inline-block;
+}
+
+.openFilters {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  z-index: 100;
+  transform: translate(-50%, 0);
+}
+
+.mesasge__btn_header {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 100;
+}
+
+.switch--container {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 100;
+}
+
+.MuiButton-text {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 100;
+}
+
+.MuiSvgIcon-colorPrimary {
+  color: #ffffff !important;
+}
+
+.footer {
+  float: left;
+  width: 100%;
+}
+.footer__logo {
+  float: right;
+  width: 250px;
+}
+.footer__logo img {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+.footer__columns {
+  float: left;
+  width: 24%;
+}
+.footer__columns:nth-child(4) {
+  width: 28%;
+}
+.footer__columns ul {
+  list-style: none;
+}
+
+.button {
+  display: inline-block;
+  max-width: 100%;
+  height: 50px;
+  line-height: 46px;
+  border: 1px solid #72B230;
+  background: #72B230;
+  color: #ffffff;
+  padding: 0 20px;
+  text-transform: uppercase;
+  border-radius: 25px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+@media only screen and (max-width: 400px) {
+  .button {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
+.button span {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 700;
+}
+.button svg,
+.button img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.button:hover {
+  background: #47701C;
+  border: 1px solid #47701C;
+}
+.button--line {
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.button--line:hover {
+  background: #72B230;
+  border: 1px solid #72B230;
+}
+.button--small {
+  height: 40px;
+  line-height: 36px;
+}
+.button--full {
+  width: 100%;
+  text-align: center;
+}
+
+.button--full + .button--full {
+  margin-top: 15px;
+}
+
+.button--line + .button--line {
+  margin-left: 10px;
+}
+
+.buttons-cont div:nth-child(2) {
+  float: right;
+}
+
+.parallax-1,
+.parallax-2,
+.parallax-3,
+.parallax-4,
+.relative {
+  position: relative;
+}
+
+.home__hero {
+  background-attachment: fixed;
+}
+
+label {
+  float: left;
+  width: 100%;
+}
+
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+select,
+textarea {
+  float: left;
+  width: 100%;
+  border: 1px solid #ffffff;
+  padding: 0 10px;
+  height: 40px;
+  line-height: 40px;
+  background: none;
+  color: #ffffff;
+}
+
+textarea {
+  height: 100px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* background-image: url(./images/select.svg);*/
+  background-size: 14px auto;
+  background-repeat: no-repeat;
+  background-position: 90% center;
+}
+
+.form-group {
+  float: left;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.content {
+  float: left;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.map {
+  float: left;
+  width: 100%;
+  position: absolute;
+}
+.map--container {
+  width: 100%;
+  height: 100vh;
+}
+.map .check {
+  position: absolute;
+  top: 100px;
+}
+
+.machine-popup {
+  float: left;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+.machine-popup-cont {
+  float: left;
+  width: 100%;
+  padding-bottom: 25px;
+}
+.machine-popup .user__image,
+.machine-popup .user__item__place {
+  display: none;
+}
+.machine-popup .user__item__name * {
+  font-weight: 400 !important;
+}
+.machine-popup .user__item__btn a {
+  height: 20px;
+}
+
+.machine__calendar-data-cont {
+  float: left;
+  width: 100%;
+  display: flex;
+}
+.machine__calendar-data {
+  float: left;
+  width: calc(100% - 90px);
+  background: #72B230;
+  padding: 15px 25px;
+}
+.machine__icon {
+  float: left;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.machine__icon img {
+  object-fit: cover;
+}
+.machine__location {
+  float: right;
+  width: 90px;
+  /*width: 100%;*/
+  background: #47701C;
+  padding: 0 15px;
+  /*padding: 15px;*/
+  display: flex;
+  align-items: center;
+  text-align: right;
+  /*text-align: left;*/
+}
+.machine__item {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #565656;
+}
+.machine__item__data {
+  float: left;
+  width: calc(100% - 75px);
+  padding-left: 15px;
+}
+.machine__item__data * {
+  color: #ffffff;
+}
+.machine__item__btn {
+  float: right;
+  width: 35px;
+}
+.machine__item__btn span {
+  float: left;
+  width: 100%;
+  height: 35px;
+  position: relative;
+}
+.machine__item__btn span svg {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.machine__item__btn span:hover svg g {
+  fill: #72B230;
+}
+
+.single-machine {
+  float: left;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+.single-machine__image {
+  float: left;
+  width: 100%;
+  padding-top: 68%;
+  position: relative;
+}
+.single-machine-cont {
+  float: left;
+  width: 100%;
+  padding-bottom: 25px;
+}
+.single-machine .machine__calendar-data-cont {
+  transform: translate(0, -50%);
+}
+.single-machine .machine__item {
+  padding-top: 0;
+}
+.single-machine__features {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #565656;
+}
+.single-machine__features__item {
+  float: left;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.single-machine__features__item:nth-last-child(1) {
+  margin-bottom: 0;
+}
+.single-machine__headers {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #565656;
+}
+.single-machine__headers__item {
+  float: left;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.single-machine__headers__item:nth-last-child(1) {
+  margin-bottom: 0;
+}
+.single-machine__headers__item span {
+  float: left;
+  width: 30%;
+  padding-right: 10px;
+}
+.single-machine__headers__item p {
+  float: left;
+  width: 70%;
+}
+.single-machine__owner {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+  padding-bottom: 0;
+}
+
+.machine-data {
+  float: left;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+.machine-data__box {
+  float: left;
+  width: 100%;
+  padding: 25px;
+  border-top: 1px solid #565656;
+}
+.machine-data__model {
+  float: left;
+  width: calc(100% - 90px);
+}
+.machine-data__year {
+  float: right;
+  width: 80px;
+}
+.machine-data__add-feature {
+  float: left;
+  width: 100%;
+  padding-bottom: 20px;
+}
+.machine-data__add-feature input {
+  float: left;
+  width: calc(100% - 40px) !important;
+}
+.machine-data__add-feature a {
+  float: left;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.machine-data__add-feature a svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.machine-data__feature {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #565656;
+  padding: 15px 0;
+}
+.machine-data__feature:nth-last-child(1) {
+  padding-bottom: 0;
+}
+
+.machine-calendar {
+  float: left;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+
+.calendar-cont {
+  float: left;
+  width: 100%;
+}
+.calendar-cont .calendar {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.calendar-cont__add {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #565656;
+  height: 74px;
+  line-height: 74px;
+  color: #72B230;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+}
+.calendar-cont__add svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -3px;
+  height: 18px;
+  margin-right: 5px;
+}
+.calendar-cont__add svg g {
+  fill: #72B230;
+}
+.calendar-cont__add:hover {
+  background: #565656;
+}
+.calendar-cont__list {
+  float: left;
+  width: 100%;
+}
+.calendar-cont__list__item {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #565656;
+  padding: 20px 0;
+  line-height: 1.4;
+}
+.calendar-cont__list__item span {
+  color: #72B230;
+}
+
+.user__image {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.user__image img {
+  object-fit: cover;
+}
+.user__item {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+}
+.user__item__data {
+  float: left;
+  width: calc(100% - 85px);
+  padding-left: 15px;
+}
+.user__item__data * {
+  color: #ffffff;
+}
+.user__item__description {
+  display: none;
+}
+.user__item__btn {
+  float: right;
+  width: 35px;
+}
+.user__item__btn span {
+  float: left;
+  width: 100%;
+  height: 35px;
+  position: relative;
+}
+.user__item__btn span svg {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.user__item__btn span:hover svg g {
+  fill: #72B230;
+}
+
+.single-user {
+  float: left;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+.single-user .user__image {
+  float: left;
+  width: 100%;
+  padding-top: 88%;
+  position: relative;
+  border-radius: 0;
+}
+.single-user-cont {
+  float: left;
+  width: 100%;
+  padding-bottom: 25px;
+}
+.single-user__data {
+  float: left;
+  width: 100%;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+  padding: 20px;
+  padding-bottom: 0;
+  text-align: center;
+  margin-top: -70px;
+  position: relative;
+  z-index: 2;
+}
+.single-user__data .user__image {
+  display: none;
+}
+.single-user__data .user__item {
+  padding: 0;
+}
+.single-user__data .user__item__place {
+  color: #72B230;
+}
+.single-user__data .user__item__description {
+  float: left;
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+}
+.single-user__data .user__item__data {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+.single-user__data .user__item__btn {
+  display: none;
+}
+.single-user__data .buttons-cont {
+  float: left;
+  width: 100%;
+  text-align: center;
+  transform: translate(0, 50%);
+}
+.single-user__data .buttons-cont .calendar-btn {
+  display: none;
+}
+.single-user__data .buttons-cont .contact-btn {
+  float: none;
+  display: inline-block;
+}
+.single-user__machines {
+  float: left;
+  width: 100%;
+  padding-top: 50px;
+}
+.single-user__machines .small-title, .single-user__machines label {
+  margin-bottom: 0;
+}
+
+.dashboard {
+  float: left;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+.dashboard-cont {
+  float: left;
+  width: 100%;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.dashboard .user__image {
+  float: none;
+  display: inline-block;
+  width: 112px;
+  height: 112px;
+}
+.dashboard .user__item {
+  padding: 0;
+  text-align: center;
+}
+.dashboard .user__item__place {
+  color: #72B230;
+}
+.dashboard .user__item__description {
+  float: left;
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+}
+.dashboard .user__item__data {
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+}
+.dashboard .user__item__btn {
+  display: none;
+}
+.dashboard__tabs {
+  float: left;
+  width: 100%;
+  display: flex;
+}
+.dashboard__tabs__item {
+  float: left;
+  position: relative;
+  width: 50%;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.1+100 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.15) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#00000000", endColorstr="#1a000000",GradientType=1 );
+  /* IE6-9 */
+  cursor: pointer;
+}
+.dashboard__tabs__item svg,
+.dashboard__tabs__item img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  margin-top: -3px;
+  margin-right: 5px;
+  opacity: 0.3;
+}
+.dashboard__tabs__item span {
+  opacity: 0.3;
+}
+.dashboard__tabs__item span.new {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  right: 15px;
+  top: 50%;
+  background: #72B230;
+  font-size: 12px;
+  color: #ffffff;
+  opacity: 1;
+  border-radius: 10px;
+  transform: translate(0, -50%);
+}
+.dashboard__tabs__item:hover, .dashboard__tabs__item.active {
+  background: #47701C;
+}
+.dashboard__tabs__item:hover svg,
+.dashboard__tabs__item:hover span,
+.dashboard__tabs__item:hover img, .dashboard__tabs__item.active svg,
+.dashboard__tabs__item.active span,
+.dashboard__tabs__item.active img {
+  opacity: 1;
+}
+.dashboard__tab {
+  float: left;
+  width: 100%;
+  padding-bottom: 25px;
+  display: none;
+}
+.dashboard__tab.active {
+  display: block;
+}
+
+.messages__item {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #565656;
+  position: relative;
+}
+.messages__item .news-message {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  line-height: 17px;
+  text-align: center;
+  background: #72B230;
+  z-index: 2;
+  border-radius: 10px;
+}
+.messages__item .news-message svg,
+.messages__item .news-message img {
+  width: 11px;
+}
+.messages__item__image {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.messages__item__image img {
+  object-fit: cover;
+}
+.messages__item__data {
+  float: left;
+  width: calc(100% - 85px);
+  padding-left: 15px;
+}
+.messages__item__data * {
+  color: #ffffff;
+}
+.messages__item__place {
+  text-transform: uppercase;
+}
+.messages__item__btn {
+  float: right;
+  width: 35px;
+}
+.messages__item__btn span {
+  float: left;
+  width: 100%;
+  height: 35px;
+  position: relative;
+}
+.messages__item__btn span svg {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.messages__item__btn span:hover svg g {
+  fill: #72B230;
+}
+
+.search-cont {
+  float: left;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  overflow-y: scroll;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+.search-cont__disponibility {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+}
+.search-cont__disponibility label {
+  width: 55px;
+  line-height: 40px;
+  margin-bottom: 0;
+}
+.search-cont__disponibility input {
+  width: calc(50% - 33px) !important;
+  margin-right: 10px;
+}
+.search-cont__disponibility input:nth-last-child(1) {
+  margin-right: 0;
+}
+.search-cont__disponibility .distance {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+.search-cont__disponibility .distance select {
+  width: calc(40% - 33px) !important;
+  margin-right: 10px;
+}
+.search-cont__disponibility .distance input {
+  width: calc(60% - 33px) !important;
+  margin-right: 0;
+}
+
+.machines__list {
+  float: left;
+  width: 100%;
+  text-align: left;
+}
+.machines__list div {
+  float: left;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  /*display: none;*/
+}
+.machines__list div div {
+  float: left;
+  width: 100%;
+}
+.machines__list__item {
+  float: left;
+  width: 100%;
+  padding: 20px 25px;
+  position: relative;
+  border-top: 1px solid #565656;
+}
+.machines__list__item .check {
+  float: left;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ffffff;
+  margin-right: 15px;
+  position: relative;
+}
+.machines__list__item .check.checked:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: #72B230;
+  transform: translate(-50%, -50%);
+  content: "";
+}
+.machines__list__item .name {
+  float: left;
+  width: calc(100% - 75px);
+  height: 20px;
+  line-height: 20px;
+}
+.machines__list__item .open-submenu {
+  float: right;
+  top: 0;
+  right: 10px;
+  width: 40px;
+  height: 60px;
+  position: absolute;
+}
+.machines__list__item .open-submenu span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.machines__list__item .open-submenu span svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.machines__list__item.no-check .name {
+  width: calc(100% - 40px);
+}

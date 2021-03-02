@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Switch from '@material-ui/core/Switch';
 
@@ -51,7 +51,7 @@ const Search = () => {
                 ? a[key].toUpperCase() : a[key];
             const varB = (typeof b[key] === 'string')
                 ? b[key].toUpperCase() : b[key];
-      
+
             let comparison = 0;
             if (varA > varB) {
                 comparison = 1;
@@ -85,7 +85,7 @@ const Search = () => {
             fecha_desde: searchState.filterFechaDesde,
             fecha_hasta: searchState.filterFechaHasta
         };
-        
+
         dispatch( toggleShowingFilters() );
         dispatch( fetchSearch(filters) );
     };
@@ -103,7 +103,7 @@ const Search = () => {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            
+
             dispatch( initSearchLocation(currentPosition) );
         },error => {
             dispatch( initSearchLocation(config.default_center) );
@@ -123,12 +123,13 @@ const Search = () => {
                         <div className="openFilters" onClick={handleToggleFilters}>
                             <IconSearch />
                         </div>}
-
-                        <NewMessages />
+                        <div className="mesasge__btn_header">
+                          <NewMessages />
+                        </div>
                     </div>
 
-                    {searchState.showingFilters && 
-                        <Filters 
+                    {searchState.showingFilters &&
+                        <Filters
                           items={formState.tipos}
                           handleTipoSelected={handleTipoSelected}
                           handlePadreSelected={handlePadreSelected}
@@ -155,11 +156,11 @@ const Search = () => {
 
                     <div className="results--container">
                         <div className={`map--container ${searchState.viewType !== 'map' && 'hidden'}`}>
-                            <Map 
+                            <Map
                                 zoom={getZoom(searchState.filterDistancia)}
                                 markers={searchState.items}
                                 userLocation={searchState.userLocation}
-                                markerClick={handleMarkerClick} 
+                                markerClick={handleMarkerClick}
                                 mapClick={handleMapClick}
                                 />
                             {searchState.showingPopup && <Popup data={searchState.activeMarker.data} />}
