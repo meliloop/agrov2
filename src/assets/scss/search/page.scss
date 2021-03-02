@@ -32,10 +32,11 @@
 
     .distance {
       @include row();
+      width: 50%;
       margin-top: 20px;
 
       select {
-        width: calc(40% - 33px) !important;
+        width: calc(90% - 60px) !important;
         margin-right: 10px;
       }
 
@@ -45,4 +46,9 @@
       }
     }
   }
+}
+
+.css-yk16xz-control,
+.css-g1d714-ValueContainer {
+  height: 40px !important;
 }

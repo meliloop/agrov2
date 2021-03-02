@@ -6,10 +6,7 @@
     @include row();
     padding-bottom: 30px;
     text-align: center;
-
-    @include responsiveto('tablet-h') {
-      margin-top: 60px;
-    }
+    margin-top: 60px;
   }
 
   .user__image {
