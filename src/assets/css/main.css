@@ -1324,6 +1324,11 @@ select {
   padding-bottom: 30px;
   text-align: center;
 }
+@media only screen and (min-width: 1024px) {
+  .dashboard-cont {
+    margin-top: 60px;
+  }
+}
 .dashboard .user__image {
   float: none;
   display: inline-block;
@@ -1355,6 +1360,13 @@ select {
   float: left;
   width: 100%;
   display: flex;
+}
+@media only screen and (min-width: 1024px) {
+  .dashboard__tabs {
+    float: none;
+    width: 1024px;
+    margin: 0 auto;
+  }
 }
 .dashboard__tabs__item {
   float: left;
@@ -1413,6 +1425,13 @@ select {
   width: 100%;
   padding-bottom: 25px;
   display: none;
+}
+@media only screen and (min-width: 1024px) {
+  .dashboard__tab {
+    float: none;
+    width: 1024px;
+    margin: 0 auto;
+  }
 }
 .dashboard__tab.active {
   display: block;
@@ -1516,6 +1535,12 @@ select {
   /* IE6-9 */
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
 }
+@media only screen and (min-width: 1024px) {
+  .search-cont__disponibility {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
 .search-cont__disponibility label {
   width: 55px;
   line-height: 40px;
@@ -1546,6 +1571,13 @@ select {
   float: left;
   width: 100%;
   text-align: left;
+}
+@media only screen and (min-width: 1024px) {
+  .machines__list {
+    float: none;
+    width: 1024px;
+    margin: 0 auto;
+  }
 }
 .machines__list div {
   float: left;

@@ -10,6 +10,11 @@
     @include background();
     box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
 
+    @include responsiveto('tablet-h') {
+      left: 50%;
+      transform: translate(-50%,0);
+    }
+
     label {
       width: 55px;
       line-height: 40px;
