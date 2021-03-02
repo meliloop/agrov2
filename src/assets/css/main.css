@@ -1530,6 +1530,7 @@ select {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
   /* IE6-9 */
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+  height: auto !important;
 }
 @media only screen and (min-width: 1024px) {
   .search-cont__disponibility {
@@ -1567,6 +1568,10 @@ select {
 .css-yk16xz-control,
 .css-g1d714-ValueContainer {
   height: 40px !important;
+}
+
+.back_arrow {
+  float: left;
 }
 
 .machines__list {

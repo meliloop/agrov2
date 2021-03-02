@@ -9,6 +9,7 @@
     padding: 20px;
     @include background();
     box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+    height: auto !important;
 
     @include responsiveto('tablet-h') {
       left: 50%;
@@ -51,4 +52,8 @@
 .css-yk16xz-control,
 .css-g1d714-ValueContainer {
   height: 40px !important;
+}
+
+.back_arrow {
+  float: left;
 }

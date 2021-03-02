@@ -21,10 +21,10 @@ const Filters = (props) => {
             <section className="search-cont">
                 <section className="header header--boxes">
                     <div className="container">
-                        <div onClick={props.handleFiltersClose}>
+                        <div class="back_arrow" onClick={props.handleFiltersClose}>
                             <IconBackArrow />
                         </div>
-                        
+
                         <button type="submit" className="button button--small">
                             Buscar
                         </button>
@@ -36,11 +36,11 @@ const Filters = (props) => {
 
                     <SmallTitle text="Tipo de Maquinaria" />
                 </div>
-                    
+
                 <div className="machines__list">
                     {props.items &&
-                    <Listing 
-                        type="machine-type" 
+                    <Listing
+                        type="machine-type"
                         items={props.items}
                         parentSelected={props.parentSelected}
                         childsSelected={props.childsSelected}
@@ -48,7 +48,7 @@ const Filters = (props) => {
                         childClick={props.handleTipoSelected} />
                     }
                 </div>
-                    
+
                 <div className="search-cont__disponibility" style={{height: '270px'}}>
                     <div className="date">
                         <label>Fecha</label>
