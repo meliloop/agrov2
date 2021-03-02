@@ -5,6 +5,12 @@
   bottom: 0;
   @include background();
 
+  @include responsiveto('tablet-h') {
+    width: 1024px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
   &-cont {
     @include row();
     padding-bottom: 25px;
@@ -21,5 +27,11 @@
 
   .user__item__btn a {
     height: 20px;
+  }
+}
+
+.contact-btn {
+  @include responsiveto('tablet-h') {
+    float: right;
   }
 }

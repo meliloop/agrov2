@@ -7,6 +7,12 @@
     padding-top: 88%;
     position: relative;
     border-radius: 0;
+
+    @include responsiveto('tablet-h') {
+      width: 30%;
+      margin: 0 35%;
+      padding-top: 30%;
+    }
   }
 
   &-cont {
@@ -24,7 +30,7 @@
     margin-top: -70px;
     position: relative;
     z-index: 2;
-  
+
     .user__image {
       display: none;
     }
@@ -68,6 +74,10 @@
       .contact-btn {
         float: none;
         display: inline-block;
+
+        @include responsiveto('tablet-h') {
+          float: none;
+        }
       }
     }
   }

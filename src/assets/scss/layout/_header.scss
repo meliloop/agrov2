@@ -52,7 +52,7 @@
 .openFilters {
   position: absolute;
   left: 50%;
-  top: 30px;
+  top: 18px;
   z-index: 100;
   transform: translate(-50%, 0);
 }
@@ -72,12 +72,66 @@
 }
 
 .MuiButton-text {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+  position: absolute !important;
+  top: 22px;
+  left: 10px;
   z-index: 100;
 }
 
 .MuiSvgIcon-colorPrimary {
   color: $white !important;
+}
+
+.MuiPaper-root {
+  width: 320px;
+  @include background();
+}
+
+.MuiList-padding {
+  padding: 0 !important;
+}
+
+.MuiListItem-button {
+  padding: 10px 30px !important;
+  color: $white!important;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  span {
+    font-size: 14px !important;
+  }
+
+  &:hover {
+    background: $primary-color !important;
+  }
+}
+
+.MuiSwitch-colorSecondary.Mui-checked,
+.MuiSwitch-thumb {
+  color: $primary-color !important;
+}
+
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track,
+.MuiSwitch-track {
+  background-color: $primary-color !important;
+}
+
+.list--container {
+  padding: 30px;
+  margin-top: 70px;
+}
+
+.results--container {
+  @include responsiveto('tablet-h') {
+    text-align: center;
+  }
+
+}
+
+.list--container {
+  @include responsiveto('tablet-h') {
+    display: inline-block;
+    width: 1024px;
+    text-align: left;
+  }
 }

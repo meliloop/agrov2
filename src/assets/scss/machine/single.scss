@@ -6,6 +6,12 @@
     @include row();
     padding-top: 68%;
     position: relative;
+
+    @include responsiveto('tablet-h') {
+      width: 30%;
+      margin: 0 35%;
+      padding-top: 30%;
+    }
   }
 
   &-cont {

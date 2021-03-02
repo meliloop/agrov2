@@ -570,7 +570,7 @@ strong * {
 .openFilters {
   position: absolute;
   left: 50%;
-  top: 30px;
+  top: 18px;
   z-index: 100;
   transform: translate(-50%, 0);
 }
@@ -590,14 +590,73 @@ strong * {
 }
 
 .MuiButton-text {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+  position: absolute !important;
+  top: 22px;
+  left: 10px;
   z-index: 100;
 }
 
 .MuiSvgIcon-colorPrimary {
   color: #ffffff !important;
+}
+
+.MuiPaper-root {
+  width: 320px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+
+.MuiList-padding {
+  padding: 0 !important;
+}
+
+.MuiListItem-button {
+  padding: 10px 30px !important;
+  color: #ffffff !important;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.MuiListItem-button span {
+  font-size: 14px !important;
+}
+.MuiListItem-button:hover {
+  background: #72B230 !important;
+}
+
+.MuiSwitch-colorSecondary.Mui-checked,
+.MuiSwitch-thumb {
+  color: #72B230 !important;
+}
+
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track,
+.MuiSwitch-track {
+  background-color: #72B230 !important;
+}
+
+.list--container {
+  padding: 30px;
+  margin-top: 70px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .results--container {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .list--container {
+    display: inline-block;
+    width: 1024px;
+    text-align: left;
+  }
 }
 
 .footer {
@@ -740,6 +799,10 @@ select {
   margin-bottom: 25px;
 }
 
+.loginFormContainer {
+  margin-top: 50px;
+}
+
 .content {
   float: left;
   width: 100%;
@@ -777,6 +840,13 @@ select {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
   /* IE6-9 */
 }
+@media only screen and (min-width: 1024px) {
+  .machine-popup {
+    width: 1024px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
 .machine-popup-cont {
   float: left;
   width: 100%;
@@ -791,6 +861,12 @@ select {
 }
 .machine-popup .user__item__btn a {
   height: 20px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .contact-btn {
+    float: right;
+  }
 }
 
 .machine__calendar-data-cont {
@@ -881,6 +957,13 @@ select {
   width: 100%;
   padding-top: 68%;
   position: relative;
+}
+@media only screen and (min-width: 1024px) {
+  .single-machine__image {
+    width: 30%;
+    margin: 0 35%;
+    padding-top: 30%;
+  }
 }
 .single-machine-cont {
   float: left;
@@ -1136,6 +1219,13 @@ select {
   position: relative;
   border-radius: 0;
 }
+@media only screen and (min-width: 1024px) {
+  .single-user .user__image {
+    width: 30%;
+    margin: 0 35%;
+    padding-top: 30%;
+  }
+}
 .single-user-cont {
   float: left;
   width: 100%;
@@ -1196,6 +1286,11 @@ select {
 .single-user__data .buttons-cont .contact-btn {
   float: none;
   display: inline-block;
+}
+@media only screen and (min-width: 1024px) {
+  .single-user__data .buttons-cont .contact-btn {
+    float: none;
+  }
 }
 .single-user__machines {
   float: left;
