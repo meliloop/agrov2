@@ -59,10 +59,10 @@
     }
 
     .open-submenu {
-      float: right;
+      float: right !important;
       top: 0;
       right: 10px;
-      width: 40px;
+      width: 40px !important;
       height: 60px;
       position: absolute;
 
