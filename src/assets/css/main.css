@@ -1592,6 +1592,9 @@ select {
     margin: 0 auto;
   }
 }
+.machines__list .MuiCollapse-wrapper {
+  display: block;
+}
 .machines__list .machine__sublist {
   float: left;
   width: 100%;

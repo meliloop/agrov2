@@ -9,6 +9,10 @@
     margin: 0 auto;
   }
 
+  .MuiCollapse-wrapper {
+    display: block;
+  }
+
   .machine__sublist {
     @include row();
     background: rgba(255, 255, 255, 0.07);
