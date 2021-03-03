@@ -1514,6 +1514,11 @@ select {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
   /* IE6-9 */
+  top: 0;
+  z-index: 200;
+}
+.search-cont .header .button--small {
+  width: auto !important;
 }
 .search-cont__disponibility {
   position: fixed;
@@ -1578,6 +1583,7 @@ select {
   float: left;
   width: 100%;
   text-align: left;
+  padding-bottom: 140px;
 }
 @media only screen and (min-width: 1024px) {
   .machines__list {
@@ -1586,13 +1592,13 @@ select {
     margin: 0 auto;
   }
 }
-.machines__list div {
+.machines__list .machine__sublist {
   float: left;
   width: 100%;
   background: rgba(255, 255, 255, 0.07);
   /*display: none;*/
 }
-.machines__list div div {
+.machines__list .machine__sublist div {
   float: left;
   width: 100%;
 }

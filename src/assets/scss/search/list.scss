@@ -1,6 +1,7 @@
 .machines__list {
   @include row();
   text-align: left;
+  padding-bottom: 140px;
 
   @include responsiveto('tablet-h') {
     float: none;
@@ -8,7 +9,7 @@
     margin: 0 auto;
   }
 
-  div {
+  .machine__sublist {
     @include row();
     background: rgba(255, 255, 255, 0.07);
     /*display: none;*/

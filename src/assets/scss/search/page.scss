@@ -1,6 +1,14 @@
 .search-cont {
   @include content-box();
   @include background();
+  top: 0;
+  z-index: 200;
+
+  .header {
+    .button--small {
+      width: auto !important;
+    }
+  }
 
   &__disponibility {
     position: fixed;
