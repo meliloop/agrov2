@@ -1499,6 +1499,34 @@ select {
   display: block;
 }
 
+.dashboard.chat {
+  padding: 0 25px;
+  padding-top: 60px;
+}
+.dashboard.chat .contact-btn {
+  font-size: 14px;
+  padding: 0 10px;
+}
+.dashboard.chat .new-message-cont {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+.dashboard.chat .new-message-cont #newmessage {
+  width: calc(100% - 50px);
+}
+.dashboard.chat .new-message-cont .buttons-cont {
+  width: 50px;
+  float: right;
+}
+.dashboard.chat .new-message-cont .button {
+  background: none;
+  border: none;
+  transform: rotate(180deg);
+  height: 40px;
+  padding: 0;
+}
+
 .messages__item {
   float: left;
   width: 100%;
