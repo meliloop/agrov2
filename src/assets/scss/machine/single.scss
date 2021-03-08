@@ -43,6 +43,12 @@
       &:nth-last-child(1) {
         margin-bottom: 0;
       }
+
+      svg {
+        float: left;
+        margin-top: 10px;
+        margin-right: 10px;
+      }
     }
   }
 

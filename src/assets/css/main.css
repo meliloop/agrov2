@@ -666,6 +666,10 @@ strong * {
   zoom: 1.2 !important;
 }
 
+.MuiBadge-colorPrimary {
+  background-color: #72B230 !important;
+}
+
 .footer {
   float: left;
   width: 100%;
@@ -911,7 +915,7 @@ select {
   position: relative;
 }
 .machine__icon img {
-  object-fit: cover;
+  object-fit: contain;
 }
 .machine__location {
   float: right;
@@ -925,6 +929,7 @@ select {
   /*text-align: left;*/
   padding: 5px 15px;
   text-align: center;
+  color: #ffffff;
 }
 .machine__item {
   float: left;
@@ -1017,6 +1022,11 @@ select {
 }
 .single-machine__features__item:nth-last-child(1) {
   margin-bottom: 0;
+}
+.single-machine__features__item svg {
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 .single-machine__headers {
   float: left;
@@ -1160,6 +1170,19 @@ select {
   float: right;
   width: 177px;
   max-width: calc(100% - 120px);
+}
+
+.list--container .machine__item__data {
+  width: calc(100% - 190px);
+}
+.list--container .machine__item {
+  border-top: 1px solid #565656;
+  border-bottom: none;
+  padding-top: 0;
+}
+.list--container .machine__icon,
+.list--container .machine__item__data {
+  margin-top: 20px;
 }
 
 .machine-calendar {

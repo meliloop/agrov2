@@ -19,7 +19,7 @@
     position: relative;
 
     img {
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 
@@ -34,6 +34,7 @@
     /*text-align: left;*/
     padding: 5px 15px;
     text-align: center;
+    color: $white;
   }
 
   &__item {
