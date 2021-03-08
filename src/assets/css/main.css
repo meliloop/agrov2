@@ -805,10 +805,10 @@ select {
   margin-top: 50px;
 }
 
-.registrationFormContainer .small-title--white {
+.single-user .registrationFormContainer .small-title--white {
   text-align: center;
 }
-.registrationFormContainer .user__image {
+.single-user .registrationFormContainer .user__image {
   float: none;
   margin: 0 auto;
   margin-top: 20px;
@@ -816,7 +816,7 @@ select {
   padding-top: 200px;
   border-radius: 50%;
 }
-.registrationFormContainer .button--full {
+.single-user .registrationFormContainer .button--full {
   margin-bottom: 30px;
 }
 
@@ -1055,6 +1055,12 @@ select {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
   /* IE6-9 */
 }
+.machine-data .machines__list {
+  padding-bottom: 0;
+}
+.machine-data-cont {
+  margin-top: 60px;
+}
 .machine-data__box {
   float: left;
   width: 100%;
@@ -1098,6 +1104,37 @@ select {
 }
 .machine-data__feature:nth-last-child(1) {
   padding-bottom: 0;
+}
+
+.css-yk16xz-control {
+  border: 1px solid #ffffff;
+  background: none;
+  border-radius: 0;
+  line-height: 40px;
+  color: #ffffff;
+}
+
+.css-b8ldur-Input {
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+}
+
+.css-1wa3eu0-placeholder {
+  color: #ffffff;
+}
+
+.css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.add-feature {
+  float: right;
+  margin-top: 10px;
+}
+
+.ubicacion--actual .css-2b097c-container {
+  margin-top: 10px;
 }
 
 .machine-calendar {

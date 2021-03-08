@@ -2,6 +2,14 @@
   @include content-box();
   @include background();
 
+  .machines__list {
+    padding-bottom: 0;
+  }
+
+  &-cont {
+    margin-top: 60px;
+  }
+
   &__box {
     @include row();
     padding: 25px;
@@ -50,5 +58,38 @@
     &:nth-last-child(1) {
       padding-bottom: 0;
     }
+  }
+}
+
+.css-yk16xz-control {
+  border: 1px solid $white;
+  background: none;
+  border-radius: 0;
+  line-height: 40px;
+  color: $white;
+}
+
+.css-b8ldur-Input {
+  height: 40px;
+  line-height: 40px;
+  color: $white;
+}
+
+.css-1wa3eu0-placeholder {
+  color: $white;
+}
+
+.css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.add-feature {
+  float: right;
+  margin-top: 10px;
+}
+
+.ubicacion--actual {
+  .css-2b097c-container {
+    margin-top: 10px;
   }
 }
