@@ -1118,12 +1118,16 @@ select {
   line-height: 40px;
   color: #ffffff;
 }
+.machine-data .css-1pahdxg-control {
+  color: #000 !important;
+}
 .machine-data .css-b8ldur-Input {
   height: 40px;
   line-height: 40px;
   color: #ffffff;
 }
-.machine-data .css-1wa3eu0-placeholder {
+.machine-data .css-1wa3eu0-placeholder,
+.machine-data .css-1uccc91-singleValue {
   color: #ffffff;
 }
 .machine-data .css-1okebmr-indicatorSeparator {
