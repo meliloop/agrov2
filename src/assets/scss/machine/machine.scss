@@ -105,3 +105,17 @@
     }
   }
 }
+
+.order-container {
+  .small-title {
+    float: left;
+    width: 120px;
+    line-height: 40px;
+  }
+
+  .orderby--container {
+    float: right;
+    width: 177px;
+    max-width: calc(100% - 120px);
+  }
+}

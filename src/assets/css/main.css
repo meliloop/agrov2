@@ -1151,6 +1151,17 @@ select {
   margin-top: 10px;
 }
 
+.order-container .small-title, .order-container label {
+  float: left;
+  width: 120px;
+  line-height: 40px;
+}
+.order-container .orderby--container {
+  float: right;
+  width: 177px;
+  max-width: calc(100% - 120px);
+}
+
 .machine-calendar {
   float: left;
   width: 100%;
