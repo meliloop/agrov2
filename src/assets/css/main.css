@@ -1105,35 +1105,29 @@ select {
 .machine-data__feature:nth-last-child(1) {
   padding-bottom: 0;
 }
-
-.css-yk16xz-control {
+.machine-data .css-yk16xz-control {
   border: 1px solid #ffffff;
   background: none;
   border-radius: 0;
   line-height: 40px;
   color: #ffffff;
 }
-
-.css-b8ldur-Input {
+.machine-data .css-b8ldur-Input {
   height: 40px;
   line-height: 40px;
   color: #ffffff;
 }
-
-.css-1wa3eu0-placeholder {
+.machine-data .css-1wa3eu0-placeholder {
   color: #ffffff;
 }
-
-.css-1okebmr-indicatorSeparator {
+.machine-data .css-1okebmr-indicatorSeparator {
   display: none;
 }
-
-.add-feature {
+.machine-data .add-feature {
   float: right;
   margin-top: 10px;
 }
-
-.ubicacion--actual .css-2b097c-container {
+.machine-data .ubicacion--actual .css-2b097c-container {
   margin-top: 10px;
 }
 
