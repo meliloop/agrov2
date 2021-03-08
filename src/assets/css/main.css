@@ -670,6 +670,25 @@ strong * {
   background-color: #72B230 !important;
 }
 
+.content--list {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .footer {
   float: left;
   width: 100%;

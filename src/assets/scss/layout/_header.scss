@@ -147,3 +147,14 @@
 .MuiBadge-colorPrimary {
   background-color: $primary-color !important;
 }
+
+.content--list {
+  @include background();
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
