@@ -28,11 +28,12 @@
     width: 90px;
     /*width: 100%;*/
     background: $secondary-color;
-    padding: 0 15px;
     /*padding: 15px;*/
     @include centerDiv();
     text-align: right;
     /*text-align: left;*/
+    padding: 5px 15px;
+    text-align: center;
   }
 
   &__item {
