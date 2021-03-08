@@ -2,6 +2,10 @@
   @include content-box();
   @include background();
 
+  .contact-btn {
+    float: right;
+  }
+
   &__image {
     @include row();
     padding-top: 68%;

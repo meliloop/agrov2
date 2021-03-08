@@ -137,7 +137,6 @@
 }
 
 .dashboard.chat {
-  padding: 0 25px;
   padding-top: 60px;
 
   .contact-btn {
@@ -145,10 +144,15 @@
     padding: 0 10px;
   }
 
+  .messages-cont {
+    padding: 0 20px;
+  }
+
   .new-message-cont {
     float: left;
     width: 100%;
     margin-top: 20px;
+    padding: 0 20px;
 
     #newmessage {
       width: calc(100% - 50px);
@@ -165,6 +169,10 @@
       transform: rotate(180deg);
       height: 40px;
       padding: 0;
+
+      svg {
+        margin-top: -10px;
+      }
     }
   }
 }
