@@ -1096,6 +1096,12 @@ select {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.machine-data .success {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
 .machine-data__feature {
   float: left;
   width: 100%;

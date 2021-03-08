@@ -50,6 +50,13 @@
     }
   }
 
+  .success {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
   &__feature {
     @include row();
     border-top: 1px solid #565656;
