@@ -1325,6 +1325,9 @@ select {
   text-align: center;
   margin-top: 60px;
 }
+.dashboard-cont .button--line {
+  width: auto;
+}
 .dashboard .user__image {
   float: none;
   display: inline-block;
@@ -1419,6 +1422,7 @@ select {
 .dashboard__tab {
   float: left;
   width: 100%;
+  padding: 0 20px;
   padding-bottom: 25px;
   display: none;
 }
@@ -1428,6 +1432,9 @@ select {
     width: 1024px;
     margin: 0 auto;
   }
+}
+.dashboard__tab .calendar-cont__add {
+  border-top: none;
 }
 .dashboard__tab.active {
   display: block;

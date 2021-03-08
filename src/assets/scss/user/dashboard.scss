@@ -7,6 +7,10 @@
     padding-bottom: 30px;
     text-align: center;
     margin-top: 60px;
+
+    .button--line {
+      width: auto;
+    }
   }
 
   .user__image {
@@ -112,6 +116,7 @@
 
   &__tab {
     @include row();
+    padding: 0 20px;
     padding-bottom: 25px;
     display: none;
 
@@ -119,6 +124,10 @@
       float: none;
       width: 1024px;
       margin: 0 auto;
+    }
+
+    .calendar-cont__add {
+      border-top: none;
     }
 
     &.active {
