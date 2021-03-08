@@ -662,6 +662,10 @@ strong * {
   }
 }
 
+.MuiSvgIcon-root {
+  zoom: 1.2 !important;
+}
+
 .footer {
   float: left;
   width: 100%;
