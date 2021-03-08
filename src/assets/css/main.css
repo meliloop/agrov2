@@ -221,9 +221,11 @@ textarea p,
 
 h4,
 .h4,
+.order-container .orderby--container select,
 .small-title,
 label,
 .h4 p,
+.order-container .orderby--container select p,
 .small-title p,
 label p {
   font-size: 14px;
@@ -231,9 +233,11 @@ label p {
 @media only screen and (max-width: 1770px) {
   h4,
 .h4,
+.order-container .orderby--container select,
 .small-title,
 label,
 .h4 p,
+.order-container .orderby--container select p,
 .small-title p,
 label p {
     font-size: 14px;
@@ -242,9 +246,11 @@ label p {
 @media only screen and (max-width: 1024px) {
   h4,
 .h4,
+.order-container .orderby--container select,
 .small-title,
 label,
 .h4 p,
+.order-container .orderby--container select p,
 .small-title p,
 label p {
     font-size: 14px;
@@ -253,9 +259,11 @@ label p {
 @media only screen and (max-width: 600px) {
   h4,
 .h4,
+.order-container .orderby--container select,
 .small-title,
 label,
 .h4 p,
+.order-container .orderby--container select p,
 .small-title p,
 label p {
     font-size: 14px;
@@ -682,13 +690,6 @@ strong * {
   /* IE6-9 */
 }
 
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .footer {
   float: left;
   width: 100%;
@@ -819,7 +820,7 @@ textarea {
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
-  /* background-image: url(./images/select.svg);*/
+  background-image: url(select.svg);
   background-size: 14px auto;
   background-repeat: no-repeat;
   background-position: 90% center;
@@ -1150,28 +1151,6 @@ select {
 .machine-data__feature:nth-last-child(1) {
   padding-bottom: 0;
 }
-.machine-data .css-yk16xz-control {
-  border: 1px solid #ffffff;
-  background: none;
-  border-radius: 0;
-  line-height: 40px;
-  color: #ffffff;
-}
-.machine-data .css-1pahdxg-control {
-  color: #000 !important;
-}
-.machine-data .css-b8ldur-Input {
-  height: 40px;
-  line-height: 40px;
-  color: #ffffff;
-}
-.machine-data .css-1wa3eu0-placeholder,
-.machine-data .css-1uccc91-singleValue {
-  color: #ffffff;
-}
-.machine-data .css-1okebmr-indicatorSeparator {
-  display: none;
-}
 .machine-data .add-feature {
   float: right;
   margin-top: 10px;
@@ -1190,6 +1169,10 @@ select {
   width: 177px;
   max-width: calc(100% - 120px);
 }
+.order-container .orderby--container select {
+  border: none;
+  text-transform: none;
+}
 
 .list--container .machine__item__data {
   width: calc(100% - 190px);
@@ -1202,6 +1185,56 @@ select {
 .list--container .machine__icon,
 .list--container .machine__item__data {
   margin-top: 20px;
+}
+
+.machine-data .css-yk16xz-control,
+.search-cont .css-yk16xz-control {
+  border: 1px solid #ffffff;
+  background: none;
+  border-radius: 0;
+  line-height: 40px;
+  color: #ffffff;
+}
+.machine-data .css-1pahdxg-control,
+.search-cont .css-1pahdxg-control {
+  background: none !important;
+  color: #ffffff !important;
+}
+.machine-data .css-1hwfws3,
+.machine-data .css-1g6gooi,
+.search-cont .css-1hwfws3,
+.search-cont .css-1g6gooi {
+  height: 38px;
+  line-height: 1;
+  margin: 0;
+  padding: 0 5px;
+}
+.machine-data .css-1hwfws3 input,
+.machine-data .css-1g6gooi input,
+.search-cont .css-1hwfws3 input,
+.search-cont .css-1g6gooi input {
+  color: #ffffff !important;
+}
+.machine-data .css-b8ldur-Input,
+.search-cont .css-b8ldur-Input {
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+}
+.machine-data .css-1wa3eu0-placeholder,
+.machine-data .css-1uccc91-singleValue,
+.search-cont .css-1wa3eu0-placeholder,
+.search-cont .css-1uccc91-singleValue {
+  color: #ffffff;
+}
+.machine-data .css-1okebmr-indicatorSeparator,
+.search-cont .css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.search-cont .css-26l3qy-menu {
+  top: auto;
+  bottom: 100%;
 }
 
 .machine-calendar {

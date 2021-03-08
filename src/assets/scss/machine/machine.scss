@@ -67,33 +67,6 @@
     }
   }
 
-  .css-yk16xz-control {
-    border: 1px solid $white;
-    background: none;
-    border-radius: 0;
-    line-height: 40px;
-    color: $white;
-  }
-
-  .css-1pahdxg-control {
-    color: #000 !important;
-  }
-
-  .css-b8ldur-Input {
-    height: 40px;
-    line-height: 40px;
-    color: $white;
-  }
-
-  .css-1wa3eu0-placeholder,
-  .css-1uccc91-singleValue {
-    color: $white;
-  }
-
-  .css-1okebmr-indicatorSeparator {
-    display: none;
-  }
-
   .add-feature {
     float: right;
     margin-top: 10px;
@@ -117,6 +90,12 @@
     float: right;
     width: 177px;
     max-width: calc(100% - 120px);
+
+    select {
+      border: none;
+      text-transform: none;
+      @extend .h4;
+    }
   }
 }
 
@@ -133,5 +112,56 @@
   .machine__icon,
   .machine__item__data {
     margin-top: 20px;
+  }
+}
+
+.machine-data,
+.search-cont {
+  .css-yk16xz-control {
+    border: 1px solid $white;
+    background: none;
+    border-radius: 0;
+    line-height: 40px;
+    color: $white;
+  }
+
+  .css-1pahdxg-control {
+    background: none !important;
+    color: $white !important;
+  }
+
+  .css-1hwfws3,
+  .css-1g6gooi {
+    height: 38px;
+    line-height: 1;
+    margin: 0;
+    padding: 0 5px;
+
+    input {
+      color: $white !important;
+    }
+  }
+
+  .css-b8ldur-Input {
+    height: 40px;
+    line-height: 40px;
+    color: $white;
+  }
+
+  .css-1wa3eu0-placeholder,
+  .css-1uccc91-singleValue {
+    color: $white;
+  }
+
+  .css-1okebmr-indicatorSeparator {
+    display: none;
+  }
+}
+
+
+.search-cont {
+  .css-26l3qy-menu {
+    top: auto;
+    bottom: 100%;
   }
 }
