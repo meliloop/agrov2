@@ -646,9 +646,51 @@ strong * {
   color: #72B230 !important;
 }
 
+.MuiSwitch-thumb {
+  color: #72B230 !important;
+  background-image: url(list-white.svg);
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.Mui-checked .MuiSwitch-thumb {
+  background-image: url(pin-white.svg);
+  opacity: 1;
+}
+
+.MuiSwitch-root {
+  zoom: 1.2;
+}
+
 .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track,
 .MuiSwitch-track {
-  background-color: #72B230 !important;
+  background-color: #D8D8D8 !important;
+  position: relative;
+  opacity: 1 !important;
+}
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track:before, .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track:after,
+.MuiSwitch-track:before,
+.MuiSwitch-track:after {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: "";
+  z-index: 2;
+}
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track:before,
+.MuiSwitch-track:before {
+  background-image: url(pin.svg);
+  right: 0;
+}
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track:after,
+.MuiSwitch-track:after {
+  background-image: url(list.svg);
+  left: 0;
 }
 
 .list--container {

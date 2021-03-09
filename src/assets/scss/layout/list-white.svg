@@ -1,0 +1,15 @@
+<svg width="14px" height="10px" viewBox="0 0 14 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>list</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="switch/list" transform="translate(-8.000000, -9.000000)" fill="#ffffff" fill-rule="nonzero">
+            <g id="list" transform="translate(8.000000, 9.000000)">
+                <path d="M13.2859987,10 L3.71423934,10 C3.31974114,10 3,9.55233333 3,9 C3,8.44766667 3.31974114,8 3.71423934,8 L13.2857607,8 C13.6802589,8 14,8.44766667 14,9 C14,9.55233333 13.6804969,10 13.2859987,10 Z" id="Path"></path>
+                <path d="M13.2859986,6 L3.71423933,6 C3.31974114,6 3,5.55233333 3,5 C3,4.44766667 3.31974114,4 3.71423933,4 L13.2857605,4 C13.6802587,4 14,4.44766667 14,5 C14.0002379,5.55233333 13.6804968,6 13.2859986,6 Z" id="Path"></path>
+                <path d="M13.2859987,2 L3.71423934,2 C3.31974114,2 3,1.55233333 3,1 C3,0.447666667 3.31974114,0 3.71423934,0 L13.2857607,0 C13.6802589,0 14,0.447666667 14,1 C14,1.55233333 13.6804969,2 13.2859987,2 Z" id="Path"></path>
+                <circle id="Oval" cx="1" cy="1" r="1"></circle>
+                <circle id="Oval" cx="1" cy="5" r="1"></circle>
+                <circle id="Oval" cx="1" cy="9" r="1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
