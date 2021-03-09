@@ -176,3 +176,17 @@
     }
   }
 }
+
+.contact-popup {
+  position: absolute;
+  float: left;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: auto !important;
+  transform: translate(-50%,-50%);
+  @include background();
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+}

@@ -8,6 +8,13 @@
 
   &-cont {
     margin-top: 60px;
+
+    @include responsiveto('tablet-h') {
+      width: 1024px;
+      float: none;
+      margin: 0 auto;
+      margin-top: 60px;
+    }
   }
 
   &__box {
@@ -155,6 +162,10 @@
 
   .css-1okebmr-indicatorSeparator {
     display: none;
+  }
+
+  .css-1n7v3ny-option {
+    color: #000 !important;
   }
 }
 

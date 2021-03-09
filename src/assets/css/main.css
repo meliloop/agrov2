@@ -1101,6 +1101,14 @@ select {
 .machine-data-cont {
   margin-top: 60px;
 }
+@media only screen and (min-width: 1024px) {
+  .machine-data-cont {
+    width: 1024px;
+    float: none;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+}
 .machine-data__box {
   float: left;
   width: 100%;
@@ -1230,6 +1238,10 @@ select {
 .machine-data .css-1okebmr-indicatorSeparator,
 .search-cont .css-1okebmr-indicatorSeparator {
   display: none;
+}
+.machine-data .css-1n7v3ny-option,
+.search-cont .css-1n7v3ny-option {
+  color: #000 !important;
 }
 
 .search-cont .css-26l3qy-menu {
@@ -1627,6 +1639,28 @@ select {
 }
 .dashboard.chat .new-message-cont .button svg {
   margin-top: -10px;
+}
+
+.contact-popup {
+  position: absolute;
+  float: left;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: auto !important;
+  transform: translate(-50%, -50%);
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
 }
 
 .messages__item {
