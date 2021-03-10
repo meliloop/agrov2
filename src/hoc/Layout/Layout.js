@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import {Button, Drawer, List, ListItem, ListItemText} from '@material-ui/core';
@@ -11,7 +11,7 @@ const ListItemLink = (props) => <ListItem button component="a" {...props} />;
 
 const Layout = (props) => {
     let history = useHistory();
-    const navState= useSelector(state => state.nav);
+    //const navState= useSelector(state => state.nav);
     const [leftMenu, setLeftMenu] =   useState(false);
         
     const toggleDrawer = (open) => (event) => {
@@ -24,13 +24,14 @@ const Layout = (props) => {
     return (
         <>
             <React.Fragment key="left">
-                {navState.currentContainer !== 'single' ?
-                <Button onClick={toggleDrawer(true)}>
-                    <MenuIcon color="primary" />
-                </Button>:
-                <Button onClick={() => history.goBack()}>
-                    <IconBackArrow />
-                </Button>}
+                <div className="header">
+                    <Button onClick={toggleDrawer(true)}>
+                        <MenuIcon color="primary" />
+                    </Button>
+                    <Button onClick={() => history.goBack()} className="back-arrow">
+                        <IconBackArrow />
+                    </Button>
+                </div>
 
                 <Drawer anchor="left" open={leftMenu} onClose={toggleDrawer(false)}>
                     <div
