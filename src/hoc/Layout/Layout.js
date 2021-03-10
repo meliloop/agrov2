@@ -65,7 +65,7 @@ const Layout = (props) => {
                 </Drawer>
             </React.Fragment>
 
-            <main className="content">
+            <main className="content content--list">
                 {props.children}
             </main>
         </>

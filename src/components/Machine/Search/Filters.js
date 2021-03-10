@@ -21,7 +21,7 @@ const Filters = (props) => {
             <section className="search-cont">
                 <section className="header header--boxes">
                     <div className="container">
-                        <div class="back_arrow" onClick={props.handleFiltersClose}>
+                        <div className="back_arrow" onClick={props.handleFiltersClose}>
                             <IconBackArrow />
                         </div>
 
