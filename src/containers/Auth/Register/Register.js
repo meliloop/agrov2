@@ -60,7 +60,7 @@ const Register = () => {
                                 
                             {authState.registerSuccess && <Redirect to="/login" />}
                             {authState.updateSuccess   && <p>Sus datos fueron actualizados correctamente.</p>}
-                            {authState.error && <p>{authState.error.message}</p>}
+                            {authState.error && <p>{authState.error}</p>}
 
                             {authState.loading ? 
                                 <CircularProgress />:

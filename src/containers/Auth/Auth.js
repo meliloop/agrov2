@@ -21,14 +21,18 @@ const Auth = () => {
         dispatch( setCurrentNavigation('login') );
     },[dispatch])
 
+    let authRedirect = null
+    if( authState.authSuccess )
+        authRedirect =  <Redirect to="/mi-cuenta" />
+
     return (
         <div className="single-user login">
+            {authRedirect}
             <div className="container">
                 <div className="container-fluid d-flex align-items-center justify-content-center">
                     <div className="loginFormContainer">
                         <fieldset className="border p-3 rounded">
                             <SectionTitle text="Iniciar Sesión" />
-                            {authState.isAuthenticated && <Redirect to={authState.authRedirectPath}/>}
                             {authState.error && <p>{authState.error.message}</p>}
                             {authState.registerSuccess   && <p>Te registraste correctamente.</p>}
 

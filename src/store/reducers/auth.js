@@ -5,6 +5,7 @@ const initialState = {
    token: null,
    userId: null,
    error: null,
+   authSuccess: null,
    registerSuccess: null,
    updateSuccess: null,
    loading: false,
@@ -14,19 +15,19 @@ const initialState = {
 
 const authStart  = (state, action)  => updateObject( state, { error: null, loading: true } );
 const authFail   = (state, action)  => updateObject( state, { error: action.error, loading: false });
-const authSuccess= (state, action)  => updateObject( state, { token: action.token, userId: action.userId, error: null, loading: false});
+const authSuccess= (state, action)  => updateObject( state, { token: action.token, userId: action.userId, error: null, loading: false, authSuccess: true});
 const authLogout = (state, action)  => updateObject( state, { token: null, userId: null });
 
 const setAuthRedirectPath     = ( state, action )  => updateObject( state, { authRedirectPath: action.path });
 const fetchUserStart          = ( state, action )  => updateObject( state, { loading: true, error: null } );
 const fetchUserSuccess        = ( state, action )  => updateObject( state, { data: action.data, loading: false});
-const fetchUserFail           = ( state, action )  => updateObject( state, { loading: false });
+const fetchUserFail           = ( state, action )  => updateObject( state, { loading: false, error: action.error });
 const userRegisterStart       = ( state, action )  => updateObject( state, { loading: true, error: null } );
 const userRegisterSuccess     = ( state, action )  => updateObject( state, { data: action.data, loading: false, registerSuccess: true});
-const userRegisterFail        = ( state, action )  => updateObject( state, { loading: false });
+const userRegisterFail        = ( state, action )  => updateObject( state, { loading: false, error: action.error });
 const userAccountUpdateStart  = ( state, action )  => updateObject( state, { loading: true, error: null } );
 const userAccountUpdateSuccess= ( state, action )  => updateObject( state, { data: action.data, loading: false, updateSuccess: true});
-const userAccountUpdateFail   = ( state, action )  => updateObject( state, { loading: false });
+const userAccountUpdateFail   = ( state, action )  => updateObject( state, { loading: false, error: action.error });
 const authClearErrors         = ( state, action )  => updateObject( state, { error: null, updateSuccess: null, registerSuccess: null });
 
 const reducer = ( state = initialState, action ) => {
