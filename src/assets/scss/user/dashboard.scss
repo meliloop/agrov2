@@ -13,6 +13,17 @@
     }
   }
 
+  .chat-cont,
+  .messages-cont {
+    @include responsiveto('tablet-h') {
+      float: none;
+      width: 1024px;
+      margin: 0 auto;
+      position: relative;
+      overflow: visible;
+    }
+  }
+
   .user__image {
     float: none;
     display: inline-block;
@@ -153,6 +164,15 @@
     width: 100%;
     margin-top: 20px;
     padding: 0 20px;
+
+    @include responsiveto('tablet-h') {
+      float: none;
+      width: 1024px;
+      margin: 0 auto;
+      padding-top: 20px;
+      position: relative;
+      overflow: visible;
+    }
 
     #newmessage {
       width: calc(100% - 50px);

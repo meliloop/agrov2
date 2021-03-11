@@ -2,6 +2,14 @@
   @include content-box();
   @include background();
 
+  &.login {
+
+    .container {
+      margin-top: 60px;
+    }
+
+  }
+
   .user__image {
     @include row();
     padding-top: 88%;

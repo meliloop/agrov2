@@ -26,6 +26,8 @@
 
   .back-arrow {
     float: left;
+    margin-left: 45px;
+    margin-top: 3px;
   }
 
   .text-icon {
@@ -191,6 +193,20 @@
   background-color: $primary-color !important;
 }
 
-.content--list {
+/*.content--list {
   @include background();
+}*/
+
+.loading--container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }
