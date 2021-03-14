@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 import moment from 'moment';
 
 const Message = (props) => {
@@ -14,7 +15,7 @@ const Message = (props) => {
                 style={{textAlign: (data.userid_from === userId ? 'right':'left')}}
             >{/* TO-DO: temporal hasta estios. volar este style */}
                 <div className="message-text">
-                    <p>{data.message_text}</p>
+                    <p>{parse(data.message_text)}</p>
                 </div>
 
                 <div className="date-cont">

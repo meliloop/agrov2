@@ -55,6 +55,14 @@ const Chat = (props) => {
             dispatch( fetchMessages(authState.token, { other: props.match.params.usuarioId, me: authState.userId }) );
     };
 
+    const handleCompartir = () => {
+        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi Telefono: <a href="tel:+${memberState.member.phone}">${memberState.member.phone}</a>`}));
+        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi whatsapp: <a href="https://wa.me/${memberState.member.whatsapp}" target="_blank">${memberState.member.whatsapp}</a>`}));
+        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi email: <a href="mailto:${memberState.member.email}">${memberState.member.email}</a>`}));
+
+        setContactPopupIsOpen(false);
+    };
+
     useEffect( () => {
         if( authState.token ){
             dispatch( setCurrentNavigation('single') );
@@ -70,7 +78,7 @@ const Chat = (props) => {
 
     useInterval(() => {
         getMessages();
-    }, 30000);
+    }, 1000);
 
     return (
         <Aux>
@@ -96,6 +104,22 @@ const Chat = (props) => {
                         <SmallTitle text="EMAIL" />
                         <div className="data-cont">{memberState.member.email}</div>
                     </div>}
+
+                    <div className="row">
+                        <div className="buttons-cont">
+                            <div
+                                className="button button--line contact-btn" 
+                                onClick={handleCompartir}
+                            >
+                                <span>Compartir</span>
+                            </div>
+                            <div 
+                                className="button button--line"
+                                onClick={() => setContactPopupIsOpen(false)}>
+                                <span>Cancelar</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </ClickAwayListener>}
 

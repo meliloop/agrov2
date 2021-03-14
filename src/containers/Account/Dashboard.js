@@ -8,9 +8,9 @@ import Aux from '../../hoc/Auxiliar/Auxiliar';
 import UserItem from '../../components/User/Item';
 import BackgroundImage from '../../components/UI/Background/Image';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import {IconAccount,IconMachine,IconContact,IconPlus} from '../../components/UI/Icon/Icon';
 import Listing from '../../components/Listing/Listing';
 import EmptyList from '../../components/Listing/Empty';
+import {IconAccount,IconMachine,IconContact,IconPlus} from '../../components/UI/Icon/Icon';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('machine');
@@ -100,10 +100,16 @@ const Dashboard = () => {
                     {userState.loading ?
                         <Spinner/>:
                         (userState.data.chats ?
-                            <Listing
-                                type="chat"  
-                                items={userState.data.chats}
-                            />:
+                            <>
+                                {userState.data.unread > 0 && 
+                                <div className="calendar-cont__add">
+                                    {userState.data.unread} mensajes nuevos
+                                </div>}
+                                <Listing
+                                    type="chat"  
+                                    items={userState.data.chats}
+                                />
+                            </> :
                             <EmptyList text="No tenes chats"/>)
                     }
                 </div>
