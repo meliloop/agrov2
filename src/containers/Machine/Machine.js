@@ -12,7 +12,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import UserItem from '../../components/User/Item';
 import UserAvatar from '../../components/User/Avatar';
 import SmallTitle from '../../components/UI/Title/Small';
-import { IconContact, IconPlus, IconCalendar } from '../../components/UI/Icon/Icon';
+import { IconContact, IconPlus } from '../../components/UI/Icon/Icon';
 import Listing from '../../components/Listing/Listing';
 
 const Machine = (props) => {
@@ -44,6 +44,18 @@ const Machine = (props) => {
                                     <CalendarData />
                                     <Distance />
                                 </div>*/}
+                                <div className="machine__item">
+                                    <div className="machine__icon">
+                                        <BackgroundImage path={machineState.machine.tipo_maquinaria.icono} alt={machineState.machine.tipo_maquinaria.title} />
+                                    </div>
+                                    <div className="machine__item__data">
+                                        <div className="machine__item__name h3">{machineState.machine.tipo_maquinaria.title}</div>
+                                        <div className="machine__item__model h3"><strong>{machineState.machine.modelo}</strong></div>
+                                    </div>
+                                    <div className="machine__item__btn">
+                                        <span>{machineState.machine.year}</span>
+                                    </div>
+                                </div>
 
                                 {machineState.machine.caracteristicas &&
                                     <div className="single-machine__features">
@@ -85,10 +97,10 @@ const Machine = (props) => {
                                 </div>
 
                                 <div className="buttons-cont">
-                                    <div className="button button--line calendar-btn">
+                                    {/*<div className="button button--line calendar-btn">
                                         <IconCalendar />
                                         <span>Calendario</span>
-                                    </div>
+                                    </div>*/}
                                         
                                     <Link to={"/mi-cuenta/chat/usuario/"+machineState.member.id} className="button contact-btn">
                                         <IconContact />

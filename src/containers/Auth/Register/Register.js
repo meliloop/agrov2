@@ -156,7 +156,7 @@ const Register = () => {
                                     </div>
 
                                     <div className="form-group">
-                                        <label htmlFor="descripcion">Descripción</label>
+                                        <label htmlFor="descripcion">Presentación (ocupación, edad, zona)</label>
                                         <textarea
                                             id="descripcion"
                                             name="descripcion"
@@ -164,7 +164,7 @@ const Register = () => {
                                             autoComplete="off"
                                             className="form-control form-textarea"
                                             aria-describedby="Ingrese su descripción"
-                                            placeholder="Descripción"
+                                            placeholder="Por favor ingrese su ocupación, edad y zona"
                                             defaultValue={authState.data?.descripcion}
                                             ref={register({
                                             required: {

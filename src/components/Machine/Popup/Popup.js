@@ -5,7 +5,7 @@ import CalendarData from '../Calendar/Data';
 import Distance from '../Distance/Distance';
 import MachineItem from '../Item';
 import UserItem from '../../User/Item';
-import { IconPlus, IconCalendar, IconContact } from '../../UI/Icon/Icon';
+import { IconPlus, IconContact } from '../../UI/Icon/Icon';
 
 const Popup = (props) => {
     const data = props.data;
@@ -37,10 +37,10 @@ const Popup = (props) => {
                     </Link>
 
                     <div className="buttons-cont">
-                        <Link to='' className="button button--line calendar-btn">
+                        {/*<Link to='' className="button button--line calendar-btn">
                             <IconCalendar />
                             <span>Calendario</span>
-                        </Link>
+                        </Link>*/}
 
                         <Link to={"/mi-cuenta/chat/usuario/"+data.usuario.id} className="button contact-btn">
                             <IconContact />
