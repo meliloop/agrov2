@@ -1,5 +1,6 @@
 export {
-    setCurrentNavigation
+    setCurrentNavigation,
+    setMessageStatus
 } from './navigation';
 
 export {
@@ -38,7 +39,8 @@ export {
     updateMachine,
     addCaracteristica,
     removeCaracteristica,
-    setCaracteristicas
+    setCaracteristicas,
+    deleteMachine
 } from './machine';
 
 export {

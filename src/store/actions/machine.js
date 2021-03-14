@@ -190,3 +190,41 @@ export const updateMachine = (token, data) => {
          });
    };
 };
+
+export const deleteMachineStart = () => {
+   return {
+      type: actionTypes.DELETE_MACHINE_START
+   };
+};
+
+export const deleteMachineSuccess = (data) => {
+   return {
+      type: actionTypes.DELETE_MACHINE_SUCCESS,
+      data: data
+   };
+};
+
+export const deleteMachineFail = (error) => {
+   return {
+      type: actionTypes.DELETE_MACHINE_FAIL,
+      error: error
+   };
+};
+
+export const deleteMachine = (token, data) => {
+   return dispatch => {
+      dispatch(deleteMachineStart());
+         
+      axios.post("/simple-jwt-authentication/v1/eliminar-maquinaria", data, { headers: { 'Authorization': 'Bearer ' + token } })
+         .then((res) => {
+            if( res.data.result === 'ok' ){
+               dispatch(deleteMachineSuccess());
+            }else{
+               dispatch(deleteMachineFail({message:  res.data.err}));
+            }
+         })
+         .catch((err) => {
+            dispatch(deleteMachineFail({message: err}));
+         });
+   };
+};

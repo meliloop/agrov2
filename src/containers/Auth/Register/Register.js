@@ -7,12 +7,14 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import SectionTitle from '../../../components/UI/Title/Primary';
 import SmallTitle from '../../../components/UI/Title/Small';
 import BackgroundImage from '../../../components/UI/Background/Image';
+
 import {userRegister, userUpdate, fetchUser, setCurrentNavigation, clearAuthErrors} from '../../../store/actions/index';
 
 const Register = () => {
     const authState = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm();
+
     const [avatar, setAvatar] = useState(null);
 
     const onFileUpload = (event) => {
@@ -59,8 +61,8 @@ const Register = () => {
                             <SectionTitle text={authState.token ? 'Mi Cuenta':'Registración'} />
                                 
                             {authState.registerSuccess && <Redirect to="/login" />}
-                            {authState.updateSuccess   && <p>Sus datos fueron actualizados correctamente.</p>}
-                            {authState.error && <p>{authState.error}</p>}
+                            {authState.error && <div className="error-msg">{authState.error}</div>}
+                            {authState.updateSuccess && <div className="success">Sus datos fueron actualizados correctamente</div>}
 
                             {authState.loading ? 
                                 <CircularProgress />:
@@ -133,22 +135,24 @@ const Register = () => {
 
                                     <div className="form-group">
                                         <label htmlFor="avatar">Foto</label>
-                                        <input 
-                                            type="file" 
-                                            id="avatar"
-                                            name="avatar"
-                                            accept=".jpg,.gif,.jpeg,.png"
-                                            onChange={onFileUpload}
-                                            />
-
-                                        {avatar && 
-                                            <div className="user__image">
-                                                <BackgroundImage path={avatar} alt="Imágen seleccionada" />
-                                            </div>}
-                                        {(authState.data?.avatar && !avatar) &&
-                                            <div className="user__image">
-                                                <BackgroundImage path={authState.data?.avatar} alt="Imágen seleccionada" />
-                                            </div>}
+                                        <div className="upload-btn-wrapper">
+                                            <button className="btn-upload button" title="Haga clic para seleccionar el archivo">Seleccionar foto</button>
+                                            <input 
+                                                type="file" 
+                                                id="avatar"
+                                                name="avatar"
+                                                accept=".jpg,.gif,.jpeg,.png"
+                                                onChange={onFileUpload}
+                                                />
+                                            {avatar && 
+                                                <div className="user__image">
+                                                    <BackgroundImage path={avatar} alt="Imágen seleccionada" />
+                                                </div>}
+                                            {(authState.data?.avatar && !avatar) &&
+                                                <div className="user__image">
+                                                    <BackgroundImage path={authState.data?.avatar} alt="Imágen seleccionada" />
+                                                </div>}
+                                        </div>
                                     </div>
 
                                     <div className="form-group">
@@ -191,7 +195,7 @@ const Register = () => {
                                         <input
                                             id="phone"
                                             name="phone"
-                                            type="text"
+                                            type="number"
                                             autoComplete="on"
                                             className="form-control"
                                             aria-describedby="Ingrese su teléfono"
@@ -224,7 +228,7 @@ const Register = () => {
                                         <input
                                             id="whatsapp"
                                             name="whatsapp"
-                                            type="text"
+                                            type="number"
                                             autoComplete="on"
                                             className="form-control"
                                             aria-describedby="Ingrese su whatsapp"

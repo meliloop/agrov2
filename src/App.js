@@ -26,7 +26,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <>
         <Layout>
           <Switch>
             <Route path="/registracion" render={loggedGuard(Register)} />
@@ -49,7 +49,7 @@ class App extends Component {
             <Redirect to="/" />
           </Switch>
         </Layout>
-      </div>
+      </>
     );
   }
 }

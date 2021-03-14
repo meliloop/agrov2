@@ -12,36 +12,39 @@ const initialState = {
    formData: null,
    error: null,
    success: null,
+   isDeleted: false,
 };
 
-const fetchMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null } );
-const fetchMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null } );
+const fetchMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
+const fetchMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
 const fetchMachineSuccess = ( state, action ) => {
     return updateObject( state, {
         machine: action.machine,
         member: action.machine.usuario,
-        loading: false
+        loading: false, 
+        isDeleted: false
     } );
 };
 
-const fetchMachineTypeStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null } );
-const fetchMachineTypeFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null } );
+const fetchMachineTypeStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
+const fetchMachineTypeFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
 const fetchMachineTypeSuccess = ( state, action ) => {
     return updateObject( state, {
         tipos: action.data,
-        loading: false
+        loading: false, 
+        isDeleted: false
     } );
 };
 
 const setTipoPadre    = ( state, action ) => {
-    return updateObject( state, { selectedTipoPadre: action.tipo, selectedTipos:[], error: null, success: null } );
+    return updateObject( state, { selectedTipoPadre: action.tipo, selectedTipos:[], error: null, success: null, isDeleted: false } );
 };
 
 const setTipos        = ( state, action ) => {
     let tipos   =   Object.values(state.selectedTipos).includes(action.tipo) ?
                         state.selectedTipos.filter(elem => elem !== action.tipo) :
                         [...state.selectedTipos, action.tipo];
-    return updateObject( state, { selectedTipos: tipos, error: null, success: null } );
+    return updateObject( state, { selectedTipos: tipos, error: null, success: null, isDeleted: false } );
 };
 
 const addCaracteristica    = ( state, action ) => {
@@ -57,27 +60,41 @@ const removeCaracteristica    = ( state, action ) => {
 
 const setCaracteristicas   = ( state, action ) => updateObject( state, { caracteristicas: action.caracteristicas} );
 
-const createMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null } );
-const createMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null } );
+const createMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
+const createMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
 const createMachineSuccess = ( state, action ) => {
     return updateObject( state, {
         machine: action.machine,
         loading: false,
         error: null,
-        success: 'Su maquinaria fue creada correctamente'
+        success: 'Su maquinaria fue creada correctamente', 
+        isDeleted: false
     } );
 };
 
-const updateMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null } );
-const updateMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null } );
+const updateMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
+const updateMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
 const updateMachineSuccess = ( state, action ) => {
     return updateObject( state, {
         machine: action.machine,
         loading: false,
         error: null,
-        success: 'Su maquinaria fue actualizada correctamente'
+        success: 'Su maquinaria fue actualizada correctamente', 
+        isDeleted: false
     } );
 };
+
+const deleteMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
+const deleteMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
+const deleteMachineSuccess = ( state, action ) => {
+    return updateObject( state, {
+        isDeleted: true,
+        loading: false,
+        error: null,
+        success: 'Su maquinaria fue eliminada correctamente'
+    } );
+};
+
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
@@ -109,6 +126,12 @@ const reducer = ( state = initialState, action ) => {
             return updateMachineSuccess(state, action);
         case actionTypes.UPDATE_MACHINE_FAIL:
             return updateMachineFail(state, action);
+        case actionTypes.DELETE_MACHINE_START:
+            return deleteMachineStart(state, action);
+        case actionTypes.DELETE_MACHINE_SUCCESS:
+            return deleteMachineSuccess(state, action);
+        case actionTypes.DELETE_MACHINE_FAIL:
+            return deleteMachineFail(state, action);
         case actionTypes.MACHINE_SET_CARACTERISTICAS:
             return setCaracteristicas(state, action);
         case actionTypes.MACHINE_ADD_CARACTERISTICA:

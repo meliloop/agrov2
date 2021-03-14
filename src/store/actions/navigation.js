@@ -6,3 +6,10 @@ export const setCurrentNavigation = (container) => {
         container: container
     };
 };
+
+export const setMessageStatus = (status) => {
+    return {
+        type: actionTypes.POPUP_MESSAGE_CHANGED,
+        status: status
+    };
+};

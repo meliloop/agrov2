@@ -16,6 +16,7 @@ import { IconPlus, IconAccount } from '../../../components/UI/Icon/Icon';
 import Listing from '../../../components/Listing/Listing';
 import BackgroundImage from '../../../components/UI/Background/Image';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import DeleteMachine from '../../../components/Machine/Delete';
 //import CalendarItem from '../../../components/Machine/Calendar/Item';
 
 const FormMachine = (props) => {
@@ -106,7 +107,9 @@ const FormMachine = (props) => {
                     {formState.loading ? 
                     <Spinner />:
                     <>
-                        {formState.error && <p className="error">{formState.error.message}</p>}
+                        {formState.machine && <DeleteMachine id={formState.machine?.id} />}
+                    
+                        {formState.error && <div className="error-msg">{formState.error.message}</div>}
                         {formState.success &&
                         <div className="contact-popup">
                             <div className="row">
@@ -204,21 +207,23 @@ const FormMachine = (props) => {
 
                         <div className="machine-data__box">
                             <label htmlFor="imagen">Foto</label>
-                            <input 
-                                type="file" 
-                                id="imagen"
-                                name="imagen"
-                                accept=".jpg,.gif,.jpeg,.png"
-                                onChange={onFileUpload}
-                            />
-                            {image && ( <div className="user__image">
+                            <div className="upload-btn-wrapper">
+                                <button className="btn-upload button" title="Haga clic para seleccionar el archivo">Seleccionar foto</button>
+                                <input 
+                                    type="file" 
+                                    id="imagen"
+                                    name="imagen"
+                                    accept=".jpg,.gif,.jpeg,.png"
+                                    onChange={onFileUpload}
+                                />
+                                {image && ( <div className="user__image">
                                             <BackgroundImage path={image} alt="Imágen seleccionada" />
                                         </div>)}
-                                
-                            {(formState.machine?.imagen && !image) &&
-                                        <div className="user__image">
-                                            <BackgroundImage path={formState.machine?.imagen} alt="Imágen seleccionada" />
-                                        </div>}                                    
+                                {(formState.machine?.imagen && !image) &&
+                                <div className="user__image">
+                                    <BackgroundImage path={formState.machine?.imagen} alt="Imágen seleccionada" />
+                                </div>}
+                            </div>                               
                         </div>
 
                         <div className="machine-data__box">

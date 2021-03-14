@@ -33,8 +33,9 @@ const Auth = () => {
                     <div className="loginFormContainer">
                         <fieldset className="border p-3 rounded">
                             <SectionTitle text="Iniciar Sesión" />
-                            {authState.error && <p>{authState.error.message}</p>}
-                            {authState.registerSuccess   && <p>Te registraste correctamente.</p>}
+                            
+                            {authState.error && <p className="error-msg">{authState.error.message}</p>}
+                            {authState.registerSuccess && <p className="success-msg">Te registraste correctamente.</p>}
 
                             {authState.loading ? 
                                 <Spinner />:
