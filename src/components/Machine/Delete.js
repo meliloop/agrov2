@@ -17,13 +17,13 @@ const Delete = ({id}) => {
     const handleClickOpen = () => setOpen(true);
     const handleClose     = () => setOpen(false);
     const handleDelete    = () => dispatch(deleteMachine(localStorage.getItem('token'),{ id: id}));
-        
+
     if( machineState.isDeleted === true )
         return <Redirect to={'/mi-cuenta'} />;
 
     return (
         <>
-            <div className="button" onClick={handleClickOpen}>
+            <div className="button button--delete" onClick={handleClickOpen}>
                 ELIMINAR MAQUINARIA
             </div>
             <Dialog

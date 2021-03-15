@@ -33,8 +33,9 @@ const Filters = (props) => {
 
                 <div className="container">
                     <SectionTitle text="Busqueda" />
-
+                    <div className="small-title--center">
                     <SmallTitle text="Tipo de Maquinaria" />
+                    </div>
                 </div>
 
                 <div className="machines__list">
