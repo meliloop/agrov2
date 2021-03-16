@@ -70,7 +70,7 @@ const FormMachine = (props) => {
         data.childsSelected  = formState.selectedTipos;
         data.address         = locationAddress;
         data.location        = location;
-        
+
         if( props.match ){
             data.id =   props.match.params.maquinaId;
             dispatch(updateMachine( localStorage.getItem('token'), data ));
@@ -82,7 +82,7 @@ const FormMachine = (props) => {
     useEffect( () => {
         if( props.match ){
             dispatch( setCurrentNavigation('edit-machine') );
-                
+
             //  fetch machine data
             dispatch( fetchMachine( { id: props.match.params.maquinaId} ) );
         }else{
@@ -104,11 +104,11 @@ const FormMachine = (props) => {
                         <SectionTitle text="MAQUINARIA" />
                     </div>
 
-                    {formState.loading ? 
+                    {formState.loading ?
                     <Spinner />:
                     <>
                         {formState.machine && <DeleteMachine id={formState.machine?.id} />}
-                    
+
                         {formState.error && <div className="error-msg">{formState.error.message}</div>}
                         {formState.success &&
                         <div className="contact-popup">
@@ -127,10 +127,12 @@ const FormMachine = (props) => {
                         <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
                         {formState.tipos &&
                             <>
-                                <SmallTitle text="Tipo de Maquinaria" />
+                                <div class="small-title--center">
+                                  <SmallTitle text="Tipo de Maquinaria" />
+                                </div>
                                 <div className="machines__list">
-                                    <Listing 
-                                        type="machine-type" 
+                                    <Listing
+                                        type="machine-type"
                                         items={formState.tipos}
                                         parentSelected={formState.selectedTipoPadre}
                                         childsSelected={formState.selectedTipos}
@@ -209,8 +211,8 @@ const FormMachine = (props) => {
                             <label htmlFor="imagen">Foto</label>
                             <div className="upload-btn-wrapper">
                                 <button className="btn-upload button" title="Haga clic para seleccionar el archivo">Seleccionar foto</button>
-                                <input 
-                                    type="file" 
+                                <input
+                                    type="file"
                                     id="imagen"
                                     name="imagen"
                                     accept=".jpg,.gif,.jpeg,.png"
@@ -223,7 +225,7 @@ const FormMachine = (props) => {
                                 <div className="user__image">
                                     <BackgroundImage path={formState.machine?.imagen} alt="Imágen seleccionada" />
                                 </div>}
-                            </div>                               
+                            </div>
                         </div>
 
                         <div className="machine-data__box">
@@ -260,14 +262,14 @@ const FormMachine = (props) => {
                                 <div className="add-feature" onClick={handleAddCaracteristica}>
                                     <IconPlus />
                                 </div>
-                                    
+
                                 {formState.caracteristicas.length > 0 &&
                                 <div className="single-machine__features">
-                                    <Listing 
-                                        type="feature" 
-                                        action="edit" 
+                                    <Listing
+                                        type="feature"
+                                        action="edit"
                                         items={formState.caracteristicas}
-                                        handleDelete={handleDeleteCaracteristica} 
+                                        handleDelete={handleDeleteCaracteristica}
                                     />
                                 </div>}
                             </div>
@@ -291,8 +293,8 @@ const FormMachine = (props) => {
                                 </div>
                             </div>
                         </div>*/}
-                            
-                        {formState.selectedTipos.length > 0 && 
+
+                        {formState.selectedTipos.length > 0 &&
                         <div className="machine-data__box">
                             <button type="submit" className="button button--full btn-outline-primary">
                                 Guardar
