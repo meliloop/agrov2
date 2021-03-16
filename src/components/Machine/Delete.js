@@ -23,6 +23,7 @@ const Delete = ({id}) => {
 
     return (
         <>
+          <div class="small-title--center">
             <div className="button button--delete" onClick={handleClickOpen}>
                 ELIMINAR MAQUINARIA
             </div>
@@ -46,6 +47,7 @@ const Delete = ({id}) => {
                     </div>
                 </DialogActions>
             </Dialog>
+          </div>
         </>
     );
 };
