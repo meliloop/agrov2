@@ -272,6 +272,14 @@ strong * {
   &--white {
     color: $white;
   }
+
+  &--center {
+    text-align: center;
+  }
+}
+
+.button--delete {
+  margin-bottom: 20px;
 }
 
 .slick-arrow,
