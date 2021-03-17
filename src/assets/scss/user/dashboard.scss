@@ -218,3 +218,14 @@
     }
   }
 }
+
+.loginFormContainer {
+  .success-msg {
+    text-align: center;
+    padding: 10px;
+    background: $primary-color;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
