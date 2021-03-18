@@ -33,9 +33,11 @@ const Machine = (props) => {
                 {(machineState.loading || !machineState.machine) ? 
                     <Spinner />:
                     <>
-                        {machineState.machine.imagen &&
+                        {machineState.machine.imagen ?
                         <div className="single-machine__image">
                             <BackgroundImage path={machineState.machine.imagen} />
+                        </div>:
+                        <div className="single-machine__image placeholder-image">
                         </div>}
 
                         <div className="single-machine-cont">
@@ -62,16 +64,14 @@ const Machine = (props) => {
                                         <SmallTitle text="Caracteristicas" />
 
                                         <Listing type="feature" action="view" items={machineState.machine.caracteristicas} />
-                                    </div>
-                                }
+                                    </div>}
 
                                 {machineState.machine.cabezales &&
                                     <div className="single-machine__features">
                                         <SmallTitle text="Tipos de cultivo" />
                                             
                                         <Listing type="machine-type-list" items={machineState.machine.cabezales} />
-                                    </div>
-                                }
+                                    </div>}
 
                                 <div className="single-machine__owner">
                                     <SmallTitle text="Dueño" />

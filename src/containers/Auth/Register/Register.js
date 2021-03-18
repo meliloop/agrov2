@@ -101,20 +101,20 @@ const Register = () => {
                                     </div>
 
                                     <div className="form-group">
-                                        <label htmlFor="lugar">Lugar</label>
+                                        <label htmlFor="lugar">Zona de actividad</label>
                                         <input
                                             id="lugar"
                                             name="lugar"
                                             type="text"
                                             autoComplete="off"
                                             className="form-control"
-                                            aria-describedby="Ingrese su ciudad"
-                                            placeholder="Lugar"
+                                            aria-describedby="Ingrese su sona de actividad"
+                                            placeholder="Zona de actividad"
                                             defaultValue={authState.data?.lugar}
                                             ref={register({
                                             required: {
                                                 value: false,
-                                                message: "Por favor ingrese su ciudad",
+                                                message: "Por favor ingrese su zona de actividad",
                                             },
                                             minLength: {
                                                 value: 4,

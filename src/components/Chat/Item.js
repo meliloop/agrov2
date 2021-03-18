@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 
 import BackgroundImage from '../UI/Background/Image';
@@ -26,7 +27,7 @@ const Item = (props) => {
                     {data.contact.lugar}
                 </div>
                 <div className="messages__item__message h4">
-                    {data.message_text}
+                    {parse(data.message_text)}
                 </div>
             </div>
             

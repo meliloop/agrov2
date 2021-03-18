@@ -23,7 +23,7 @@ const Delete = ({id}) => {
 
     return (
         <>
-          <div class="small-title--center">
+          <div className="small-title--center">
             <div className="button button--delete" onClick={handleClickOpen}>
                 ELIMINAR MAQUINARIA
             </div>

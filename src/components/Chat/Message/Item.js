@@ -13,7 +13,7 @@ const Message = (props) => {
                 className={`message-item-cont 
                             ${data.userid_from === userId ? 'right':'left'}`}
                 style={{textAlign: (data.userid_from === userId ? 'right':'left')}}
-            >{/* TO-DO: temporal hasta estios. volar este style */}
+            >
                 <div className="message-text">
                     <p>{parse(data.message_text)}</p>
                 </div>

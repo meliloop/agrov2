@@ -127,7 +127,7 @@ const FormMachine = (props) => {
                         <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
                         {formState.tipos &&
                             <>
-                                <div class="small-title--center">
+                                <div className="small-title--center">
                                   <SmallTitle text="Tipo de Maquinaria" />
                                 </div>
                                 <div className="machines__list">

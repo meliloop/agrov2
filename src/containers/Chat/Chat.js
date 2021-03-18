@@ -56,9 +56,9 @@ const Chat = (props) => {
     };
 
     const handleCompartir = () => {
-        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi Telefono: <a href="tel:+${memberState.member.phone}">${memberState.member.phone}</a>`}));
-        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi whatsapp: <a href="https://wa.me/${memberState.member.whatsapp}" target="_blank">${memberState.member.whatsapp}</a>`}));
-        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi email: <a href="mailto:${memberState.member.email}">${memberState.member.email}</a>`}));
+        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi Telefono: <a href="tel:+${authState.data.phone}">${authState.data.phone}</a>`}));
+        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi whatsapp: <a href="https://wa.me/${authState.data.whatsapp}" target="_blank">${authState.data.whatsapp}</a>`}));
+        dispatch(sendMessage(authState.token,{to: props.match.params.usuarioId, from: authState.userId, message: `Mi email: <a href="mailto:${authState.data.email}">${authState.data.email}</a>`}));
 
         setContactPopupIsOpen(false);
     };
@@ -82,27 +82,27 @@ const Chat = (props) => {
 
     return (
         <Aux>
-            {(memberState.member && contactPopupIsOpen) && 
+            {(authState.data && contactPopupIsOpen) && 
             <ClickAwayListener onClickAway={() => setContactPopupIsOpen(false)}>
                 <div className={`contact-popup ${contactPopupIsOpen ? 'open':'hidden'}`} style={{width: '300px', height: '300px'}}>
                     <SectionTitle text="DATOS DE CONTACTO" />
 
-                    {memberState.member.phone &&
+                    {authState.data.phone &&
                     <div className="row">
                         <SmallTitle text="TELÉFONO" />
-                        <div className="data-cont">{memberState.member.phone}</div>
+                        <div className="data-cont">{authState.data.phone}</div>
                     </div>}
                         
-                    {memberState.member.whatsapp &&
+                    {authState.data.whatsapp &&
                     <div className="row">
                         <SmallTitle text="WHATSAPP" />
-                        <div className="data-cont">{memberState.member.whatsapp}</div>
+                        <div className="data-cont">{authState.data.whatsapp}</div>
                     </div>}
                         
-                    {memberState.member.email &&
+                    {authState.data.email &&
                     <div className="row">
                         <SmallTitle text="EMAIL" />
-                        <div className="data-cont">{memberState.member.email}</div>
+                        <div className="data-cont">{authState.data.email}</div>
                     </div>}
 
                     <div className="row">
