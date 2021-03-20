@@ -52,7 +52,10 @@ class App extends Component {
             <Route path="/busqueda" render={authGuard(Search)} />
             <Route path="/terminos" component={Terminos} />
             <Route path="/politicas" component={Politicas} />
-            <Route exact path="/" component={Landing} />
+            <Route 
+              exact 
+              path="/" 
+              render={() => localStorage.getItem("token") ?  <Search /> : <Landing />} />
             <Redirect to="/" />
           </Switch>
         </Layout>
