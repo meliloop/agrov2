@@ -29,7 +29,9 @@ const Dashboard = () => {
 
     return (
         <Aux>
-            {(!userState.loading && userState.data) &&
+            {(userState.loading || !userState.data) ?
+            <Spinner />
+            :
             <section className="dashboard">
                 <div className="dashboard-cont">
                     <div className="container">
