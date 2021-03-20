@@ -1,5 +1,8 @@
 export const NAV_CHANGED             = 'NAV_CHANGED';
 export const POPUP_MESSAGE_CHANGED   = 'POPUP_MESSAGE_CHANGED';
+export const FETCH_PAGE_START        = 'FETCH_PAGE_START';
+export const FETCH_PAGE_SUCCESS      = 'FETCH_PAGE_SUCCESS';
+export const FETCH_PAGE_FAIL         = 'FETCH_PAGE_FAIL';
 
 export const AUTH_START              = 'AUTH_START';
 export const AUTH_SUCCESS            = 'AUTH_SUCCESS';

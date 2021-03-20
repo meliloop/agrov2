@@ -13,6 +13,10 @@ import Member from './containers/Member/Member';
 import Machine from './containers/Machine/Machine';
 import MachineForm from './containers/Account/Machine/Form';
 import Chat from './containers/Chat/Chat';
+import Politicas from './containers/Politicas/Politicas';
+import Terminos from './containers/Terminos/Terminos';
+import Landing from './containers/Landing/Landing';
+
 import * as actions from './store/actions/index';
 
 const authGuard  = (Component) => () => localStorage.getItem("token")   ?   <Component /> : <Redirect to="/login" />;
@@ -43,9 +47,12 @@ class App extends Component {
             />
             <Route path="/mi-cuenta/editar" render={authGuard(AccountUpdate)} />
             <Route path="/mi-cuenta" render={authGuard(Account)} />
-            <Route path="/maquina/id/:maquinaId" component={Machine} />
-            <Route path="/usuario/id/:usuarioId" component={Member} />
-            <Route exact path="/" component={Search} />
+            <Route path="/maquina/id/:maquinaId" render={authGuard(Machine)} />
+            <Route path="/usuario/id/:usuarioId" render={authGuard(Member)} />
+            <Route path="/busqueda" render={authGuard(Search)} />
+            <Route path="/terminos" component={Terminos} />
+            <Route path="/politicas" component={Politicas} />
+            <Route exact path="/" component={Landing} />
             <Redirect to="/" />
           </Switch>
         </Layout>

@@ -1,6 +1,7 @@
 export {
     setCurrentNavigation,
-    setMessageStatus
+    setMessageStatus,
+    fetchPage
 } from './navigation';
 
 export {

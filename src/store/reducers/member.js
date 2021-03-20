@@ -14,9 +14,9 @@ const fetchMemberFail  = ( state, action ) => updateObject( state, { loading: fa
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
-        case actionTypes.FETCH_MEMBER_START: return fetchMemberStart(state, action);
-        case actionTypes.FETCH_MEMBER_SUCCESS: return fetchMemberSuccess(state, action);
-        case actionTypes.FETCH_MEMBER_FAIL: return fetchMemberFail(state, action);
+        case actionTypes.FETCH_MEMBER_START:    return fetchMemberStart(state, action);
+        case actionTypes.FETCH_MEMBER_SUCCESS:  return fetchMemberSuccess(state, action);
+        case actionTypes.FETCH_MEMBER_FAIL:     return fetchMemberFail(state, action);
         default: return state;
     }
 };

@@ -6,14 +6,15 @@ import { Link } from 'react-router-dom';
 import {Button, Drawer, List, ListItem, ListItemText} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuHome from '@material-ui/icons/Home';
-import '../../assets/scss/main.scss';
 import { IconBackArrow } from '../../components/UI/Icon/Icon';
+import '../../assets/scss/main.scss';
 
 const ListItemLink = (props) => <ListItem button component="a" {...props} />;
 
 const Layout = (props) => {
     let history = useHistory();
     const navState= useSelector(state => state.nav);
+    const authState= useSelector(state => state.auth);
     const [leftMenu, setLeftMenu] =   useState(false);
         
     const toggleDrawer = (open) => (event) => {
@@ -25,6 +26,7 @@ const Layout = (props) => {
         
     return (
         <div className={navState.currentContainer}>
+            {authState.userId &&
             <React.Fragment key="left">
                 {navState.currentContainer !== 'search' ?
                 <div className="header">
@@ -43,6 +45,7 @@ const Layout = (props) => {
                         <MenuIcon color="primary" />
                     </Button>
                 </div>}
+            
 
                 <Drawer anchor="left" open={leftMenu} onClose={toggleDrawer(false)}>
                     <div
@@ -75,7 +78,7 @@ const Layout = (props) => {
                         </List>
                     </div>
                 </Drawer>
-            </React.Fragment>
+            </React.Fragment>}
 
             <main className="content content--list">
                 {props.children}
