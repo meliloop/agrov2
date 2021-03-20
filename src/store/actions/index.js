@@ -24,7 +24,10 @@ export {
     viewModeChanged,
     activeMarkerChanged,
     showingPopupChanged,
-    toggleShowingFilters
+    toggleShowingFilters,
+    showingMarkerListChanged,
+    selectedMachineChanged,
+    fetchMarkerLocations
 } from './search';
 
 export {

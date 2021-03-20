@@ -8,7 +8,7 @@ import { config } from '../../components/Map/Config';
 import Map from '../../components/Map/Map';
 import { setCurrentNavigation, fetchSearch, userLocated, setPlace, initSearchLocation } from '../../store/actions/index';
 import { viewModeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters } from '../../store/actions/index';
-import { fetchMachineTypes, filtersChanged } from '../../store/actions/index';
+import { fetchMachineTypes, filtersChanged, showingMarkerListChanged, selectedMachineChanged, fetchMarkerLocations } from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Empty from '../../components/Listing/Empty';
 import Popup from '../../components/Machine/Popup/Popup';
@@ -21,6 +21,7 @@ import { IconSearch } from '../../components/UI/Icon/Icon';
 
 const Search = () => {
     const [orderType, setOrderType] = useState('distancia');
+    const [orderCityType, setOrderCityType] = useState('distancia');
     const searchState   = useSelector(state => state.search);
     const formState     = useSelector(state => state.machine);
     const dispatch      = useDispatch();
@@ -67,12 +68,23 @@ const Search = () => {
 
     const handleMarkerClick = (props, marker, e) => {
         dispatch( activeMarkerChanged(marker) );
+        dispatch( showingMarkerListChanged(true) );
+        dispatch( fetchMarkerLocations(marker.data.tipo_maquinaria.id, marker.data.place_id) );
+    };
+
+    const handleOpenPopupMachine = (data) => {
+        dispatch( selectedMachineChanged(data) );
         dispatch( showingPopupChanged(true) );
     };
 
     const handleOrderChange = (e) => {
         setOrderType(e.target.value);
         searchState.items.sort(compareValues(e.target.value, 'asc'));
+    };
+
+    const handleCityOrderChange = (e) => {
+        setOrderCityType(e.target.value);
+        searchState.city_items.sort(compareValues(e.target.value, 'asc'));
     };
 
     const handleFiltersSubmit = (event) => {
@@ -158,12 +170,13 @@ const Search = () => {
                         <div className={`map--container ${searchState.viewType !== 'map' && 'hidden'}`}>
                             <Map
                                 zoom={getZoom(searchState.filterDistancia)}
-                                markers={searchState.items}
+                                markers={searchState.markers}
                                 userLocation={searchState.userLocation}
                                 markerClick={handleMarkerClick}
                                 mapClick={handleMapClick}
+                                activeMarker={searchState.activeMarker}
                                 />
-                            {searchState.showingPopup && <Popup data={searchState.activeMarker.data} />}
+                            {searchState.showingPopup && <Popup data={searchState.selectedMachine} />}
                         </div>
                         <div className={`list--container ${searchState.viewType === 'map' && 'hidden'}`}>
                             <div className="order-container">
@@ -184,6 +197,27 @@ const Search = () => {
                                                                 </Link>)):
                                 <Empty />}
                         </div>
+                        
+                        {searchState.showingMarkerList &&
+                        <div className={`list--container list--container-city`}>
+                            <div className="order-container">
+                                <SmallTitle text="ORDENAR POR" />
+                                <div className="orderby--container">
+                                    <select className="distance-dropdown" value={orderCityType} onChange={handleCityOrderChange}>
+                                        <option key="0" value="distancia">DISTANCIA</option>
+                                        <option key="1" value="modelo">MODELO</option>
+                                        <option key="2" value="year">AÑO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {searchState.city_items ?
+                                searchState.city_items.map(item => ( <div key={item.id} onClick={() => handleOpenPopupMachine(item)}>
+                                                                        <Machine data={item}>
+                                                                            <Distance data={item.distancia} />
+                                                                        </Machine>
+                                                                    </div>)):
+                                <Empty />}
+                        </div>}
                     </div>
                 </div>
             }

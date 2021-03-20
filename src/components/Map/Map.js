@@ -29,13 +29,13 @@ export class MapContainer extends Component {
                         <Marker
                             key={marker.id}
                             onClick={this.props.markerClick}
-                            position={{ lat: marker.ubicacion.lat, lng: marker.ubicacion.lng }}
+                            position={{ lat: (marker.ubicacion.lat+(marker.id/40)), lng: (marker.ubicacion.lng+(marker.id/40)) }}
                             name={marker.title}
                             data={marker}
                             icon={{
                                 url: marker.tipo_maquinaria.icono,
                                 anchor: new this.props.google.maps.Point(17, 46),
-                                scaledSize: new this.props.google.maps.Size(24, 24)
+                                scaledSize: (this.props.activeMarker !== null && marker.id === this.props.activeMarker.data.id ) ? new this.props.google.maps.Size(50, 50):new this.props.google.maps.Size(24, 24)
                             }}
                         />
                     );

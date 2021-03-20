@@ -47,8 +47,14 @@ class App extends Component {
             />
             <Route path="/mi-cuenta/editar" render={authGuard(AccountUpdate)} />
             <Route path="/mi-cuenta" render={authGuard(Account)} />
-            <Route path="/maquina/id/:maquinaId" render={authGuard(Machine)} />
-            <Route path="/usuario/id/:usuarioId" render={authGuard(Member)} />
+            <Route 
+              path="/maquina/id/:maquinaId" 
+              render={(props) => localStorage.getItem("token") ?  <Machine {...props} /> : <Redirect to="/login" />}
+              />
+            <Route 
+              path="/usuario/id/:usuarioId"
+              render={(props) => localStorage.getItem("token") ?  <Member {...props} /> : <Redirect to="/login" />} 
+              />
             <Route path="/busqueda" render={authGuard(Search)} />
             <Route path="/terminos" component={Terminos} />
             <Route path="/politicas" component={Politicas} />

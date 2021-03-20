@@ -1,12 +1,13 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
-export const fetchSearchSuccess = ( items ) => {
+export const fetchSearchSuccess = ( items, markers ) => {
     items.sort((a, b) => (a.distancia > b.distancia) ? 1 : -1)
 
     return {
         type: actionTypes.FETCH_SEARCH_SUCCESS,
-        items: items
+        items: items,
+        markers: markers,
     };
 };
 
@@ -20,6 +21,28 @@ export const fetchSearchFail = ( error ) => {
 export const fetchSearchStart = () => {
     return {
         type: actionTypes.FETCH_SEARCH_START
+    };
+};
+
+export const fetchMarkerLocationsSuccess = ( items ) => {
+    items.sort((a, b) => (a.distancia > b.distancia) ? 1 : -1)
+
+    return {
+        type: actionTypes.FETCH_MARKER_LOCATION_SUCCESS,
+        items: items,
+    };
+};
+
+export const fetchMarkerLocationsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_MARKER_LOCATION_FAIL,
+        error: error
+    };
+};
+
+export const fetchMarkerLocationsStart = () => {
+    return {
+        type: actionTypes.FETCH_MARKER_LOCATION_START
     };
 };
 
@@ -55,6 +78,20 @@ export const showingPopupChanged = ( status ) => {
     return {
         type: actionTypes.CHANGE_SEARCH_POPUP,
         status: status
+    };
+};
+
+export const showingMarkerListChanged = ( status ) => {
+    return {
+        type: actionTypes.CHANGE_SEARCH_LIST_OPEN,
+        status: status
+    };
+};
+
+export const selectedMachineChanged = ( data ) => {
+    return {
+        type: actionTypes.CHANGE_SELECTED_MACHINE,
+        data: data
     };
 };
 
@@ -99,12 +136,28 @@ export const fetchSearch = (filters) => {
         axios.post("/agro/v1/search",filters)
             .then( res => {
                 if( res.data.result === 'ok' )
-                    dispatch(fetchSearchSuccess(res.data.maquinarias));
+                    dispatch(fetchSearchSuccess(res.data.maquinarias, res.data.markers));
                 else 
                     dispatch(fetchSearchFail(res.data.err));
             } )
             .catch( err => {
                 dispatch(fetchSearchFail(err));
+            } );
+    };
+};
+
+export const fetchMarkerLocations = (tipo, place) => {
+    return dispatch => {
+        dispatch(fetchMarkerLocationsStart());
+        axios.post("/agro/v1/bylocation", {tipo: tipo, place: place})
+            .then( res => {
+                if( res.data.result === 'ok' )
+                    dispatch(fetchMarkerLocationsSuccess(res.data.maquinarias));
+                else 
+                    dispatch(fetchMarkerLocationsFail(res.data.err));
+            } )
+            .catch( err => {
+                dispatch(fetchMarkerLocationsFail(err));
             } );
     };
 };

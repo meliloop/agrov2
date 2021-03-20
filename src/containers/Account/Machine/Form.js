@@ -24,12 +24,14 @@ const FormMachine = (props) => {
     const [image, setImage] = useState(null);
     const [locationAddress, setLocationAddress] = useState('');
     const [location, setLocation] = useState(null);
+    const [placeId, setPlaceId] = useState(null);
     const [caracteristicaText, setCaracteristicaText] = useState('');
     const formState = useSelector(state => state.machine);
     const dispatch  = useDispatch();
 
     const onPlaceSelect = (place) => {
         setLocationAddress(place.label);
+        setPlaceId(place.value.place_id);
         geocodeByPlaceId(place.value.place_id)
             .then(results => getLatLng(results[0]))
             .then(({ lat, lng }) => {
@@ -70,6 +72,7 @@ const FormMachine = (props) => {
         data.childsSelected  = formState.selectedTipos;
         data.address         = locationAddress;
         data.location        = location;
+        data.placeId         = placeId;
 
         if( props.match ){
             data.id =   props.match.params.maquinaId;
@@ -238,9 +241,10 @@ const FormMachine = (props) => {
                             <div className="ubicacion--actual">
                                 Ingrese su ubicación actualizada
                                 <GooglePlacesAutocomplete
+                                    apiOptions={{ language: 'es', region: 'es' }}
                                     apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}
                                     selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Seleccione...', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
-                                    autocompletionRequest={{componentRestrictions: {country: ['ar']}}} />
+                                    autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                             </div>
                         </div>
 

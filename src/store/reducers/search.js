@@ -4,6 +4,8 @@ import { updateObject } from '../utility';
 const initialState = {
     loading: false,
     items: [],
+    markers: [],
+    city_items: [],
     filterPadreTipo: [],
     filterCabezales: [],
     filterFechaDesde: null,
@@ -13,16 +15,25 @@ const initialState = {
     userLocation: null,
     place: null,
     showingPopup: false,
+    showingMarkerList: false,
     showingFilters: false,
+    selectedMachine: null,
     activeMarker: null
 };
 
 const fetchSearchStart  = ( state, action ) => updateObject( state, { loading: true } );
-const fetchSearchSuccess= ( state, action ) => updateObject( state, { items: action.items, loading: false} );
+const fetchSearchSuccess= ( state, action ) => updateObject( state, { items: action.items, markers: action.markers, loading: false} );
 const fetchSearchFail   = ( state, action ) => updateObject( state, { loading: false } );
-const searchModeChanged = ( state, action ) => updateObject( state, { viewType: action.mode } );
+
+const fetchSearchLocationStart  = ( state, action ) => updateObject( state, { loading: true } );
+const fetchSearchLocationSuccess= ( state, action ) => updateObject( state, { city_items: action.items, loading: false} );
+const fetchSearchLocationFail   = ( state, action ) => updateObject( state, { loading: false } );
+
+const searchModeChanged = ( state, action ) => updateObject( state, { viewType: action.mode, showingPopup: false, activeMarker: null, selectedMachine: null, showingMarkerList: false } );
 const setShowingPopup   = ( state, action ) => updateObject( state, { showingPopup: action.status } );
+const setShowingMarkerList=( state, action )=> updateObject( state, { showingMarkerList: action.status } );
 const setActiveMarker   = ( state, action ) => updateObject( state, { activeMarker: action.marker } );
+const setSelectedMachine= ( state, action ) => updateObject( state, { selectedMachine: action.data } );
 const setShowingFilters = ( state, action ) => updateObject( state, { showingFilters: !state.showingFilters });
 const userLocationChanged=( state, action ) => updateObject( state, { userLocation: action.position } );
 const placeChanged      = ( state, action ) => updateObject( state, { place: action.place } );
@@ -50,11 +61,16 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.FETCH_SEARCH_START: return fetchSearchStart( state, action );
         case actionTypes.FETCH_SEARCH_SUCCESS: return fetchSearchSuccess( state, action );
         case actionTypes.FETCH_SEARCH_FAIL: return fetchSearchFail( state, action );
+        case actionTypes.FETCH_MARKER_LOCATION_START: return fetchSearchLocationStart( state, action );
+        case actionTypes.FETCH_MARKER_LOCATION_SUCCESS: return fetchSearchLocationSuccess( state, action );
+        case actionTypes.FETCH_MARKER_LOCATION_FAIL: return fetchSearchLocationFail( state, action );
         case actionTypes.CHANGE_SEARCH_MODE: return searchModeChanged( state, action );
         case actionTypes.USER_LOCATION_DETECTED: return userLocationChanged( state, action );
         case actionTypes.CHANGE_SEARCH_PLACE: return placeChanged( state, action );
         case actionTypes.CHANGE_ACTIVE_MARKER: return setActiveMarker( state, action );
+        case actionTypes.CHANGE_SELECTED_MACHINE: return setSelectedMachine( state, action );
         case actionTypes.CHANGE_SEARCH_POPUP: return setShowingPopup( state, action );
+        case actionTypes.CHANGE_SEARCH_LIST_OPEN: return setShowingMarkerList( state, action );
         case actionTypes.CHANGE_SEARCH_OPENFILTERS: return setShowingFilters( state, action );
         case actionTypes.CHANGE_SEARCH_PADRETIPOFILTERS: return padreFilterChanged( state, action );
         case actionTypes.CHANGE_SEARCH_TIPOFILTERS: return cabezalesFilterChanged( state, action );
