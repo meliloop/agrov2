@@ -29,10 +29,10 @@ window.onload = (e) => {
     } else {
         console.log('Service Worker is not supported by browser.');
     }
-
-    // Declare init HTML elements}
+    
     const prompt = document.querySelector('#prompt');
     const buttonAdd = document.querySelector('#buttonAdd');
+    const buttonInstall = document.querySelector('#buttonInstall');
     const buttonCancel = document.querySelector('#buttonCancel');
   
     let deferredPrompt;
@@ -58,6 +58,26 @@ window.onload = (e) => {
   
     // Add event click function for Add button
     buttonAdd.addEventListener('click', (e) => {
+        // Change status prompt
+        promptToggle(prompt, 'hidden', 'show');
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice
+            .then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    statusPrompt.set('accepted');
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    statusPrompt.set('dismissed');
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+            });
+    });
+
+    // Add event click function for Install button
+    buttonInstall.addEventListener('click', (e) => {
         // Change status prompt
         promptToggle(prompt, 'hidden', 'show');
         // Show the prompt
