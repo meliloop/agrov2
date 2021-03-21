@@ -44,14 +44,14 @@ window.onload = (e) => {
         // Show prompt modal if user previously not set to dismissed or accepted
         if(!statusPrompt.get()) {
             // Change status prompt
-            promptToggle(prompt, 'show', 'hide');
+            promptToggle(prompt, 'show', 'hidden');
         }
     });
   
     // Add event click function for Cancel button
     buttonCancel.addEventListener('click', (e) => {
         // Change status prompt
-        promptToggle(prompt, 'hide', 'show');
+        promptToggle(prompt, 'hidden', 'show');
         // Set status prompt to dismissed
         statusPrompt.set('dismissed');
     });
@@ -59,7 +59,7 @@ window.onload = (e) => {
     // Add event click function for Add button
     buttonAdd.addEventListener('click', (e) => {
         // Change status prompt
-        promptToggle(prompt, 'hide', 'show');
+        promptToggle(prompt, 'hidden', 'show');
         // Show the prompt
         deferredPrompt.prompt();
         // Wait for the user to respond to the prompt
