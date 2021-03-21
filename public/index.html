@@ -21,7 +21,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <title>Agro App</title>
+    <script src="%PUBLIC_URL%/js/app.js"></script>
+    <title>Aquí Estoy</title>
     <style type="text/css">
       body {
         margin: 0;
@@ -61,21 +62,6 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('worker.js').then(function(registration) {
-            console.log('Worker registration successful', registration.scope);
-          }, function(err) {
-            console.log('Worker registration failed', err);
-          }).catch(function(err) {
-            console.log(err);
-          });
-        });
-      } else {
-        console.log('Service Worker is not supported by browser.');
-      }
-    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -86,5 +72,15 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <div id="prompt" className="contact-popup">
+      <div className="row">
+        <div class="font-weight-bold">Instalar</div>
+        <small>Por favor confirme si desea instalar esta aplicación</small>
+        <div class="text-right">
+          <button id="buttonCancel" type="button" class="button">Cancelar</button>
+          <button id="buttonAdd" type="button" class="button">Aceptar</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
