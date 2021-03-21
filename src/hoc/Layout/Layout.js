@@ -57,6 +57,10 @@ const Layout = (props) => {
                             <ListItemLink href="/" key="home">
                                 <ListItemText primary="Inicio" />
                             </ListItemLink>
+                            {localStorage.getItem('statusPrompt') === 'accepted' || 
+                            <ListItemLink href="#" key="install" id="buttonInstall">
+                                <ListItemText primary="Instalar" />
+                            </ListItemLink>}
                             {localStorage.getItem('token') ?
                             <>
                                 <ListItemLink href="/mi-cuenta" key="micuenta">
