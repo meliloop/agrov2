@@ -79,7 +79,7 @@ const Register = () => {
                                 {authState.updateSuccess && <div className="success">Sus datos fueron actualizados correctamente</div>}
 
                                 {authState.loading ? 
-                                    <CircularProgress />:
+                                    <Spinner />:
                                     <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
                                         <div className="form-group">
                                             <label htmlFor="name">Nombre</label>
