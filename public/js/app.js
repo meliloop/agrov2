@@ -31,9 +31,9 @@ window.onload = (e) => {
     }
     
     const prompt = document.querySelector('#prompt');
-    const buttonAdd = document.querySelector('#buttonAdd');
+   // const buttonAdd = document.querySelector('#buttonAdd');
     const buttonInstall = document.querySelector('#buttonInstall');
-    const buttonCancel = document.querySelector('#buttonCancel');
+   // const buttonCancel = document.querySelector('#buttonCancel');
   
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -47,7 +47,7 @@ window.onload = (e) => {
             promptToggle(prompt, 'show', 'hidden');
         }
     });
-  
+  /*
     // Add event click function for Cancel button
     buttonCancel.addEventListener('click', (e) => {
         // Change status prompt
@@ -74,7 +74,7 @@ window.onload = (e) => {
                 }
                 deferredPrompt = null;
             });
-    });
+    });*/
 
     // Add event click function for Install button
     buttonInstall.addEventListener('click', (e) => {
