@@ -363,3 +363,54 @@ strong * {
     }
   }
 }
+
+.terminos,
+.politicas {
+  @include row();
+  padding: 0 25px;
+  @include background();
+  padding-top: 60px;
+
+  .text-container {
+    @include responsiveto('tablet-h') {
+      width: 1024px;
+      float: none;
+      margin: 0 auto;
+      margin-top: 60px;
+    }
+
+    .section-title {
+      color: $primary-color;
+    }
+  }
+}
+
+.landing--container {
+  background-image: url(back.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 0 25px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .links--cont {
+    @include row();
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+
+    a {
+      display: block;
+      color: $white;
+      font-size: 16px;
+      font-weight: 300;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
