@@ -397,6 +397,10 @@ strong * {
   position: relative;
   height: 100vh;
 
+  .logo__image {
+    margin-bottom: 20px;
+  }
+
   .buttons--cont {
     @include row();
 
