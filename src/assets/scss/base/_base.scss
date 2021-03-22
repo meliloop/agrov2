@@ -395,11 +395,21 @@ strong * {
   display: flex;
   align-items: center;
   position: relative;
+  height: 100vh;
+
+  .buttons--cont {
+    @include row();
+
+    .button {
+      clear: both;
+      width: 175px;
+    }
+  }
 
   .links--cont {
     @include row();
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 0;
 
     a {
@@ -407,6 +417,7 @@ strong * {
       color: $white;
       font-size: 16px;
       font-weight: 300;
+      margin-bottom: 10px
 
       &:hover {
         text-decoration: underline;
