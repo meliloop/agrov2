@@ -395,7 +395,12 @@ strong * {
   display: flex;
   align-items: center;
   position: relative;
-  height: 100vh;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+
 
   .logo__image {
     margin-bottom: 20px;
