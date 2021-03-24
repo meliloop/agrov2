@@ -169,6 +169,15 @@
 .list--container {
   padding: 30px;
   margin-top: 70px;
+
+  @include responsiveto('tablet-h') {
+    &:not(.hidden) {
+      display: inline-block;
+    }
+    
+    width: 1024px;
+    text-align: left;
+  }
 }
 
 .results--container {
@@ -176,14 +185,6 @@
     text-align: center;
   }
 
-}
-
-.list--container {
-  @include responsiveto('tablet-h') {
-    display: inline-block;
-    width: 1024px;
-    text-align: left;
-  }
 }
 
 .MuiSvgIcon-root {
