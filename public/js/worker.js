@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals */
+importScripts("https://progressier.com/client/sw.js?id=NwONtfVCJGJJD8iBJigy");
 var CACHE_NAME = 'pwa-task-manager';
 var urlsToCache = [
   '/',
