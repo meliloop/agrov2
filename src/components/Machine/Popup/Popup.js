@@ -13,8 +13,8 @@ const Popup = (props) => {
     return (
         <div className="machine-popup">
             <div className="machine__calendar-data-cont">
-                <CalendarData />
-                {data.distancia && <Distance data={data.distancia} />}
+                {/*<CalendarData />*/}
+                {data.distancia ? <Distance data={data.distancia} />:null}
             </div>
             <div className="machine-popup-cont background">
                 <div className="container">

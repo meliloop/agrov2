@@ -146,10 +146,10 @@ export const fetchSearch = (filters) => {
     };
 };
 
-export const fetchMarkerLocations = (tipo, place) => {
+export const fetchMarkerLocations = (filters) => {
     return dispatch => {
         dispatch(fetchMarkerLocationsStart());
-        axios.post("/agro/v1/bylocation", {tipo: tipo, place: place})
+        axios.post("/agro/v1/bylocation", filters)
             .then( res => {
                 if( res.data.result === 'ok' )
                     dispatch(fetchMarkerLocationsSuccess(res.data.maquinarias));

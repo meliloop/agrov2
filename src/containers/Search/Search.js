@@ -69,10 +69,21 @@ const Search = () => {
     const handleMarkerClick = (props, marker, e) => {
         dispatch( activeMarkerChanged(marker) );
         dispatch( showingMarkerListChanged(true) );
-        dispatch( fetchMarkerLocations(marker.data.tipo_maquinaria.id, marker.data.place_id) );
+
+        const filters = {
+            ubicacion: searchState.userLocation,
+            cabezales: searchState.filterCabezales,
+            distancia: searchState.filterDistancia,
+            fecha_desde: searchState.filterFechaDesde,
+            fecha_hasta: searchState.filterFechaHasta,
+            tipo: marker.data.tipo_maquinaria.id, 
+            place: marker.data.place_id
+        };
+        dispatch( fetchMarkerLocations(filters) );
     };
 
     const handleOpenPopupMachine = (data) => {
+        dispatch( showingMarkerListChanged(false) );
         dispatch( selectedMachineChanged(data) );
         dispatch( showingPopupChanged(true) );
     };
