@@ -167,7 +167,7 @@ const Search = () => {
                     </div>
 
                     <div className="results--container">
-                        <div className={`map--container ${searchState.viewType !== 'map' && 'hidden'}`}>
+                        <div className={`map--container ${(searchState.viewType !== 'map' || searchState.showingMarkerList) && 'hidden'}`}>
                             <Map
                                 zoom={getZoom(searchState.filterDistancia)}
                                 markers={searchState.markers}
