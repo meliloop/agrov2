@@ -17,7 +17,6 @@ const Landing = () => {
 
                   <div className="row"><Link to={'/login'} className="button account-btn">Iniciar</Link></div>
                   <div className="row"><Link to={'/registracion'} className="button button--line ml-auto">Registrarse</Link></div>
-                  <div className="row">{localStorage.getItem('statusPrompt') === 'accepted' || <Link to={'#'} className="button button--line buttonInstall">Instalar</Link>}</div>
               </div>
               <div className="links--cont">
                   <Link to={'/terminos'} className="link">Términos y condiciones</Link>

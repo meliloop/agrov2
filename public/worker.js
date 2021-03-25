@@ -1,9 +1,7 @@
 /* eslint-disable no-restricted-globals */
-importScripts("https://progressier.com/client/sw.js?id=NwONtfVCJGJJD8iBJigy");
-var CACHE_NAME = 'pwa-task-manager';
-var urlsToCache = [
-  '/',
-  '/completed'
+let CACHE_NAME = 'aqui-estoy';
+let urlsToCache = [
+  '/'
 ];
 
 // Install a service worker
@@ -12,7 +10,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-        //console.log('Opened cache');
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
   );
@@ -35,7 +33,7 @@ self.addEventListener('fetch', event => {
 
 // Update a service worker
 self.addEventListener('activate', event => {
-  var cacheWhitelist = ['pwa-task-manager'];
+  let cacheWhitelist = ['aqui-estoy'];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
