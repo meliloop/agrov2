@@ -69,3 +69,9 @@
   position: relative;
   z-index: 4000;
 }
+
+.buttonCancelInstall {
+  @include responsiveo('tablet-h') {
+    margin-bottom: 10px;
+  }
+}
