@@ -116,14 +116,16 @@ const FormMachine = (props) => {
                         {formState.success &&
                         <div className="contact-popup">
                             <div className="row">
-                                <p className="success">{formState.success}</p>
-                            </div>
-                            <div className="row">
-                                <div className="buttons-cont">
-                                    <Link to={'/mi-cuenta'} className="button button--line account-btn">
-                                        <IconAccount />
-                                        <span>Mi Cuenta</span>
-                                    </Link>
+                                <div className="row">
+                                    <p className="success">{formState.success}</p>
+                                </div>
+                                <div className="row">
+                                    <div className="buttons-cont">
+                                        <Link to={'/mi-cuenta'} className="button button--line account-btn">
+                                            <IconAccount />
+                                            <span>Mi Cuenta</span>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>}

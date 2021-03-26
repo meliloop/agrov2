@@ -85,38 +85,40 @@ const Chat = (props) => {
             {(authState.data && contactPopupIsOpen) && 
             <ClickAwayListener onClickAway={() => setContactPopupIsOpen(false)}>
                 <div className={`contact-popup ${contactPopupIsOpen ? 'open':'hidden'}`} style={{width: '300px', height: '300px'}}>
-                    <SectionTitle text="DATOS DE CONTACTO" />
+                    <div className="row">
+                        <SectionTitle text="DATOS DE CONTACTO" />
 
-                    {authState.data.phone &&
-                    <div className="row">
-                        <SmallTitle text="TELÉFONO" />
-                        <div className="data-cont">{authState.data.phone}</div>
-                    </div>}
-                        
-                    {authState.data.whatsapp &&
-                    <div className="row">
-                        <SmallTitle text="WHATSAPP" />
-                        <div className="data-cont">{authState.data.whatsapp}</div>
-                    </div>}
-                        
-                    {authState.data.email &&
-                    <div className="row">
-                        <SmallTitle text="EMAIL" />
-                        <div className="data-cont">{authState.data.email}</div>
-                    </div>}
+                        {authState.data.phone &&
+                        <div className="row">
+                            <SmallTitle text="TELÉFONO" />
+                            <div className="data-cont">{authState.data.phone}</div>
+                        </div>}
+                            
+                        {authState.data.whatsapp &&
+                        <div className="row">
+                            <SmallTitle text="WHATSAPP" />
+                            <div className="data-cont">{authState.data.whatsapp}</div>
+                        </div>}
+                            
+                        {authState.data.email &&
+                        <div className="row">
+                            <SmallTitle text="EMAIL" />
+                            <div className="data-cont">{authState.data.email}</div>
+                        </div>}
 
-                    <div className="row">
-                        <div className="buttons-cont">
-                            <div
-                                className="button button--line contact-btn" 
-                                onClick={handleCompartir}
-                            >
-                                <span>Compartir</span>
-                            </div>
-                            <div 
-                                className="button button--line"
-                                onClick={() => setContactPopupIsOpen(false)}>
-                                <span>Cancelar</span>
+                        <div className="row">
+                            <div className="buttons-cont">
+                                <div
+                                    className="button button--line contact-btn" 
+                                    onClick={handleCompartir}
+                                >
+                                    <span>Compartir</span>
+                                </div>
+                                <div 
+                                    className="button button--line"
+                                    onClick={() => setContactPopupIsOpen(false)}>
+                                    <span>Cancelar</span>
+                                </div>
                             </div>
                         </div>
                     </div>

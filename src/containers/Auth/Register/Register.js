@@ -64,6 +64,7 @@ const Register = () => {
                                 <SectionTitle text={authState.token ? 'Mi Cuenta':'Registración'} />
                                     
                                 {authState.registerSuccess &&   <div className="contact-popup">
+                                                                <div className="row">
                                                                     <div className="row">
                                                                         <p className="success">Se registro correctamente</p>
                                                                     </div>
@@ -74,6 +75,7 @@ const Register = () => {
                                                                             </Link>
                                                                         </div>
                                                                     </div>
+                                                                </div>
                                                                 </div>}
                                 {authState.error && <div className="error-msg">{authState.error}</div>}
                                 {authState.updateSuccess && <div className="success">Sus datos fueron actualizados correctamente</div>}
