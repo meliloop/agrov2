@@ -162,7 +162,7 @@
   .new-message-cont {
     float: left;
     width: 100%;
-    margin-top: 20px;
+    margin: 20p 0x;
     padding: 0 20px;
 
     @include responsiveto('tablet-h') {
@@ -197,7 +197,7 @@
   }
 }
 .contact-popup {
-  
+
 
   &:before {
     position:fixed;
