@@ -71,7 +71,7 @@
 }
 
 .buttonCancelInstall {
-  @include responsiveo('tablet-h') {
+  @include responsive('tablet-h') {
     margin-bottom: 10px;
   }
 }
