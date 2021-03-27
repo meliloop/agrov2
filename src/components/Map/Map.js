@@ -29,7 +29,7 @@ export class MapContainer extends Component {
                         <Marker
                             key={marker.id}
                             onClick={this.props.markerClick}
-                            position={{ lat: (marker.ubicacion.lat+(marker.id/40)), lng: (marker.ubicacion.lng+(marker.id/40)) }}
+                            position={{ lat: (marker.ubicacion.lat+(marker.id/10000)), lng: (marker.ubicacion.lng+(marker.id/10000)) }}
                             name={marker.title}
                             data={marker}
                             icon={{

@@ -125,6 +125,8 @@ const Search = () => {
 
     useEffect( () => {
         dispatch( setCurrentNavigation('search') );
+        dispatch( activeMarkerChanged(null) );
+        dispatch( showingMarkerListChanged(false) );
 
         navigator.geolocation.getCurrentPosition(position => {
             const currentPosition = {
