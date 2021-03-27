@@ -8,7 +8,7 @@ import { config } from '../../components/Map/Config';
 import Map from '../../components/Map/Map';
 import { setCurrentNavigation, fetchSearch, userLocated, setPlace, initSearchLocation } from '../../store/actions/index';
 import { viewModeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters } from '../../store/actions/index';
-import { fetchMachineTypes, filtersChanged, showingMarkerListChanged, selectedMachineChanged, fetchMarkerLocations } from '../../store/actions/index';
+import { fetchMachineTypes, filtersChanged, showingMarkerListChanged, fetchMarkerLocations } from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Empty from '../../components/Listing/Empty';
 import Popup from '../../components/Machine/Popup/Popup';
@@ -82,10 +82,15 @@ const Search = () => {
         dispatch( fetchMarkerLocations(filters) );
     };
 
+    /*  cuando el city.map en vez de link tiene <div key={item.id} onClick={() => handleOpenPopupMachine(item)}>
     const handleOpenPopupMachine = (data) => {
         dispatch( showingMarkerListChanged(false) );
         dispatch( selectedMachineChanged(data) );
         dispatch( showingPopupChanged(true) );
+    };*/
+    const handleBacktoMap = () => {
+        dispatch( activeMarkerChanged(null) );
+        dispatch( showingMarkerListChanged(false) );
     };
 
     const handleOrderChange = (e) => {
@@ -169,12 +174,16 @@ const Search = () => {
                         />}
 
                     <div className="switch--container">
+                    {searchState.showingMarkerList ?
+                        <div className="button small-button" onClick={handleBacktoMap}>
+                            Volver al mapa
+                        </div>:
                         <Switch
                             checked={searchState.viewType === 'map'}
                             onChange={handleModeChange}
                             name="view_type"
                             inputProps={{ 'aria-label': 'secondary checkbox' }}
-                        />
+                        />}
                     </div>
 
                     <div className="results--container">
@@ -222,11 +231,11 @@ const Search = () => {
                                 </div>
                             </div>
                             {searchState.city_items ?
-                                searchState.city_items.map(item => ( <div key={item.id} onClick={() => handleOpenPopupMachine(item)}>
+                                searchState.city_items.map(item => (<Link key={item.id} to={"/maquina/id/"+item.id}>
                                                                         <Machine data={item}>
                                                                             <Distance data={item.distancia} />
                                                                         </Machine>
-                                                                    </div>)):
+                                                                    </Link>)):
                                 <Empty />}
                         </div>}
                     </div>
