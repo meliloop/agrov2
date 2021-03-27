@@ -300,7 +300,7 @@ const FormMachine = (props) => {
                             </div>
                         </div>*/}
 
-                        {formState.selectedTipos.length > 0 &&
+                        {formState.selectedTipoPadre > 0 &&
                         <div className="machine-data__box">
                             <button type="submit" className="button button--full btn-outline-primary">
                                 Guardar

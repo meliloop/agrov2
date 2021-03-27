@@ -22,8 +22,12 @@ const Item = (props) => {
 
     return (
         <>
-            <div className="machines__list__item no-check">
-                <span className="name">{title}</span>
+            <div className="machines__list__item">
+                <div onClick={handleSetOpen} >
+                    <span className={isOpen ? 'check checked':'check'}></span>
+                    <span className="name">{title}</span>
+                </div>
+
                 {childs.length > 0 &&
                 <div className="open-submenu" onClick={handleSetOpen}>
                     <span className={isOpen ? "minus":"plus"}>
