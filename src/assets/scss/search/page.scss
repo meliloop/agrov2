@@ -8,6 +8,16 @@
     .button--small {
       width: auto !important;
     }
+
+    .main-menu{
+      right: 0 !important;
+      float: left !important;
+      left: auto !important;
+    }
+
+    .back-arrow {
+      margin-left: 0px !important;
+    }
   }
 
   &__disponibility {

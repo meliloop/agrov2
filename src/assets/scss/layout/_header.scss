@@ -26,8 +26,14 @@
 
   .back-arrow {
     float: left;
-    margin-left: 45px;
+    margin-left: 0px;
     margin-top: 3px;
+  }
+
+  .main-menu{
+    right: 0 !important;
+    float: left !important;
+    left: auto !important;
   }
 
   .text-icon {
