@@ -71,13 +71,13 @@ const Search = () => {
         dispatch( showingMarkerListChanged(true) );
 
         const filters = {
-            ubicacion: searchState.userLocation,
+            ubicacion: marker.data.ubicacion,
+            tipos: searchState.filterPadreTipo,
             cabezales: searchState.filterCabezales,
             distancia: searchState.filterDistancia,
             fecha_desde: searchState.filterFechaDesde,
             fecha_hasta: searchState.filterFechaHasta,
-            tipo: marker.data.tipo_maquinaria.id, 
-            place: marker.data.place_id
+            tipo: marker.data.tipo_maquinaria.id,
         };
         dispatch( fetchMarkerLocations(filters) );
     };
@@ -108,6 +108,7 @@ const Search = () => {
 
         const filters = {
             ubicacion: searchState.userLocation,
+            tipos: searchState.filterPadreTipo,
             cabezales: searchState.filterCabezales,
             distancia: searchState.filterDistancia,
             fecha_desde: searchState.filterFechaDesde,
