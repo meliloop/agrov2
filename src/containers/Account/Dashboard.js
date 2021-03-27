@@ -13,7 +13,7 @@ import EmptyList from '../../components/Listing/Empty';
 import {IconAccount,IconMachine,IconContact,IconPlus} from '../../components/UI/Icon/Icon';
 
 const Dashboard = () => {
-    const [activeTab, setActiveTab] = useState('machine');
+    const [activeTab, setActiveTab] = useState('chat');
     const userState= useSelector(state => state.auth);
     const dispatch = useDispatch();
 
@@ -101,7 +101,7 @@ const Dashboard = () => {
                 >
                     {userState.loading ?
                         <Spinner/>:
-                        (userState.data.chats ?
+                        (userState.data.chats.length ?
                             <>
                                 {userState.data.unread > 0 && 
                                 <div className="calendar-cont__add">

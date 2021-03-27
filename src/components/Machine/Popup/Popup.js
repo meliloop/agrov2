@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import CalendarData from '../Calendar/Data';
+//import CalendarData from '../Calendar/Data';
 import Distance from '../Distance/Distance';
 import MachineItem from '../Item';
 import UserItem from '../../User/Item';

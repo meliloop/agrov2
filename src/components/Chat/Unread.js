@@ -32,6 +32,7 @@ const Unread = () => {
 
     useEffect(() => {
         localStorage.getItem('userId') && getNew()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     useInterval(() => {
