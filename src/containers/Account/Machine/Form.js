@@ -2,7 +2,7 @@ import React,{ useEffect, useState } from "react";
 import { Link, Redirect } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentNavigation, fetchMachine, fetchMachineTypes, } from '../../../store/actions/index';
+import { setCurrentNavigation, fetchMachine, fetchMachineTypes, clearFetchMachine } from '../../../store/actions/index';
 import { setTipoPadre, setTipos, addCaracteristica, removeCaracteristica } from '../../../store/actions/index';
 import { updateMachine, createMachine } from '../../../store/actions/index';
 import { useForm } from "react-hook-form";
@@ -83,6 +83,8 @@ const FormMachine = (props) => {
     };
 
     useEffect( () => {
+        dispatch( clearFetchMachine() );
+
         if( props.match ){
             dispatch( setCurrentNavigation('edit-machine') );
 

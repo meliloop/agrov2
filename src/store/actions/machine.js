@@ -21,6 +21,12 @@ export const fetchMachineFail = (error) => {
    };
 };
 
+export const clearFetchMachine = () => {
+   return {
+      type: actionTypes.FETCH_MACHINE_CLEAR
+   };
+};
+
 export const fetchMachine = (data) => {
    return dispatch => {
       dispatch(fetchMachineStart());

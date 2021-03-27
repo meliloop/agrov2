@@ -25,6 +25,7 @@ const fetchMachineSuccess = ( state, action ) => {
         isDeleted: false
     } );
 };
+const fetchMachineClear = ( state, action ) =>  updateObject( state, { loading: true, machine: null, selectedTipoPadre: null, selectedTipos: [], tipos:[], caracteristicas:[], formData: null, error: null, success: null, isDeleted: false, } );
 
 const fetchMachineTypeStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
 const fetchMachineTypeFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
@@ -98,6 +99,8 @@ const deleteMachineSuccess = ( state, action ) => {
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
+        case actionTypes.FETCH_MACHINE_CLEAR:
+            return fetchMachineClear(state, action);
         case actionTypes.FETCH_MACHINE_START:
             return fetchMachineStart(state, action);
         case actionTypes.FETCH_MACHINE_SUCCESS:

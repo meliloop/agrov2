@@ -35,6 +35,7 @@ export {
 } from './member';
 
 export {
+    clearFetchMachine,
     fetchMachine,
     fetchMachineTypes,
     setTipos,
