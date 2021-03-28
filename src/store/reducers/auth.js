@@ -8,14 +8,15 @@ const initialState = {
    authSuccess: false,
    registerSuccess: false,
    updateSuccess: false,
+   recoverSuccess: false,
    loading: false,
    authRedirectPath: '/mi-cuenta',
    data: null,
 };
 
-const authStart  = (state, action)  => updateObject( state, { error: null, loading: true, registerSuccess: false, authSuccess: false} );
-const authFail   = (state, action)  => updateObject( state, { error: action.error, loading: false, registerSuccess: false, authSuccess: false });
-const authSuccess= (state, action)  => updateObject( state, { token: action.token, userId: action.userId, error: null, loading: false, registerSuccess: false, authSuccess: true});
+const authStart  = (state, action)  => updateObject( state, { error: null, loading: true, recoverSuccess: false, registerSuccess: false, authSuccess: false} );
+const authFail   = (state, action)  => updateObject( state, { error: action.error, loading: false, recoverSuccess: false,registerSuccess: false, authSuccess: false });
+const authSuccess= (state, action)  => updateObject( state, { token: action.token, userId: action.userId, error: null, loading: false, registerSuccess: false, recoverSuccess: false, authSuccess: true});
 const authLogout = (state, action)  => updateObject( state, { token: null, userId: null });
 
 const setAuthRedirectPath     = ( state, action )  => updateObject( state, { authRedirectPath: action.path });
@@ -24,8 +25,12 @@ const fetchUserStart          = ( state, action )  => updateObject( state, { loa
 const fetchUserSuccess        = ( state, action )  => updateObject( state, { data: action.data, loading: false});
 const fetchUserFail           = ( state, action )  => updateObject( state, { loading: false, error: action.error });
 
+const userRecoverStart       = ( state, action )  => updateObject( state, { loading: true, error: null } );
+const userRecoverSuccess     = ( state, action )  => updateObject( state, { error: null, data: action.data, loading: false, registerSuccess: false, recoverSuccess: true, authSuccess: false});
+const userRecoverFail        = ( state, action )  => updateObject( state, { loading: false, error: action.error });
+
 const userRegisterStart       = ( state, action )  => updateObject( state, { loading: true, error: null } );
-const userRegisterSuccess     = ( state, action )  => updateObject( state, { error: null, data: action.data, loading: false, registerSuccess: true, authSuccess: false});
+const userRegisterSuccess     = ( state, action )  => updateObject( state, { error: null, data: action.data, loading: false, registerSuccess: true, recoverSuccess: false, authSuccess: false});
 const userRegisterFail        = ( state, action )  => updateObject( state, { loading: false, error: action.error });
 
 const userAccountUpdateStart  = ( state, action )  => updateObject( state, { loading: true, error: null } );
@@ -41,6 +46,9 @@ const reducer = ( state = initialState, action ) => {
       case actionTypes.AUTH_FAIL: return authFail(state, action);
       case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
       case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state,action);
+      case actionTypes.RECOVER_START: return userRecoverStart(state, action);
+      case actionTypes.RECOVER_SUCCESS: return userRecoverSuccess(state, action);
+      case actionTypes.RECOVER_FAIL: return userRecoverFail(state, action);
       case actionTypes.REGISTER_START: return userRegisterStart(state, action);
       case actionTypes.REGISTER_SUCCESS: return userRegisterSuccess(state, action);
       case actionTypes.REGISTER_FAIL: return userRegisterFail(state, action);

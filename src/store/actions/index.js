@@ -6,6 +6,7 @@ export {
 
 export {
     auth,
+    recover,
     userRegister,
     userUpdate,
     logout,

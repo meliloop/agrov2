@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+
+import Switch from '@material-ui/core/Switch';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import SectionTitle from '../../../components/UI/Title/Primary';
@@ -13,9 +19,14 @@ import {userRegister, userUpdate, fetchUser, setCurrentNavigation, clearAuthErro
 const Register = () => {
     const authState = useSelector(state => state.auth);
     const dispatch = useDispatch();
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors, watch } = useForm();
+    const password = useRef({});
+    password.current = watch("password", "");
 
+    const [showPassword, setShowPassword] = useState(false);
+    const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [avatar, setAvatar] = useState(null);
+    const [changePassword, setChangePassword] = useState(false);
 
     const onFileUpload = (event) => {
         event.preventDefault();
@@ -24,7 +35,7 @@ const Register = () => {
         let file = event.target.files[0];
         file_reader.onload = () => setAvatar(file_reader.result);
         file_reader.readAsDataURL(file);
-    }
+    };
 
     const onSubmit = ( data, event ) => {
         event.preventDefault();
@@ -33,7 +44,7 @@ const Register = () => {
         localStorage.getItem('userId')  ?   
             dispatch(userUpdate(authState.token, authState.userId, data)) :
             dispatch(userRegister( data ));
-    }
+    };
 
     useEffect( () => {
         dispatch( clearAuthErrors() );
@@ -183,14 +194,6 @@ const Register = () => {
                                                 placeholder="Por favor ingrese su ocupación, edad y zona"
                                                 defaultValue={authState.data?.descripcion}
                                                 ref={register({
-                                                required: {
-                                                    value: true,
-                                                    message: "Por favor ingrese su descripción",
-                                                },
-                                                minLength: {
-                                                    value: 10,
-                                                    message: "Mínimo 10 caracteres",
-                                                },
                                                 maxLength: {
                                                     value: 255,
                                                     message: "Máximo permitido de 255 caracteres",
@@ -312,35 +315,132 @@ const Register = () => {
                                         
                                         {!authState.token &&
                                         <div className="form-group">
-                                            <label htmlFor="password">Password</label>
-                                            <input
-                                                type="password"
-                                                name="password"
-                                                className="form-control"
-                                                id="password"
-                                                autoComplete="off"
-                                                placeholder="Password"
-                                                ref={register({
-                                                required: {
-                                                    value: true,
-                                                    message: "Por favor ingrese un password",
-                                                },
-                                                minLength: {
-                                                    value: 6,
-                                                    message: "Mínimo 6 caracteres",
-                                                },
-                                                maxLength: {
-                                                    value: 255,
-                                                    message: "Máximo permitido de 255 caracteres",
-                                                },
-                                                })}
-                                            />
+                                            <label htmlFor="password">Contraseña</label>
+                                            <div className="input-container">
+                                                <input
+                                                    type={showPassword ? 'text':'password'}
+                                                    name="password"
+                                                    className="form-control"
+                                                    id="password"
+                                                    autoComplete="new-password"
+                                                    placeholder="Contraseña"
+                                                    ref={register({
+                                                    required: {
+                                                        value: true,
+                                                        message: "Por favor ingrese una contraseña",
+                                                    },
+                                                    minLength: {
+                                                        value: 6,
+                                                        message: "Mínimo 6 caracteres",
+                                                    },
+                                                    maxLength: {
+                                                        value: 255,
+                                                        message: "Máximo permitido de 255 caracteres",
+                                                    },
+                                                    })}
+                                                />
+                                                <div className="after-input">
+                                                    <IconButton    
+                                                        color="secondary"
+                                                        aria-label="toggle password visibility"
+                                                        onClick={() => setShowPassword(!showPassword)}
+                                                        onMouseDown={(e) => e.preventDefault()}
+                                                        >
+                                                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                    </IconButton>
+                                                </div>
+                                            </div>
                                             {errors.password && (
                                                 <span className="error mandatory">
                                                 {errors.password.message}
                                                 </span>
                                             )}
                                         </div>}
+
+                                        {authState.token &&
+                                            <div className="form-group">      
+                                                <FormControlLabel
+                                                    control={<Switch
+                                                        checked={changePassword}
+                                                        onChange={(e) => setChangePassword(!changePassword)}
+                                                        name="change_password"
+                                                        className="change_password"
+                                                    />}
+                                                    label="Desea cambiar su contraseña?"
+                                                />
+                                            </div>}
+
+                                        {(authState.token && changePassword) &&
+                                        <>
+                                            <div className="form-group">
+                                                <label htmlFor="password">Contraseña</label>
+                                                <div className="input-container">
+                                                    <input
+                                                        type={showPassword ? 'text':'password'}
+                                                        name="password"
+                                                        className="form-control"
+                                                        id="password"
+                                                        autoComplete="new-password"
+                                                        placeholder="Contraseña"
+                                                        ref={register({
+                                                            required: {
+                                                                value: true,
+                                                                message: "Por favor ingrese una contraseña",
+                                                            },
+                                                            minLength: {
+                                                                value: 6,
+                                                                message: "Mínimo 6 caracteres",
+                                                            },
+                                                            maxLength: {
+                                                                value: 255,
+                                                                message: "Máximo permitido de 255 caracteres",
+                                                            },
+                                                        })}
+                                                    />
+                                                    <div className="after-input">
+                                                        <IconButton    
+                                                            color="secondary"
+                                                            aria-label="toggle password visibility"
+                                                            onClick={() => setShowPassword(!showPassword)}
+                                                            onMouseDown={(e) => e.preventDefault()}
+                                                            >
+                                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                        </IconButton>
+                                                    </div>
+                                                </div>
+                                                {errors.password && (
+                                                    <span className="error mandatory">
+                                                    {errors.password.message}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            <div className="form-group">
+                                                <label htmlFor="password">Repetir Contraseña</label>
+                                                <div className="input-container">
+                                                    <input
+                                                        type={showRepeatPassword ? 'text':'password'}
+                                                        name="password_repeat"
+                                                        autoComplete="new-password"
+                                                        ref={register({
+                                                            validate: value =>
+                                                                value === password.current || "Las contraseñas no coinciden"
+                                                            })}
+                                                    />
+                                                    <div className="after-input">
+                                                        <IconButton
+                                                            color="secondary"
+                                                            aria-label="toggle password visibility"
+                                                            onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                                                            onMouseDown={(e) => e.preventDefault()}
+                                                            >
+                                                            {showRepeatPassword ? <Visibility /> : <VisibilityOff />}
+                                                        </IconButton>
+                                                    </div>
+                                                </div>
+                                                {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
+                                            </div>
+                                        </>}
 
                                         <div className="d-flex align-items-center justify-content-center">
                                             <button type="submit" className="button button--full btn-outline-primary">

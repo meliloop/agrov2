@@ -26,7 +26,7 @@ const Layout = (props) => {
         
     return (
         <div className={navState.currentContainer}>
-            {authState.userId &&
+            {authState.userId ?
             <React.Fragment key="left">
                 {navState.currentContainer !== 'search' ?
                 <div className="header">
@@ -78,6 +78,14 @@ const Layout = (props) => {
                         </List>
                     </div>
                 </Drawer>
+            </React.Fragment>:
+            <React.Fragment key="left">
+                {navState.currentContainer !== 'landing' &&
+                <div className="header">
+                    <Button onClick={() => history.goBack()} className="back-arrow">
+                        <IconBackArrow />
+                    </Button>
+                </div>}
             </React.Fragment>}
 
             <main className="content content--list">

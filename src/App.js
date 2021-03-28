@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Layout from './hoc/Layout/Layout';
 import Auth from './containers/Auth/Auth';
+import Recover from './containers/Auth/Recover/Recover';
 import Register from './containers/Auth/Register/Register';
 import Account from './containers/Account/Dashboard';
 import AccountUpdate from './containers/Auth/Register/Register';
@@ -34,6 +35,7 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route path="/registracion" render={loggedGuard(Register)} />
+            <Route path="/recuperar" render={loggedGuard(Recover)} />
             <Route path="/login" render={loggedGuard(Auth)} />
             <Route path="/logout" render={authGuard(Logout)} />
             <Route path="/mi-cuenta/agregar" render={authGuard(MachineForm)} />

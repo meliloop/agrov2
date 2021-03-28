@@ -88,6 +88,7 @@ const Auth = () => {
                                         </button>
 
                                         <Link to="/registracion" className="button button--line button--full ml-auto">Registrarse</Link>
+                                        <Link to="/recuperar" className="link">Olvide mi contraseña</Link>
                                         </div>
                                     </form>
                                 }

@@ -22,6 +22,26 @@ export const authFail = (error) => {
    };
 };
 
+export const recoverStart = () => {
+   return {
+      type: actionTypes.RECOVER_START
+   };
+};
+
+export const recoverSuccess = () => {
+   return {
+      type: actionTypes.RECOVER_SUCCESS,
+   };
+};
+
+export const recoverFail = (error) => {
+   return {
+      type: actionTypes.RECOVER_FAIL,
+      error: error
+   };
+};
+
+
 export const registerStart = () => {
    return {
       type: actionTypes.REGISTER_START
@@ -132,6 +152,24 @@ export const auth = (email, password) => {
             dispatch(authFail({message: 'Por favor revise los datos y vuelva a intentarlo'}));
          });
    };
+};
+
+export const recover = (email) => {
+   return dispatch => {
+      dispatch(recoverStart());
+
+      axios.post("/agro/v1/usuario/recover", {username: email})
+         .then((res) => {
+            if( res.data.result === 'ok' ){
+               dispatch(recoverSuccess());
+            }else{
+               dispatch(recoverFail(res.data.err));
+            }
+         })
+         .catch((err) => {
+            dispatch(recoverFail(err));
+         });
+   }
 };
 
 export const setAuthRedirectPath = (path) => {

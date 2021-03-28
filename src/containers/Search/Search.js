@@ -185,6 +185,7 @@ const Search = () => {
                             checked={searchState.viewType === 'map'}
                             onChange={handleModeChange}
                             name="view_type"
+                            className="view_type"
                             inputProps={{ 'aria-label': 'secondary checkbox' }}
                         />}
                     </div>

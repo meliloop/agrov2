@@ -15,6 +15,10 @@ export const FETCH_USER_START        = 'FETCH_USER_START';
 export const FETCH_USER_SUCCESS      = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_FAIL         = 'FETCH_USER_FAIL';
 
+export const RECOVER_START           = 'RECOVER_START';
+export const RECOVER_SUCCESS         = 'RECOVER_SUCCESS';
+export const RECOVER_FAIL            = 'RECOVER_FAIL';
+
 export const REGISTER_START          = 'REGISTER_START';
 export const REGISTER_SUCCESS        = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL           = 'REGISTER_FAIL';
