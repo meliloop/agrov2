@@ -7,6 +7,9 @@ import { setTipoPadre, setTipos, addCaracteristica, removeCaracteristica } from 
 import { updateMachine, createMachine } from '../../../store/actions/index';
 import { useForm } from "react-hook-form";
 
+import Grid from "@material-ui/core/Grid";
+import Switch from '@material-ui/core/Switch';
+
 import GooglePlacesAutocomplete, { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete';
 
 import Aux from '../../../hoc/Auxiliar/Auxiliar';
@@ -21,6 +24,7 @@ import DeleteMachine from '../../../components/Machine/Delete';
 
 const FormMachine = (props) => {
     const { register, handleSubmit, errors } = useForm();
+    const [isEnabled, setEnabled] = useState(true);
     const [image, setImage] = useState(null);
     const [locationAddress, setLocationAddress] = useState('');
     const [location, setLocation] = useState(null);
@@ -73,6 +77,7 @@ const FormMachine = (props) => {
         data.address         = locationAddress;
         data.location        = location;
         data.placeId         = placeId;
+        data.estado          = isEnabled;
 
         if( props.match ){
             data.id =   props.match.params.maquinaId;
@@ -90,6 +95,8 @@ const FormMachine = (props) => {
 
             //  fetch machine data
             dispatch( fetchMachine( { id: props.match.params.maquinaId} ) );
+
+            formState.machine && setEnabled(formState.machine.estado);
         }else{
             dispatch( setCurrentNavigation('new-machine') );
         }
@@ -250,6 +257,22 @@ const FormMachine = (props) => {
                                     selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Seleccione...', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                                     autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                             </div>
+                        </div>
+
+                        <div className="machine-data__box">
+                            <label htmlFor="estado">Estado</label>
+                                
+                            <Grid component="label" container alignItems="center" spacing={1}>
+                                <Grid item>Deshabilitada</Grid>
+                                <Grid item>
+                                    <Switch
+                                        className="machine_status"
+                                        checked={isEnabled}
+                                        onChange={() => setEnabled(!isEnabled)}
+                                    />
+                                </Grid>
+                                <Grid item>Habilitada</Grid>
+                            </Grid>
                         </div>
 
                         <div className="machine-data__box">
