@@ -3,8 +3,6 @@ let CACHE_NAME = 'aqui-estoy';
 let urlsToCache = [
   '/'
 ];
-// Push Notifications
-importScripts('https://cdn.webpushr.com/sw-server.min.js');
 // Install a service worker
 self.addEventListener('install', event => {
   // Perform install steps
