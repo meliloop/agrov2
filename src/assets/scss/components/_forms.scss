@@ -7,6 +7,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button
 select,
 textarea {
   @include row();
+  width: 100% !important;
   @extend .h3;
   border: 1px solid $white;
   padding: 0 10px;
@@ -34,6 +35,20 @@ select {
 .form-group {
   @include row();
   margin-bottom: 25px;
+
+  .MuiSwitch-thumb {
+    background-image: nome;
+  }
+
+  .MuiSwitch-track {
+    background-image: none;
+  }
+
+  .MuiTypography-body1 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+  }
 }
 
 .loginFormContainer {

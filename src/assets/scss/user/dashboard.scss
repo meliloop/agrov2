@@ -244,3 +244,16 @@
     margin-bottom: 20px;
   }
 }
+
+.d-flex.align-items-center {
+  button.button--line.button--full {
+    margin-bottom: 15px;
+  }
+}
+
+.dashboard__tab.active {
+  .no-results {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
