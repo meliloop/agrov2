@@ -37,10 +37,10 @@ select {
   margin-bottom: 25px;
 
   .MuiSwitch-thumb {
-    background-image: nome;
+    background-image: none;
   }
 
-  .MuiSwitch-track {
+  .MuiSwitch-track:before {
     background-image: none;
   }
 
