@@ -75,3 +75,12 @@ select {
     }
   }
 }
+
+.contact-popup {
+  .button.button--line {
+    @include responsive('mobile-h') {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+}
