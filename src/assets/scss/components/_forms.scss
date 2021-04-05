@@ -84,3 +84,13 @@ select {
     }
   }
 }
+
+.machine-data__box {
+  .MuiSwitch-thumb {
+    background-image: none;
+  }
+
+  .MuiSwitch-track:before {
+    background-image: none;
+  }
+}
