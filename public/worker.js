@@ -3,7 +3,6 @@ let CACHE_NAME = 'aqui-estoy';
 let urlsToCache = [
   '/'
 ];
-importScripts("https://cdn.pushalert.co/sw-32548.js");
 // Install a service worker
 self.addEventListener('install', event => {
   // Perform install steps
