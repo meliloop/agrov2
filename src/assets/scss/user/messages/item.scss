@@ -4,6 +4,10 @@
   border-bottom: 1px solid $grey;
   position: relative;
 
+  &:nth-last-child(1) {
+    border-bottom: none;
+  }
+
   .news-message {
     position: absolute;
     top: 20px;

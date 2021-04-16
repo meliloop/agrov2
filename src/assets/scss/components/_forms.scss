@@ -40,7 +40,8 @@ select {
     background-image: none;
   }
 
-  .MuiSwitch-track:before {
+  .MuiSwitch-track:before,
+  .MuiSwitch-track:after {
     background-image: none;
   }
 
@@ -48,6 +49,28 @@ select {
     text-transform: uppercase;
     font-weight: 700;
     font-size: 14px;
+  }
+
+  .input-container {
+    input[type=password] {
+      width: calc(100% - 45px) !important;
+    }
+
+    .after-input {
+      float: right;
+      height: 40px;
+
+      .MuiIconButton-root {
+        height: 40px;
+        padding: 0;
+
+        svg {
+          path {
+            color: #72B230;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -80,7 +103,7 @@ select {
   .button.button--line {
     @include responsive('mobile-h') {
       width: 100%;
-      margin: 10px 0;
+      margin: 10px 0 0 0!important;
     }
   }
 }
