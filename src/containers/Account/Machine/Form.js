@@ -260,10 +260,10 @@ const FormMachine = (props) => {
                         </div>
 
                         <div className="machine-data__box">
-                            <label htmlFor="estado">Estado</label>
+                            <label htmlFor="estado">Estado Actual: {formState.machine?.estado ? 'Disponible':'No disponible'}</label>
                                 
                             <Grid component="label" container alignItems="center" spacing={1}>
-                                <Grid item>Deshabilitada</Grid>
+                                <Grid item>No Disponible</Grid>
                                 <Grid item>
                                     <Switch
                                         className="machine_status"
@@ -271,7 +271,7 @@ const FormMachine = (props) => {
                                         onChange={() => setEnabled(!isEnabled)}
                                     />
                                 </Grid>
-                                <Grid item>Habilitada</Grid>
+                                <Grid item>Disponible</Grid>
                             </Grid>
                         </div>
 
