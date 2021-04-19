@@ -42,6 +42,10 @@
     padding: 20px 0;
     border-bottom: 1px solid $grey;
 
+    &.not-available {
+      opacity: 0.5;
+    }
+
     &__data {
       float: left;
       width: calc(100% - 75px);
