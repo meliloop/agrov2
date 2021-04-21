@@ -6,7 +6,7 @@ const Item = (props) => {
         
     return (
         <div className="row" onClick={props.clicked}>
-            <div className="machine__item">
+            <div className={`machine__item ${estado ? 'available':'not-available'}`}>
                 <div className="machine__icon">
                     <BackgroundImage path={tipo_maquinaria.icono} alt={tipo_maquinaria.title} />
                 </div>
