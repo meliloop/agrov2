@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import parse from 'html-react-parser';
 
 import Switch from '@material-ui/core/Switch';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,10 +15,11 @@ import SectionTitle from '../../../components/UI/Title/Primary';
 import SmallTitle from '../../../components/UI/Title/Small';
 import BackgroundImage from '../../../components/UI/Background/Image';
 
-import {userRegister, userUpdate, fetchUser, setCurrentNavigation, clearAuthErrors} from '../../../store/actions/index';
+import {userRegister, userUpdate, fetchUser, setCurrentNavigation, clearAuthErrors, fetchPage} from '../../../store/actions/index';
 
 const Register = () => {
     const authState = useSelector(state => state.auth);
+    const navState = useSelector(state => state.nav);
     const dispatch = useDispatch();
     const { register, handleSubmit, errors, watch } = useForm();
     const password = useRef({});
@@ -59,6 +61,7 @@ const Register = () => {
             }
         }else{
             dispatch( setCurrentNavigation('register') );
+            dispatch( fetchPage('terminos') );
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[authState.userId]);
@@ -441,6 +444,16 @@ const Register = () => {
                                                 {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
                                             </div>
                                         </>}
+
+                                        {!authState.token && 
+                                        <div class="form-group">
+                                            <div className="text-container">
+                                                <SectionTitle text="Términos y condiciones" />
+                                                <div className="text">
+                                                    {navState.content && parse(navState.content)}
+                                                </div>
+                                            </div>    
+                                        </div>}
 
                                         <div className="d-flex align-items-center justify-content-center">
                                             <button type="submit" className="button button--full btn-outline-primary">
