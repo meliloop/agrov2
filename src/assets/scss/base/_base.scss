@@ -392,14 +392,13 @@ strong * {
   background-position: top center;
   padding: 0 25px;
   text-align: center;
-  display: flex;
-  align-items: center;
   position: relative;
-  height: 100%;
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
+  padding: 40px 30px;
+  background-attachment: fixed;
 
 
   .logo__image {
@@ -418,9 +417,7 @@ strong * {
 
   .links--cont {
     @include row();
-    position: absolute;
-    bottom: 40px;
-    left: 0;
+    padding-top: 40px;
 
     a {
       display: block;

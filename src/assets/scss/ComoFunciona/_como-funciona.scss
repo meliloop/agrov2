@@ -1,0 +1,67 @@
+.como-funciona-cont {
+  text-align: center;
+  @include background;
+  padding: 0 30px;
+  padding-top: 80px;
+
+  .logo__image {
+    display: inline-block;
+    width: 158px;
+    margin-bottom: 50px;
+
+    svg {
+      float: left;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+
+.funciona-item {
+  margin: 0 auto;
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  padding-bottom: 60px;
+
+  .slick-dots {
+    display: none !important;
+  }
+
+  .slick-slide {
+    text-align: center;
+
+    img {
+      display: inline-block !important;
+    }
+  }
+
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 0.12px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 19px;
+    color: #72B230;
+    letter-spacing: 0.12px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: 16px;
+    color: $white;
+    letter-spacing: 0.09px;
+    text-align: center;
+    line-height: 20px;
+  }
+}

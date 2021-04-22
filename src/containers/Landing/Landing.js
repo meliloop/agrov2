@@ -19,23 +19,27 @@ const Landing = () => {
     return (
         <Aux>
             <div className="landing--container">
-                <div className="como-funciona--cont">
-                    <Productor />
-                    <Contratista />
-                </div>
-
-                <div className="buttons--cont">
-                    <div className="logo__image">
-                        <Logo />
-                    </div>
-
-                    <div className="row"><Link to={'/login'} className="button account-btn">Iniciar</Link></div>
-                    <div className="row"><Link to={'/registracion'} className="button button--line ml-auto">Registrarse</Link></div>
-                </div>
-                <div className="links--cont">
-                    <Link to={'/terminos'} className="link">Términos y condiciones</Link>
-                    <Link to={'/politicas'} className="Link">Políticas de privacidad</Link>
-                </div>
+              <div className="row">
+                  <div className="logo__image">
+                      <Logo />
+                  </div>
+              </div>
+              <div className="row">
+                  <div className="como-funciona--cont">
+                      <Productor />
+                      <Contratista />
+                  </div>
+              </div>
+              <div className="row">
+                  <div className="buttons--cont">
+                      <div className="row"><Link to={'/login'} className="button account-btn">Iniciar</Link></div>
+                      <div className="row"><Link to={'/registracion'} className="button button--line ml-auto">Registrarse</Link></div>
+                  </div>
+                  <div className="links--cont">
+                      <Link to={'/terminos'} className="link">Términos y condiciones</Link>
+                      <Link to={'/politicas'} className="Link">Políticas de privacidad</Link>
+                  </div>
+              </div>
             </div>
         </Aux>
     )
