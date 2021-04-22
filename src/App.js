@@ -16,6 +16,7 @@ import MachineForm from './containers/Account/Machine/Form';
 import Chat from './containers/Chat/Chat';
 import Politicas from './containers/Politicas/Politicas';
 import Terminos from './containers/Terminos/Terminos';
+import ComoFunciona from './containers/ComoFunciona/ComoFunciona';
 import Landing from './containers/Landing/Landing';
 
 import * as actions from './store/actions/index';
@@ -58,6 +59,7 @@ class App extends Component {
               render={(props) => localStorage.getItem("token") ?  <Member {...props} /> : <Redirect to="/login" />} 
               />
             <Route path="/busqueda" render={authGuard(Search)} />
+            <Route path="/como-funciona" component={ComoFunciona} />
             <Route path="/terminos" component={Terminos} />
             <Route path="/politicas" component={Politicas} />
             <Route 

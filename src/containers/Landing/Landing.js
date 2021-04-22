@@ -6,6 +6,9 @@ import Aux from '../../hoc/Auxiliar/Auxiliar';
 import {Logo} from '../../components/UI/Logo/Logo';
 import { setCurrentNavigation } from '../../store/actions/index';
 
+import Productor from '../../components/ComoFunciona/Productor';
+import Contratista from '../../components/ComoFunciona/Contratista';
+
 const Landing = () => {
     const dispatch = useDispatch();
 
@@ -16,6 +19,11 @@ const Landing = () => {
     return (
         <Aux>
             <div className="landing--container">
+                <div className="como-funciona--cont">
+                    <Productor />
+                    <Contratista />
+                </div>
+
                 <div className="buttons--cont">
                     <div className="logo__image">
                         <Logo />

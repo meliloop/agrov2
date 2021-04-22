@@ -57,6 +57,11 @@ const Layout = (props) => {
                             <ListItemLink href="/" key="home">
                                 <ListItemText primary="Inicio" />
                             </ListItemLink>
+                            
+                            <ListItemLink href="/como-funciona" key="comofunciona">
+                                <ListItemText primary="Como funciona?" />
+                            </ListItemLink>
+                            
                             {localStorage.getItem('token') ?
                             <>
                                 <ListItemLink href="/mi-cuenta" key="micuenta">
