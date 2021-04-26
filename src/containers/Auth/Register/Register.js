@@ -445,8 +445,7 @@ const Register = () => {
                                                 {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
                                             </div>
                                         </>}
-EL TOKEN {JSON.stringify(authState.token)}
-TERMS CONTENT {JSON.stringify(navState)}
+                                            
                                         {!authState.token && 
                                         <div class="form-group">
                                             <div className="text-container">
