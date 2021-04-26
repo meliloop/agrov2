@@ -457,7 +457,9 @@ const Register = () => {
                                                 <button type="button" 
                                                     className="button button--full btn-outline-primary btn-terms"
                                                     onClick={() => setAcceptedTerms(true)}
-                                                />}
+                                                >
+                                                    Acepto los términos y condiciones
+                                                </button>}
                                             </div>    
                                         </div>}
 
