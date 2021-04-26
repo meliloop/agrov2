@@ -40,7 +40,7 @@ select {
   }
 
   .MuiSwitch-track:before,
-  .MuiSwitch-track:after {
+  .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track:after, .MuiSwitch-track:after {
     background-image: none;
   }
 
