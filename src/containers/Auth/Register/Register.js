@@ -29,6 +29,7 @@ const Register = () => {
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [avatar, setAvatar] = useState(null);
     const [changePassword, setChangePassword] = useState(false);
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
 
     const onFileUpload = (event) => {
         event.preventDefault();
@@ -449,17 +450,22 @@ const Register = () => {
                                         <div class="form-group">
                                             <div className="text-container">
                                                 <SectionTitle text="Términos y condiciones" />
+                                                <input type="checkbox"
+                                                    checked={acceptedTerms}
+                                                    onChange={() => setAcceptedTerms(!acceptedTerms)}
+                                                    />
                                                 <div className="text">
                                                     {navState.content && parse(navState.content)}
                                                 </div>
                                             </div>    
                                         </div>}
 
+                                        {acceptedTerms && 
                                         <div className="d-flex align-items-center justify-content-center">
                                             <button type="submit" className="button button--full btn-outline-primary">
                                                 Guardar
                                             </button>
-                                        </div>
+                                        </div>}
                                     </form>
                                 }
                             </fieldset>
