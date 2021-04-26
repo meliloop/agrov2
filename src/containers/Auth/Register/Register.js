@@ -445,7 +445,8 @@ const Register = () => {
                                                 {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
                                             </div>
                                         </>}
-
+EL TOKEN {JSON.stringify(authState.token)}
+TERMS CONTENT {JSON.stringify(navState)}
                                         {!authState.token && 
                                         <div class="form-group">
                                             <div className="text-container">
@@ -460,7 +461,7 @@ const Register = () => {
                                             </div>    
                                         </div>}
 
-                                        {acceptedTerms && 
+                                        {(authState.token || acceptedTerms) && 
                                         <div className="d-flex align-items-center justify-content-center">
                                             <button type="submit" className="button button--full btn-outline-primary">
                                                 Guardar
