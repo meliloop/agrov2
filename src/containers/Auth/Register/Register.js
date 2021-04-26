@@ -450,14 +450,14 @@ const Register = () => {
                                         <div class="form-group">
                                             <div className="text-container">
                                                 <SectionTitle text="Términos y condiciones" />
+                                                <div className="text">
+                                                    {navState.content && parse(navState.content)}
+                                                </div>
                                                 {!acceptedTerms &&
                                                 <button type="button" 
                                                     className="button button--full btn-outline-primary btn-terms"
                                                     onClick={() => setAcceptedTerms(true)}
                                                 />}
-                                                <div className="text">
-                                                    {navState.content && parse(navState.content)}
-                                                </div>
                                             </div>    
                                         </div>}
 
