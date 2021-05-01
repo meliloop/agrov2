@@ -19,22 +19,22 @@ const Productor = () => {
                     <div className="icon">
                       <img src="https://agrowp.estudioloop.com/wp-content/uploads/2021/04/prod01.svg" alt="icon"/>
                     </div>
-                    <h3>mapa interactivo</h3>
-                    <p>Encontra la maquina que estas buscando</p>
+                    <h3>Mapa interactivo</h3>
+                    <p>Encontrá la máquina que estás buscando</p>
                 </div>
                 <div>
                   <div className="icon">
                     <img src="https://agrowp.estudioloop.com/wp-content/uploads/2021/04/prod02.svg" alt="icon"/>
                   </div>
-                  <h3>especificaciones técnicas</h3>
-                  <p>la aplicación te dara todos los detalles de la maquina que te interesa</p>
+                  <h3>Especificaciones técnicas</h3>
+                  <p>La aplicación te dará todos los detalles de la máquina que te interesa</p>
                 </div>
                 <div>
                   <div className="icon">
                     <img src="https://agrowp.estudioloop.com/wp-content/uploads/2021/04/prod03.svg" alt="icon"/>
                   </div>
-                    <h3>contacto fácil y comodo</h3>
-                    <p>Podés contactar con  el contratista a cargo de la maquinaria elegida</p>
+                    <h3>Contacto fácil y comodo</h3>
+                    <p>Podés contactar con el contratista a cargo de la maquinaria elegida</p>
                 </div>
             </Slider>
         </div>

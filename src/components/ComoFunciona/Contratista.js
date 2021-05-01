@@ -19,22 +19,22 @@ const Contratista = () => {
                 <div className="icon">
                   <img src="https://agrowp.estudioloop.com/wp-content/uploads/2021/04/con01.svg" alt="icon"/>
                 </div>
-                <h3>cargar el detalle y especificaciones técnicas</h3>
-                <p>de cada una de las maquinarias dispuestas para la contratación</p>
+                <h3>Cargá el detalle y especificaciones técnicas</h3>
+                <p>De cada maquinarias dispuestas para la contratación</p>
             </div>
             <div>
               <div className="icon">
                 <img src="https://agrowp.estudioloop.com/wp-content/uploads/2021/04/con02.svg" alt="icon"/>
               </div>
               <h3>Habilitar/Deshabilitar</h3>
-              <p>Podés ir actualizando la disponibilidad o no de cada uno de tus productos</p>
+              <p>Podés ir actualizando la disponibilidad o no de cada uno de tus máquinas</p>
             </div>
             <div>
               <div className="icon">
                 <img src="https://agrowp.estudioloop.com/wp-content/uploads/2021/04/con03.svg" alt="icon"/>
               </div>
-                <h3>geolocalización</h3>
-                <p>la app te permite ir modificando la geolocalización de las maquinarias en el mapa interactivo</p>
+                <h3>Geolocalización</h3>
+                <p>AquiEstoy te permite ir modificando la geolocalización de las maquinarias en el mapa interactivo</p>
             </div>
             </Slider>
         </div>
