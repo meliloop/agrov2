@@ -26,7 +26,7 @@ const Dashboard = () => {
         
     if( userState.error !== null )
         return <Redirect to="/" />;
-
+        
     return (
         <Aux>
             {(userState.loading || !userState.data) ?

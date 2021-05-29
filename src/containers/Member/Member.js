@@ -28,10 +28,11 @@ const Member = (props) => {
                     <Spinner />:
                     <>
                         <div className="user__image">
+                            {memberState.member.avatar &&
                             <BackgroundImage 
                                 path={memberState.member.avatar} 
                                 alt={memberState.member.name} 
-                            />
+                            />}
                         </div>
                         
                         <div className="single-user-cont">

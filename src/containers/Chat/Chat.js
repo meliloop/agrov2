@@ -131,10 +131,11 @@ const Chat = (props) => {
                     <div className="container">
                         <div className="user__item">
                             <div className="user__image">
+                                {memberState.member.avatar &&
                                 <BackgroundImage 
                                     alt={memberState.member.name} 
                                     path={memberState.member.avatar}
-                                />
+                                />}
                             </div>
 
                             <UserItem 
