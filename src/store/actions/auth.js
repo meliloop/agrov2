@@ -145,7 +145,7 @@ export const auth = (email, password) => {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('expirationDate', expirationDate);
             localStorage.setItem('userId', response.data.user_id);
-            window.webpushr('attributes', {"User ID" : response.data.user_id,  "E-mail" : email});
+            window.webpushr('attributes', {"userid" : response.data.user_id,  "email" : response.data.email});
             dispatch(authSuccess(response.data.token, response.data.user_id));
          })
          .catch(err => {
