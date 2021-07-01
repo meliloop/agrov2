@@ -21,7 +21,7 @@ const Item = (props) => {
     };
 
     return (
-        <>
+        <div>
             <div className="machines__list__item">
                 <div onClick={handleSetOpen} >
                     <span className={isOpen ? 'check checked':'check'}></span>
@@ -48,7 +48,7 @@ const Item = (props) => {
                                             />)}
                 </div>
             </Collapse>
-        </>
+        </div>
     )
 }
 

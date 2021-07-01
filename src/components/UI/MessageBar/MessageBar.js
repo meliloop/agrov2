@@ -12,7 +12,7 @@ const MessageBar = (props) => {
     const handleClose = () => dispatch(setMessageStatus(false));
         
     return (
-        <>
+        <div>
             {navState.isMessageOpen &&
             <div className="contact-popup">
                 <div className="row">
@@ -23,7 +23,7 @@ const MessageBar = (props) => {
                     {props.children}
                 </div>
             </div>}
-        </>
+        </div>
     );
 };
 

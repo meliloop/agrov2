@@ -101,8 +101,8 @@ const Dashboard = () => {
                 >
                     {userState.loading ?
                         <Spinner/>:
-                        (userState.data.chats.length ?
-                            <>
+                        ((userState.data.chats && userState.data.chats.length) ?
+                            <div>
                                 {userState.data.unread > 0 && 
                                 <div className="calendar-cont__add">
                                     {userState.data.unread} mensajes nuevos
@@ -111,7 +111,7 @@ const Dashboard = () => {
                                     type="chat"  
                                     items={userState.data.chats}
                                 />
-                            </> :
+                            </div> :
                             <EmptyList text="No tenes chats"/>)
                     }
                 </div>

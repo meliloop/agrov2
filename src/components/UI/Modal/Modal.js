@@ -11,7 +11,7 @@ class Modal extends Component {
 
     render () {
         return (
-            <>
+            <div>
                 <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
                 <div
                     className={classes.Modal}
@@ -21,7 +21,7 @@ class Modal extends Component {
                     }}>
                     {this.props.children}
                 </div>
-            </>
+            </div>
         )
     }
 }

@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentNavigation, fetchMachine, fetchMachineTypes, clearFetchMachine } from '../../../store/actions/index';
 import { setTipoPadre, setTipos, addCaracteristica, removeCaracteristica } from '../../../store/actions/index';
-import { updateMachine, createMachine } from '../../../store/actions/index';
+import { updateMachine, createMachine, removeCalendarDate } from '../../../store/actions/index';
 import { useForm } from "react-hook-form";
 
 import Grid from "@material-ui/core/Grid";
@@ -20,7 +20,7 @@ import Listing from '../../../components/Listing/Listing';
 import BackgroundImage from '../../../components/UI/Background/Image';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import DeleteMachine from '../../../components/Machine/Delete';
-//import CalendarItem from '../../../components/Machine/Calendar/Item';
+import CalendarAdd from '../../../components/Machine/Calendar/Add';
 
 const FormMachine = (props) => {
     const { register, handleSubmit, errors } = useForm();
@@ -30,6 +30,8 @@ const FormMachine = (props) => {
     const [location, setLocation] = useState(null);
     const [placeId, setPlaceId] = useState(null);
     const [caracteristicaText, setCaracteristicaText] = useState('');
+    const [isDateFormOpen, setDateFormOpen] = useState(false);
+
     const formState = useSelector(state => state.machine);
     const dispatch  = useDispatch();
 
@@ -59,6 +61,7 @@ const FormMachine = (props) => {
         }
     };
 
+    const handleDeleteCalendario = (key) => dispatch( removeCalendarDate(key) );
     const handleDeleteCaracteristica = (key) => dispatch( removeCaracteristica(key) );
     const handleTipoSelected = (id) => dispatch( setTipos(id) );
     const handlePadreSelected = (id) => {
@@ -71,6 +74,7 @@ const FormMachine = (props) => {
 
         data.userId= localStorage.getItem('userId');
         data.image = image;
+        data.fechas= formState.fechas;
         data.caracteristicas = formState.caracteristicas;
         data.parentSelected  = formState.selectedTipoPadre;
         data.childsSelected  = formState.selectedTipos;
@@ -104,7 +108,7 @@ const FormMachine = (props) => {
         dispatch( fetchMachineTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-
+        
     if( formState.error !== null )
         return <Redirect to="/mi-cuenta/" />;
 
@@ -118,8 +122,8 @@ const FormMachine = (props) => {
 
                     {formState.loading ?
                     <Spinner />:
-                    <>
-                        {formState.machine && <DeleteMachine id={formState.machine?.id} />}
+                    <div>
+                        {formState.machine && <DeleteMachine id={formState.machine.id} />}
 
                         {formState.error && <div className="error-msg">{formState.error.message}</div>}
                         {formState.success &&
@@ -140,7 +144,7 @@ const FormMachine = (props) => {
                         </div>}
                         <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
                         {formState.tipos &&
-                            <>
+                            <div>
                                 <div className="small-title--center">
                                   <SmallTitle text="Tipo de Maquinaria" />
                                 </div>
@@ -153,7 +157,7 @@ const FormMachine = (props) => {
                                         parentClick={handlePadreSelected}
                                         childClick={handleTipoSelected} />
                                 </div>
-                            </>}
+                            </div>}
 
                         <div className="machine-data__box">
                             <div className="machine-data__model">
@@ -235,18 +239,18 @@ const FormMachine = (props) => {
                                 {image && ( <div className="user__image">
                                             <BackgroundImage path={image} alt="Imágen seleccionada" />
                                         </div>)}
-                                {(formState.machine?.imagen && !image) &&
+                                {(formState.machine && formState.machine.imagen && !image) &&
                                 <div className="user__image">
-                                    <BackgroundImage path={formState.machine?.imagen} alt="Imágen seleccionada" />
+                                    <BackgroundImage path={formState.machine.imagen} alt="Imágen seleccionada" />
                                 </div>}
                             </div>
                         </div>
 
                         <div className="machine-data__box">
                             <label htmlFor="ubicacion">Ubicación actual</label>
-                            {formState.machine?.ubicacion &&
+                            {(formState.machine && formState.machine.ubicacion) &&
                             <div className="ubicacion--actual">
-                                {formState.machine?.ubicacion.address}
+                                {formState.machine.ubicacion.address}
                             </div>}
 
                             <div className="ubicacion--actual">
@@ -260,7 +264,11 @@ const FormMachine = (props) => {
                         </div>
 
                         <div className="machine-data__box">
-                            <label htmlFor="estado">Estado Actual: {formState.machine?.estado ? 'Disponible':'No disponible'}</label>
+                            {formState.machine &&
+                            <label htmlFor="estado">
+                                Estado Actual: 
+                                {formState.machine.estado ? 'Disponible':'No disponible'}
+                            </label>}
                                 
                             <Grid component="label" container alignItems="center" spacing={1}>
                                 <Grid item>No Disponible</Grid>
@@ -305,26 +313,30 @@ const FormMachine = (props) => {
                                 </div>}
                             </div>
                         </div>
-                        {/*
+                        
+                        {formState.machine && 
                         <div className="machine-data__box">
                             <SmallTitle text="Calendario de Maquina" />
 
                             <div className="calendar-cont">
-                                <div className="calendar">
-                                    Calendario
+                                <div className="calendar-cont__add" onClick={() => setDateFormOpen(!isDateFormOpen)}>
+                                    <SmallTitle text="+ Agregar nueva fecha" />
                                 </div>
 
-                                <div className="calendar-cont__add">
-                                    <IconPlus />
-                                    Agregar nueva fecha
-                                </div>
-
+                                {isDateFormOpen && <CalendarAdd id={formState.machine.id} />}
+                                    
+                                {(formState.fechas && formState.fechas.length) &&
                                 <div className="calendar-cont__list">
-                                    <CalendarItem />
-                                </div>
+                                    <Listing
+                                        type="calendar"
+                                        action="edit"
+                                        items={formState.fechas}
+                                        handleDelete={handleDeleteCalendario}
+                                    />
+                                </div>}
                             </div>
-                        </div>*/}
-
+                        </div>}
+                            
                         {formState.selectedTipoPadre > 0 &&
                         <div className="machine-data__box">
                             <button type="submit" className="button button--full btn-outline-primary">
@@ -333,7 +345,7 @@ const FormMachine = (props) => {
                         </div>}
 
                         </form>
-                    </>}
+                    </div>}
                 </div>
             </section>
         </Aux>

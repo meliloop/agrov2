@@ -11,7 +11,15 @@ const initialState = {
    recoverSuccess: false,
    loading: false,
    authRedirectPath: '/mi-cuenta',
-   data: null,
+   data: {
+      name: null,
+      email: null,
+      lugar: null,
+      avatar: null,
+      descripcion: null,
+      phone: null,
+      whatsapp: null
+   },
 };
 
 const authStart  = (state, action)  => updateObject( state, { error: null, loading: true, recoverSuccess: false, registerSuccess: false, authSuccess: false} );

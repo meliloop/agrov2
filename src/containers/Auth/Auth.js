@@ -22,7 +22,7 @@ const Auth = () => {
     },[dispatch])
 
     return (
-        <>
+        <div>
             {authState.loading ? 
             <Spinner />:
             <div className="single-user login">
@@ -97,7 +97,7 @@ const Auth = () => {
                     </div>
                 </div>
             </div>}
-        </>
+        </div>
     );
 }
 

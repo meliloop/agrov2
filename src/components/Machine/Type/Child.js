@@ -12,7 +12,7 @@ const Child = (props) => {
     const handleChecked = () => props.childClick(props.data.id);
         
     return (
-        <>
+        <div>
             <div className="machines__list__item">
                 <div onClick={handleChecked} >
                     <span className={isChecked ? 'check checked':'check'}></span>
@@ -37,7 +37,7 @@ const Child = (props) => {
                                                         />)}
                 </div>
             </Collapse>
-        </>
+        </div>
     );
 };
 
@@ -76,7 +76,7 @@ export default class Child extends React.Component{
 
     render(){
         return (
-            <>
+            <div>
                 <div className="machines__list__item">
                     <div onClick={this.handleCheck} >
                     <span className={this.state.isChecked ? 'check checked':'check'}></span>
@@ -96,7 +96,7 @@ export default class Child extends React.Component{
                         {this.props.data.childs.map(cabezal => <Child key={cabezal.id} data={cabezal} />)}
                     </div>
                 </Collapse>
-            </>
+            </div>
         )
     }
 }*/

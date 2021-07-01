@@ -2,17 +2,25 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-   loading: true,
-   member: null,
-   machine: null,
-   selectedTipoPadre: null,
-   selectedTipos: [],
-   tipos:[],
-   caracteristicas:[],
-   formData: null,
-   error: null,
-   success: null,
-   isDeleted: false,
+    loading: true,
+    member: null,
+    machine: {
+        id: null,
+        modelo: null,
+        year: null,
+        imagen: null,
+        ubicacion: null,
+        estado: null
+    },
+    selectedTipoPadre: null,
+    selectedTipos: [],
+    tipos:[],
+    caracteristicas:[],
+    fechas:[],
+    formData: null,
+    error: null,
+    success: null,
+    isDeleted: false,
 };
 
 const fetchMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
@@ -25,7 +33,7 @@ const fetchMachineSuccess = ( state, action ) => {
         isDeleted: false
     } );
 };
-const fetchMachineClear = ( state, action ) =>  updateObject( state, { loading: true, machine: null, selectedTipoPadre: null, selectedTipos: [], tipos:[], caracteristicas:[], formData: null, error: null, success: null, isDeleted: false, } );
+const fetchMachineClear = ( state, action ) =>  updateObject( state, { loading: true, machine: { id: null, modelo: null, year: null, imagen: null, ubication: null, estado: null }, selectedTipoPadre: null, selectedTipos: [], tipos:[], caracteristicas:[], formData: null, error: null, success: null, isDeleted: false, } );
 
 const fetchMachineTypeStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
 const fetchMachineTypeFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
@@ -60,6 +68,19 @@ const removeCaracteristica    = ( state, action ) => {
 };
 
 const setCaracteristicas   = ( state, action ) => updateObject( state, { caracteristicas: action.caracteristicas} );
+
+const addCalendarDate    = ( state, action ) => {
+    let fechas = !Object.values(state.fechas).includes(action.fecha) && 
+                 [...state.fechas, action.fecha];
+    return updateObject( state, { fechas: fechas} );
+};
+
+const removeCalendarDate    = ( state, action ) => {
+    let fechas = state.fechas.filter((elem,index) => index !== action.key);
+    return updateObject( state, { fechas: fechas} );
+};
+
+const setCalendarDates     = ( state, action ) => updateObject( state, { fechas: action.fechas} );
 
 const createMachineStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
 const createMachineFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );
@@ -141,6 +162,12 @@ const reducer = ( state = initialState, action ) => {
             return addCaracteristica(state, action);
         case actionTypes.MACHINE_REMOVE_CARACTERISTICA:
             return removeCaracteristica(state, action);
+        case actionTypes.MACHINE_SET_CALENDARDATES:
+            return setCalendarDates(state, action);
+        case actionTypes.MACHINE_ADD_CALENDARDATE:
+            return addCalendarDate(state, action);
+        case actionTypes.MACHINE_REMOVE_CALENDARDATE:
+            return removeCalendarDate(state, action);
         default: 
             return state;
     }

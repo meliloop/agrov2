@@ -22,7 +22,7 @@ const Delete = ({id}) => {
         return <Redirect to={'/mi-cuenta'} />;
 
     return (
-        <>
+        <div>
           <div className="small-title--center">
             <div className="button button--delete" onClick={handleClickOpen}>
                 ELIMINAR MAQUINARIA
@@ -48,7 +48,7 @@ const Delete = ({id}) => {
                 </DialogActions>
             </Dialog>
           </div>
-        </>
+        </div>
     );
 };
 

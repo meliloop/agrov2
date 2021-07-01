@@ -26,7 +26,7 @@ const Member = (props) => {
             <section className="single-user">
                 {(memberState.loading || !memberState.member) ? 
                     <Spinner />:
-                    <>
+                    <div>
                         <div className="user__image">
                             {memberState.member.avatar &&
                             <BackgroundImage 
@@ -69,7 +69,7 @@ const Member = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </>
+                    </div>
                 }
             </section>
         </Aux>

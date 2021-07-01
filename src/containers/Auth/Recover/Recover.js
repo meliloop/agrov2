@@ -22,7 +22,7 @@ const Recover = () => {
     },[dispatch])
 console.log(authState);
     return (
-        <>
+        <div>
             {authState.loading ? 
             <Spinner />:
             <div className="single-user recuperar">
@@ -85,7 +85,7 @@ console.log(authState);
                     </div>
                 </div>
             </div>}
-        </>
+        </div>
     );
 }
 

@@ -12,6 +12,7 @@ import Logout from './containers/Auth/Logout/Logout';
 import Search from './containers/Search/Search';
 import Member from './containers/Member/Member';
 import Machine from './containers/Machine/Machine';
+import MachineCalendar from './containers/Machine/Calendar';
 import MachineForm from './containers/Account/Machine/Form';
 import Chat from './containers/Chat/Chat';
 import Politicas from './containers/Politicas/Politicas';
@@ -50,6 +51,10 @@ class App extends Component {
             />
             <Route path="/mi-cuenta/editar" render={authGuard(AccountUpdate)} />
             <Route path="/mi-cuenta" render={authGuard(Account)} />
+            <Route 
+              path="/maquina/calendario/id/:maquinaId" 
+              render={(props) => localStorage.getItem("token") ?  <MachineCalendar {...props} /> : <Redirect to="/login" />}
+              />
             <Route 
               path="/maquina/id/:maquinaId" 
               render={(props) => localStorage.getItem("token") ?  <Machine {...props} /> : <Redirect to="/login" />}

@@ -11,6 +11,10 @@
     margin-bottom: 30px;
   }
 
+  .MuiCollapse-wrapper{
+    display: block;
+  }
+
   &__add {
     @extend .h3;
     @include row();

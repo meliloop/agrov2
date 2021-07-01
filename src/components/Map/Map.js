@@ -40,7 +40,7 @@ export class MapContainer extends Component {
                         />
                     );
                 }
-                return <></>;
+                return <div></div>;
             })}
             {this.props.userLocation &&  <Marker 
                                                 key="current" 

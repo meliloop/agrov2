@@ -114,7 +114,9 @@ const Search = () => {
             fecha_desde: searchState.filterFechaDesde,
             fecha_hasta: searchState.filterFechaHasta
         };
-
+            
+        localStorage.setItem('userLocationLat', searchState.userLocation.lat);
+        localStorage.setItem('userLocationLng', searchState.userLocation.lng);
         dispatch( toggleShowingFilters() );
         dispatch( fetchSearch(filters) );
     };
@@ -136,7 +138,7 @@ const Search = () => {
             };
 
             dispatch( initSearchLocation(currentPosition) );
-        },error => {
+        }, error => {
             dispatch( initSearchLocation(config.default_center) );
         });
 
@@ -216,7 +218,7 @@ const Search = () => {
                             {searchState.items ?
                                 searchState.items.map(item => ( <Link key={item.id} to={"/maquina/id/"+item.id}>
                                                                     <Machine data={item}>
-                                                                        <Distance data={item.distancia} />
+                                                                        <Distance distancia={item.distancia} />
                                                                     </Machine>
                                                                 </Link>)):
                                 <Empty />}
@@ -237,7 +239,7 @@ const Search = () => {
                             {searchState.city_items ?
                                 searchState.city_items.map(item => (<Link key={item.id} to={"/maquina/id/"+item.id}>
                                                                         <Machine data={item}>
-                                                                            <Distance data={item.distancia} />
+                                                                            <Distance distancia={item.distancia} />
                                                                         </Machine>
                                                                     </Link>)):
                                 <Empty />}

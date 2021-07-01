@@ -68,7 +68,7 @@ const Register = () => {
     },[authState.userId]);
 
     return (
-        <>
+        <div>
             {authState.loading ? 
             <Spinner />:
             <div className="single-user login">
@@ -108,7 +108,7 @@ const Register = () => {
                                                 className="form-control"
                                                 aria-describedby="Ingrese su nombre"
                                                 placeholder="Nombre"
-                                                defaultValue={authState.data?.name}
+                                                defaultValue={authState.data.name}
                                                 ref={register({
                                                 required: {
                                                     value: true,
@@ -141,7 +141,7 @@ const Register = () => {
                                                 className="form-control"
                                                 aria-describedby="Ingrese su sona de actividad"
                                                 placeholder="Zona de actividad"
-                                                defaultValue={authState.data?.lugar}
+                                                defaultValue={authState.data.lugar}
                                                 ref={register({
                                                 required: {
                                                     value: false,
@@ -179,9 +179,9 @@ const Register = () => {
                                                     <div className="user__image">
                                                         <BackgroundImage path={avatar} alt="Imágen seleccionada" />
                                                     </div>}
-                                                {(authState.data?.avatar && !avatar) &&
+                                                {(authState.data.avatar && !avatar) &&
                                                     <div className="user__image">
-                                                        <BackgroundImage path={authState.data?.avatar} alt="Imágen seleccionada" />
+                                                        <BackgroundImage path={authState.data.avatar} alt="Imágen seleccionada" />
                                                     </div>}
                                             </div>
                                         </div>
@@ -196,7 +196,7 @@ const Register = () => {
                                                 className="form-control form-textarea"
                                                 aria-describedby="Ingrese su descripción"
                                                 placeholder="Por favor ingrese su ocupación, edad y zona"
-                                                defaultValue={authState.data?.descripcion}
+                                                defaultValue={authState.data.descripcion}
                                                 ref={register({
                                                 maxLength: {
                                                     value: 255,
@@ -223,7 +223,7 @@ const Register = () => {
                                                 className="form-control"
                                                 aria-describedby="Ingrese su teléfono"
                                                 placeholder="Teléfono"
-                                                defaultValue={authState.data?.phone}
+                                                defaultValue={authState.data.phone}
                                                 ref={register({
                                                 required: {
                                                     value: true,
@@ -256,7 +256,7 @@ const Register = () => {
                                                 className="form-control"
                                                 aria-describedby="Ingrese su whatsapp"
                                                 placeholder="Whatsapp"
-                                                defaultValue={authState.data?.whatsapp}
+                                                defaultValue={authState.data.whatsapp}
                                                 ref={register({
                                                 required: {
                                                     value: true,
@@ -290,7 +290,7 @@ const Register = () => {
                                                 aria-describedby="Email"
                                                 placeholder="Email"
                                                 readOnly={authState.token}
-                                                defaultValue={authState.data?.email}
+                                                defaultValue={authState.data.email}
                                                 ref={register({
                                                 required: {
                                                     value: true,
@@ -375,7 +375,7 @@ const Register = () => {
                                             </div>}
 
                                         {(authState.token && changePassword) &&
-                                        <>
+                                        <div>
                                             <div className="form-group">
                                                 <label htmlFor="password">Contraseña</label>
                                                 <div className="input-container">
@@ -444,7 +444,7 @@ const Register = () => {
                                                 </div>
                                                 {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
                                             </div>
-                                        </>}
+                                        </div>}
                                             
                                         {!authState.token && 
                                         <div class="form-group">
@@ -476,7 +476,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>}
-        </>
+        </div>
     );
 }
 

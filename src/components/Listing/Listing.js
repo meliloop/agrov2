@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import Machine from '../Machine/Item';
 import MachineType from '../Machine/Type/Item';
+import Calendar from '../Machine/Calendar/Item';
 import Feature from '../Machine/Feature/Item';
 import User from '../User/Item';
 import Chat from '../Chat/Item';
@@ -64,6 +65,15 @@ const Listing = (props) => {
                                     handleDelete={props.handleDelete}
                                     data={{descripcion:item.descripcion, id:index}}
                                  />
+                            );
+                        case 'calendar':
+                            return (
+                                <Calendar
+                                    key={index}
+                                    action={props.action}
+                                    handleDelete={props.handleDelete}
+                                    data={{place: item.lugar.address, to:item.hasta, from: item.desde, id:index}}
+                                    />
                             );
                         default:
                             return <div key={index}>{item}</div>;

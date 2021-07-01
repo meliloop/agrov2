@@ -1,13 +1,25 @@
 import React from 'react';
 
-const Data = ({data}) => {
+import { IconMinus } from '../../UI/Icon/Icon';
+
+const Item = (props) => {
+    const {id, place, from, to} = props.data;
+
+    const handleClick = () => {
+        if( props.handleDelete !== null )
+            props.handleDelete(id);
+    };
+
     return (
-        <div className="calendar-cont__list__item">
-            <div className="place">Tres Algarrobos</div>
-            <div className="date">Desde <span>01/10/2020</span> hasta <span>05/10/2020</span></div>
-            <div className="head">Con cabezal 1 para maiz</div>
+        <div 
+            className="calendar-cont__list__item"
+            onClick={props.handleDelete && handleClick}
+          >
+            <div className="place">{place}</div>
+            <div className="date">Desde <span>{from}</span> hasta <span>{to}</span></div>
+            {props.action === 'edit' && <IconMinus />}
         </div>
     );
-}
+};
 
-export default Data;
+export default Item;

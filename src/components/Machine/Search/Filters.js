@@ -49,13 +49,13 @@ const Filters = (props) => {
                         childClick={props.handleTipoSelected} />
                     }
                 </div>
-
+                    
                 <div className="search-cont__disponibility" style={{height: '270px'}}>
-                    {/*<div className="date">
+                    <div className="date">
                         <label>Fecha</label>
-                        <input type="text" placeholder="Desde" onChange={props.handleFechaDesdeChange} />
-                        <input type="text" placeholder="Hasta" onChange={props.handleFechaHastaChange} />
-                    </div>*/}
+                        <input type="date" min={new Date()} placeholder="Desde" onChange={props.handleFechaDesdeChange} />
+                        <input type="date" min={new Date()} placeholder="Hasta" onChange={props.handleFechaHastaChange} />
+                    </div>
                     <div className="distance">
                         <label>Dist.</label>
                         <select className="distance-dropdown" value={props.distance} onChange={props.handleDistanceChange}>

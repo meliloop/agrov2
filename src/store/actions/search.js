@@ -125,6 +125,12 @@ export const initSearchLocation = (position) => {
             distancia: 1000,
             cabezales: [],
         };
+            
+        if( position ){
+            localStorage.setItem('userLocationLat', position.lat);
+            localStorage.setItem('userLocationLng', position.lng);
+        }
+        
         dispatch(userLocated(position));
         dispatch(fetchSearch(filters));
     };

@@ -15,7 +15,7 @@ const Popup = (props) => {
             <div className="machine__calendar-data-cont">
                 {/*<CalendarData />*/}
                 {data.estado ? 'Disponible':'No Disponible'}
-                {data.distancia ? <Distance data={data.distancia} />:null}
+                {data.distancia ? <Distance distancia={data.distancia} />:null}
             </div>
             <div className="machine-popup-cont background">
                 <div className="container">

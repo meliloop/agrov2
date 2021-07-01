@@ -46,7 +46,10 @@ export {
     addCaracteristica,
     removeCaracteristica,
     setCaracteristicas,
-    deleteMachine
+    deleteMachine,
+    addCalendarDate,
+    removeCalendarDate,
+    setCalendarDates
 } from './machine';
 
 export {

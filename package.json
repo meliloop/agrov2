@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
+    "@wojtekmaj/react-daterange-picker": "^3.2.0",
     "axios": "^0.21.1",
     "google-maps-react": "^2.0.6",
     "html-react-parser": "^1.2.4",

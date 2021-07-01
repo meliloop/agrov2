@@ -37,6 +37,9 @@ export const fetchMachine = (data) => {
                dispatch(fetchMachineSuccess(res.data.maquinaria));
                   
                res.data.maquinaria.caracteristicas && dispatch( setCaracteristicas(res.data.maquinaria.caracteristicas) );
+                  
+               res.data.maquinaria.fechas.sort((a, b) => (a.order > b.order) ? 1 : -1)
+               res.data.maquinaria.fechas && dispatch( setCalendarDates(res.data.maquinaria.fechas) );
                res.data.maquinaria.tipo_maquinaria && dispatch( setTipoPadre(res.data.maquinaria.tipo_maquinaria.id) );
                res.data.maquinaria.cabezales && res.data.maquinaria.cabezales.map(item => dispatch( setTipos(item.id) ) );
             }else{
@@ -117,6 +120,27 @@ export const addCaracteristica = ( caracteristica ) => {
 export const removeCaracteristica = ( key ) => {
    return {
       type: actionTypes.MACHINE_REMOVE_CARACTERISTICA,
+      key: key
+   };
+};
+
+export const setCalendarDates = ( fechas ) => {
+   return {
+      type: actionTypes.MACHINE_SET_CALENDARDATES,
+      fechas: fechas
+   };
+};
+
+export const addCalendarDate = ( fecha ) => {
+   return {
+      type: actionTypes.MACHINE_ADD_CALENDARDATE,
+      fecha: fecha
+   };
+};
+
+export const removeCalendarDate = ( key ) => {
+   return {
+      type: actionTypes.MACHINE_REMOVE_CALENDARDATE,
       key: key
    };
 };
