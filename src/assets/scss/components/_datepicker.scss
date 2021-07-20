@@ -78,7 +78,7 @@
         @include button();
         height: 42px;
         line-height: 42px;
-        margin-right: 10px;
+        margin-left: 10px;
         color:#fff;
 
         .react-daterange-picker__button__icon {
@@ -89,6 +89,7 @@
 
         @include responsive('mobile-h') {
             grid-column: span 3;
+            margin:0;
            &:after {
                content: ' Seleccionar fechas';
            }
