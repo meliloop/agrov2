@@ -1,0 +1,134 @@
+.calendar-cont {
+    .react-calendar {
+        background:#222;
+
+
+        &__month-view__days__day--weekend {
+            color:$primary-color;
+        }
+        &__tile--hasActive {
+            color:#fff!important;
+            background-color:$primary-color;
+        }
+        &__tile:disabled,
+        &__navigation button[disabled] {
+            background-color: #000;
+            opacity: 0.1;
+        }
+        .react-calendar__tile--active:enabled:hover, 
+        .react-calendar__tile--active:enabled:focus,
+        .react-calendar__tile:enabled:hover, 
+        .react-calendar__tile:enabled:focus {
+            color:#fff!important;
+            background-color:$primary-color!important;
+            
+        }
+        .react-calendar__tile--now {
+            font-weight: 700;
+            color:#fff!important;
+            background-color:$secondary-color;
+        }
+        &__navigation button:enabled:hover, 
+        &__navigation button:enabled:focus,
+        .react-calendar__tile--active,
+        .react-calendar__tile--hover {
+            background-color: #000!important;
+        }
+    }
+    .react-daterange-picker {
+        margin-bottom:10px;
+        margin-left:-6px;
+        
+        &__wrapper {border:0;
+        
+            @include responsive('mobile-h') {
+                display: grid;
+                grid-template-columns: auto 20px auto;
+            }
+        
+        }
+
+        .react-daterange-picker__range-divider {text-align: center; color:#999}
+
+        
+        &__inputGroup {
+        // own padding + inputs padding + digits width + dots width
+        min-width: 90px!important;
+
+    
+        &__input {
+            float:none!important;
+            min-width: 30px!important;
+        text-align: center;
+        font-size:12px;
+        padding: 0;
+        border: 0!important;;
+            margin:0;
+            padding: 0 3px!important;
+        
+            &--hasLeadingZero {
+            min-width: 10px!important;
+            
+            }
+        }
+        .react-daterange-picker__inputGroup__leadingZero {display: none}
+        }
+    
+        &__button {
+        @include button();
+        height: 42px;
+        line-height: 42px;
+        margin-right: 10px;
+        color:#fff;
+
+        .react-daterange-picker__button__icon {
+            stroke: #fff;
+            margin-right:5px;
+            margin-top:-2px;
+        }
+
+        @include responsive('mobile-h') {
+            grid-column: span 3;
+           &:after {
+               content: ' Seleccionar fechas';
+           }
+        }
+    
+        &:enabled {
+            cursor: pointer;
+    
+            &:hover, &:focus {
+            .react-daterange-picker__button__icon {
+                stroke: #fff;
+            }
+            }
+        }
+
+        &.react-daterange-picker__clear-button {
+            background-color: $secondary-color;
+            border-color:$secondary-color;
+            position:absolute;
+            right:0;
+            transform: translateX(120%);
+
+            @include responsive('mobile-h') {
+                display: none;
+            }
+        }
+    
+        &:disabled {
+            opacity: 0.3;
+            .react-daterange-picker__button__icon {
+            stroke: rgb(109, 109, 109);
+            }
+        }
+    
+        svg {
+            margin-right:0;
+        }
+        }
+    }
+    .place {
+        margin-bottom:10px;
+    }
+  }
