@@ -68,7 +68,7 @@ const Filters = (props) => {
                     <div className="distance">
                         <GooglePlacesAutocomplete
                             apiOptions={{ language: 'es', region: 'es' }}
-                            selectProps={{place, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Seleccione...', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
+                            selectProps={{place, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                             autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                     </div>
                 </div>

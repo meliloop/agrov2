@@ -57,7 +57,7 @@ const Add = () => {
                     <GooglePlacesAutocomplete
                         apiOptions={{ language: 'es', region: 'es' }}
                         apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}
-                        selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Seleccione...', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
+                        selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                         autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                 </div>
             </div>
