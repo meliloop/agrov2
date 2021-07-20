@@ -52,6 +52,19 @@
       border-top: 1px solid #565656;
       padding: 20px 0;
       line-height: 1.4;
+      position: relative;
+      padding-right:40px;
+
+      svg {
+        background: $black;
+        height: 30px;
+        border-radius: 50%;
+        width: 30px;
+        padding: 0 8px;
+        position: absolute;
+        top: 18px;
+        right: 0;
+      }
 
       span {
         color: $primary-color;
