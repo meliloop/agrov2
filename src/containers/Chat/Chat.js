@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentNavigation, fetchMessages, sendMessage, fetchMember } from '../../store/actions/index';
+import { setCurrentNavigation, fetchUser, fetchMessages, sendMessage, fetchMember } from '../../store/actions/index';
 
 import Aux from '../../hoc/Auxiliar/Auxiliar';
 import UserItem from '../../components/User/Item';
@@ -67,6 +67,8 @@ const Chat = (props) => {
         if( authState.token ){
             dispatch( setCurrentNavigation('single') );
                 
+            dispatch( fetchUser(localStorage.getItem('token'), localStorage.getItem('userId')) );
+
             //  load contact data 
             dispatch( fetchMember( { id: props.match.params.usuarioId } ) );
 

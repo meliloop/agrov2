@@ -95,7 +95,7 @@ const Register = () => {
                                 {authState.error && <div className="error-msg">{authState.error}</div>}
                                 {authState.updateSuccess && <div className="success">Sus datos fueron actualizados correctamente</div>}
 
-                                {authState.loading ? 
+                                {(authState.loading || authState.registerSuccess) ? 
                                     <Spinner />:
                                     <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
                                         <div className="form-group">
@@ -447,7 +447,7 @@ const Register = () => {
                                         </div>}
                                             
                                         {!authState.token && 
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <div className="text-container">
                                                 <SectionTitle text="Términos y condiciones" />
                                                 <div className="text">

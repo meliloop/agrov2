@@ -325,7 +325,7 @@ const FormMachine = (props) => {
 
                                 {isDateFormOpen && <CalendarAdd id={formState.machine.id} />}
                                     
-                                {(formState.fechas && formState.fechas.length) &&
+                                {(formState.fechas && formState.fechas.length) ?
                                 <div className="calendar-cont__list">
                                     <Listing
                                         type="calendar"
@@ -333,11 +333,11 @@ const FormMachine = (props) => {
                                         items={formState.fechas}
                                         handleDelete={handleDeleteCalendario}
                                     />
-                                </div>}
+                                </div>:''}
                             </div>
                         </div>}
                             
-                        {formState.selectedTipoPadre > 0 &&
+                        {(formState.selectedTipoPadre > 0 && location !== null) &&
                         <div className="machine-data__box">
                             <button type="submit" className="button button--full btn-outline-primary">
                                 Guardar
