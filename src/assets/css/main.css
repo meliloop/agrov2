@@ -2338,6 +2338,10 @@ select {
   margin-top: 15px;
 }
 
+.calendar-cont__disponibility .button {
+  margin-bottom: 20px;
+}
+
 .messages__item {
   float: left;
   width: 100%;
