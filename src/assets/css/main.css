@@ -148,6 +148,7 @@ h3,
 .h3,
 .calendar-cont__list__item,
 .calendar-cont__add,
+.calendar-cont .react-daterange-picker__button,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
 select,
 textarea,
@@ -155,6 +156,7 @@ textarea,
 .h3 p,
 .calendar-cont__list__item p,
 .calendar-cont__add p,
+.calendar-cont .react-daterange-picker__button p,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
 select p,
 textarea p,
@@ -166,6 +168,7 @@ textarea p,
 .h3,
 .calendar-cont__list__item,
 .calendar-cont__add,
+.calendar-cont .react-daterange-picker__button,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
 select,
 textarea,
@@ -173,6 +176,7 @@ textarea,
 .h3 p,
 .calendar-cont__list__item p,
 .calendar-cont__add p,
+.calendar-cont .react-daterange-picker__button p,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
 select p,
 textarea p,
@@ -185,6 +189,7 @@ textarea p,
 .h3,
 .calendar-cont__list__item,
 .calendar-cont__add,
+.calendar-cont .react-daterange-picker__button,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
 select,
 textarea,
@@ -192,6 +197,7 @@ textarea,
 .h3 p,
 .calendar-cont__list__item p,
 .calendar-cont__add p,
+.calendar-cont .react-daterange-picker__button p,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
 select p,
 textarea p,
@@ -204,6 +210,7 @@ textarea p,
 .h3,
 .calendar-cont__list__item,
 .calendar-cont__add,
+.calendar-cont .react-daterange-picker__button,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
 select,
 textarea,
@@ -211,6 +218,7 @@ textarea,
 .h3 p,
 .calendar-cont__list__item p,
 .calendar-cont__add p,
+.calendar-cont .react-daterange-picker__button p,
 input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) p,
 select p,
 textarea p,
@@ -577,14 +585,13 @@ strong * {
   background-position: top center;
   padding: 0 25px;
   text-align: center;
-  display: flex;
-  align-items: center;
   position: relative;
-  height: 100%;
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
+  padding: 40px 30px;
+  background-attachment: fixed;
 }
 .landing--container .logo__image {
   margin-bottom: 20px;
@@ -601,9 +608,7 @@ strong * {
 .landing--container .links--cont {
   float: left;
   width: 100%;
-  position: absolute;
-  bottom: 40px;
-  left: 0;
+  padding-top: 40px;
 }
 .landing--container .links--cont a {
   display: block;
@@ -614,6 +619,16 @@ strong * {
 }
 .landing--container .links--cont a:hover {
   text-decoration: underline;
+}
+
+#webpushr-subscription-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.text-container p {
+  margin-top: 20px;
 }
 
 .header {
@@ -645,8 +660,13 @@ strong * {
 }
 .header .back-arrow {
   float: left;
-  margin-left: 45px;
+  margin-left: 0px;
   margin-top: 3px;
+}
+.header .main-menu {
+  right: 0 !important;
+  float: left !important;
+  left: auto !important;
 }
 .header .text-icon {
   float: right;
@@ -789,18 +809,19 @@ strong * {
   padding: 30px;
   margin-top: 70px;
 }
-
 @media only screen and (min-width: 1024px) {
-  .results--container {
-    text-align: center;
+  .list--container {
+    width: 1024px;
+    text-align: left;
+  }
+  .list--container:not(.hidden) {
+    display: inline-block;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .list--container {
-    display: inline-block;
-    width: 1024px;
-    text-align: left;
+  .results--container {
+    text-align: center;
   }
 }
 
@@ -977,6 +998,32 @@ select {
   width: 100%;
   margin-bottom: 25px;
 }
+.form-group .MuiSwitch-thumb {
+  background-image: none;
+}
+.form-group .MuiSwitch-track:before,
+.form-group .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track:after, .form-group .MuiSwitch-track:after {
+  background-image: none;
+}
+.form-group .MuiTypography-body1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+}
+.form-group .input-container input[type=password] {
+  width: calc(100% - 45px) !important;
+}
+.form-group .input-container .after-input {
+  float: right;
+  height: 40px;
+}
+.form-group .input-container .after-input .MuiIconButton-root {
+  height: 40px;
+  padding: 0;
+}
+.form-group .input-container .after-input .MuiIconButton-root svg path {
+  color: #72B230;
+}
 
 .loginFormContainer {
   margin-top: 50px;
@@ -995,6 +1042,342 @@ select {
 }
 .single-user .registrationFormContainer .button--full {
   margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 750px) {
+  .contact-popup .button.button--line {
+    width: 100%;
+    margin: 10px 0 0 0 !important;
+  }
+}
+
+.machine-data__box .MuiSwitch-thumb {
+  background-image: none;
+}
+.machine-data__box .MuiSwitch-track:before {
+  background-image: none;
+}
+
+.calendar-cont .react-calendar {
+  background: #222;
+}
+.calendar-cont .react-calendar__month-view__days__day--weekend {
+  color: #72B230;
+}
+.calendar-cont .react-calendar__tile--hasActive {
+  color: #fff !important;
+  background-color: #72B230;
+}
+.calendar-cont .react-calendar__tile:disabled, .calendar-cont .react-calendar__navigation button[disabled] {
+  background-color: #000;
+  opacity: 0.1;
+}
+.calendar-cont .react-calendar .react-calendar__tile--active:enabled:hover,
+.calendar-cont .react-calendar .react-calendar__tile--active:enabled:focus,
+.calendar-cont .react-calendar .react-calendar__tile:enabled:hover,
+.calendar-cont .react-calendar .react-calendar__tile:enabled:focus {
+  color: #fff !important;
+  background-color: #72B230 !important;
+}
+.calendar-cont .react-calendar .react-calendar__tile--now {
+  font-weight: 700;
+  color: #fff !important;
+  background-color: #47701C;
+}
+.calendar-cont .react-calendar__navigation button:enabled:hover, .calendar-cont .react-calendar__navigation button:enabled:focus,
+.calendar-cont .react-calendar .react-calendar__tile--active,
+.calendar-cont .react-calendar .react-calendar__tile--hover {
+  background-color: #000 !important;
+}
+.calendar-cont .react-daterange-picker {
+  margin-bottom: 10px;
+  margin-left: -6px;
+}
+.calendar-cont .react-daterange-picker__wrapper {
+  border: 0;
+}
+@media only screen and (max-width: 750px) {
+  .calendar-cont .react-daterange-picker__wrapper {
+    display: grid;
+    grid-template-columns: auto 20px auto;
+  }
+}
+.calendar-cont .react-daterange-picker .react-daterange-picker__range-divider {
+  text-align: center;
+  color: #999;
+}
+.calendar-cont .react-daterange-picker__inputGroup {
+  min-width: 90px !important;
+}
+.calendar-cont .react-daterange-picker__inputGroup__input {
+  float: none !important;
+  min-width: 30px !important;
+  text-align: center;
+  font-size: 12px;
+  padding: 0;
+  border: 0 !important;
+  margin: 0;
+  padding: 0 3px !important;
+}
+.calendar-cont .react-daterange-picker__inputGroup__input--hasLeadingZero {
+  min-width: 10px !important;
+}
+.calendar-cont .react-daterange-picker__inputGroup .react-daterange-picker__inputGroup__leadingZero {
+  display: none;
+}
+.calendar-cont .react-daterange-picker__button {
+  display: inline-block;
+  max-width: 100%;
+  height: 50px;
+  line-height: 46px;
+  border: 1px solid #72B230;
+  background: #72B230;
+  color: #ffffff;
+  padding: 0 20px;
+  text-transform: uppercase;
+  border-radius: 25px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+  height: 42px;
+  line-height: 42px;
+  margin-left: 10px;
+  color: #fff;
+}
+@media only screen and (max-width: 400px) {
+  .calendar-cont .react-daterange-picker__button {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
+.calendar-cont .react-daterange-picker__button span {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 700;
+}
+.calendar-cont .react-daterange-picker__button svg,
+.calendar-cont .react-daterange-picker__button img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.calendar-cont .react-daterange-picker__button:hover {
+  background: #47701C;
+  border: 1px solid #47701C;
+}
+.calendar-cont .react-daterange-picker__button--line {
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.calendar-cont .react-daterange-picker__button--line:hover {
+  background: #72B230;
+  border: 1px solid #72B230;
+}
+.calendar-cont .react-daterange-picker__button--small {
+  height: 40px;
+  line-height: 36px;
+}
+.calendar-cont .react-daterange-picker__button--full {
+  width: 100%;
+  text-align: center;
+}
+.calendar-cont .react-daterange-picker__button .react-daterange-picker__button__icon {
+  stroke: #fff;
+  margin-right: 5px;
+  margin-top: -2px;
+}
+@media only screen and (max-width: 750px) {
+  .calendar-cont .react-daterange-picker__button {
+    grid-column: span 3;
+    margin: 0;
+  }
+  .calendar-cont .react-daterange-picker__button:after {
+    content: " Seleccionar fechas";
+  }
+}
+.calendar-cont .react-daterange-picker__button:enabled {
+  cursor: pointer;
+}
+.calendar-cont .react-daterange-picker__button:enabled:hover .react-daterange-picker__button__icon, .calendar-cont .react-daterange-picker__button:enabled:focus .react-daterange-picker__button__icon {
+  stroke: #fff;
+}
+.calendar-cont .react-daterange-picker__button.react-daterange-picker__clear-button {
+  background-color: #47701C;
+  border-color: #47701C;
+  position: absolute;
+  right: 0;
+  transform: translateX(120%);
+}
+@media only screen and (max-width: 750px) {
+  .calendar-cont .react-daterange-picker__button.react-daterange-picker__clear-button {
+    display: none;
+  }
+}
+.calendar-cont .react-daterange-picker__button:disabled {
+  opacity: 0.3;
+}
+.calendar-cont .react-daterange-picker__button:disabled .react-daterange-picker__button__icon {
+  stroke: #6d6d6d;
+}
+.calendar-cont .react-daterange-picker__button svg {
+  margin-right: 0;
+}
+.calendar-cont .place {
+  margin-bottom: 10px;
+}
+
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.slick-list:focus {
+  outline: none;
+}
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+.slick-track:after {
+  clear: both;
+}
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+}
+[dir=rtl] .slick-slide {
+  float: right;
+}
+.slick-slide img {
+  display: block;
+}
+.slick-slide.slick-loading img {
+  display: none;
+}
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+.slick-initialized .slick-slide {
+  display: block;
+}
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+.como-funciona-cont {
+  text-align: center;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
+  background: #191c22;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #191c22 0%, #2a2d33 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#191c22", endColorstr="#2a2d33",GradientType=1 );
+  /* IE6-9 */
+  padding: 0 30px;
+  padding-top: 80px;
+}
+.como-funciona-cont .logo__image {
+  display: inline-block;
+  width: 158px;
+  margin-bottom: 50px;
+}
+.como-funciona-cont .logo__image svg {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.funciona-item {
+  margin: 0 auto;
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  padding-bottom: 60px;
+}
+.funciona-item .slick-dots {
+  display: none !important;
+}
+.funciona-item .slick-slide {
+  text-align: center;
+}
+.funciona-item .slick-slide img {
+  display: inline-block !important;
+}
+.funciona-item h2 {
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.12px;
+  margin-bottom: 20px;
+}
+.funciona-item h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 19px;
+  color: #72B230;
+  letter-spacing: 0.12px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.funciona-item p {
+  font-weight: 300;
+  font-size: 16px;
+  color: #ffffff;
+  letter-spacing: 0.09px;
+  text-align: center;
+  line-height: 20px;
 }
 
 .content {
@@ -1102,6 +1485,9 @@ select {
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px solid #565656;
+}
+.machine__item.not-available {
+  opacity: 0.5;
 }
 .machine__item__data {
   float: left;
@@ -1418,6 +1804,7 @@ select {
   display: inline-block;
   padding: 8px 12px;
   width: 100%;
+  text-align: center;
 }
 .upload-btn-wrapper .btn-upload {
   position: relative;
@@ -1461,6 +1848,9 @@ select {
   width: 100%;
   margin-bottom: 30px;
 }
+.calendar-cont .MuiCollapse-wrapper {
+  display: block;
+}
 .calendar-cont__add {
   float: left;
   width: 100%;
@@ -1495,6 +1885,18 @@ select {
   border-top: 1px solid #565656;
   padding: 20px 0;
   line-height: 1.4;
+  position: relative;
+  padding-right: 40px;
+}
+.calendar-cont__list__item svg {
+  background: #000;
+  height: 30px;
+  border-radius: 50%;
+  width: 30px;
+  padding: 0 8px;
+  position: absolute;
+  top: 18px;
+  right: 0;
 }
 .calendar-cont__list__item span {
   color: #72B230;
@@ -1507,6 +1909,10 @@ select {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
+}
+.user__image .MuiAvatar-colorDefault {
+  width: 50px;
+  height: 50px;
 }
 .user__image img {
   object-fit: cover;
@@ -1545,6 +1951,25 @@ select {
 }
 .user__item__btn span:hover svg g {
   fill: #72B230;
+}
+
+.search .search-cont {
+  position: relative;
+  z-index: 4000;
+}
+
+@media only screen and (max-width: 1024px) {
+  .buttonCancelInstall {
+    margin-bottom: 10px;
+  }
+}
+
+.error {
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+  padding: 10px;
+  background: #C60000;
 }
 
 .single-user {
@@ -1811,6 +2236,7 @@ select {
 .dashboard.chat .contact-btn {
   font-size: 14px;
   padding: 0 10px;
+  margin-bottom: 20px;
 }
 .dashboard.chat .messages-cont {
   padding: 0 20px;
@@ -1818,8 +2244,9 @@ select {
 .dashboard.chat .new-message-cont {
   float: left;
   width: 100%;
-  margin-top: 20px;
+  margin: 20p 0x;
   padding: 0 20px;
+  margin-top: 20px;
 }
 @media only screen and (min-width: 1024px) {
   .dashboard.chat .new-message-cont {
@@ -1832,7 +2259,7 @@ select {
   }
 }
 .dashboard.chat .new-message-cont #newmessage {
-  width: calc(100% - 50px);
+  width: calc(100% - 50px) !important;
 }
 .dashboard.chat .new-message-cont .buttons-cont {
   width: 50px;
@@ -1849,24 +2276,34 @@ select {
   margin-top: -10px;
 }
 
-.contact-popup {
+.contact-popup:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.85);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  content: "";
+}
+.contact-popup > .row {
   position: absolute;
   float: left;
   top: 50%;
   left: 50%;
-  width: 300px;
+  width: 320px;
   height: auto !important;
   transform: translate(-50%, -50%);
-  background: #000;
   padding: 20px;
   text-align: center;
   z-index: 1000;
+  border-radius: 3px;
 }
 .contact-popup .buttons-cont {
   margin-top: 20px;
 }
 .contact-popup .buttons-cont .button {
-  padding: 0 15px;
+  margin: 0 5px 15px 5px;
 }
 
 .loginFormContainer .success-msg {
@@ -1878,12 +2315,38 @@ select {
   margin-bottom: 20px;
 }
 
+.d-flex.align-items-center .button.button--line.button--full {
+  margin-bottom: 15px;
+}
+
+.dashboard__tab.active .no-results {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-terms {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: auto;
+  float: none;
+  display: block;
+  font-size: 12px;
+}
+
+.contact-popup .small-title, .contact-popup label {
+  margin-bottom: 0;
+  margin-top: 15px;
+}
+
 .messages__item {
   float: left;
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px solid #565656;
   position: relative;
+}
+.messages__item:nth-last-child(1) {
+  border-bottom: none;
 }
 .messages__item .news-message {
   position: absolute;
@@ -1969,6 +2432,14 @@ select {
 .search-cont .header .button--small {
   width: auto !important;
 }
+.search-cont .header .main-menu {
+  right: 0 !important;
+  float: left !important;
+  left: auto !important;
+}
+.search-cont .header .back-arrow {
+  margin-left: 0px !important;
+}
 .search-cont__disponibility {
   position: fixed;
   left: 0;
@@ -2022,6 +2493,7 @@ select {
 .css-yk16xz-control,
 .css-g1d714-ValueContainer {
   height: 40px !important;
+  position: static;
 }
 
 .back_arrow {
