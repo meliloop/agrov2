@@ -56,7 +56,8 @@ const Add = () => {
                 <div className="place">
                     <GooglePlacesAutocomplete
                         apiOptions={{ language: 'es', region: 'es' }}
-                        apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}
+                        // eslint-disable-next-line no-undef
+                        apiKey={firebase.config().googlemaps.key}
                         selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                         autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                 </div>

@@ -257,7 +257,8 @@ const FormMachine = (props) => {
                                 Ingrese su ubicación actualizada
                                 <GooglePlacesAutocomplete
                                     apiOptions={{ language: 'es', region: 'es' }}
-                                    apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}
+                                    // eslint-disable-next-line no-undef
+                                    apiKey={firebase.config().googlemaps.key}
                                     selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                                     autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                             </div>
@@ -337,7 +338,7 @@ const FormMachine = (props) => {
                             </div>
                         </div>}
                             
-                        {(formState.selectedTipoPadre > 0 && location !== null) &&
+                        {(formState.selectedTipoPadre > 0 && (location !== null || (formState.machine && formState.machine.ubicacion))) &&
                         <div className="machine-data__box">
                             <button type="submit" className="button button--full btn-outline-primary">
                                 Guardar
