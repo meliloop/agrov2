@@ -14,6 +14,9 @@ import Member from './containers/Member/Member';
 import Machine from './containers/Machine/Machine';
 import MachineCalendar from './containers/Machine/Calendar';
 import MachineForm from './containers/Account/Machine/Form';
+import Service from './containers/Service/Service';
+import ServiceCalendar from './containers/Service/Calendar';
+import ServiceForm from './containers/Account/Service/Form';
 import Chat from './containers/Chat/Chat';
 import Politicas from './containers/Politicas/Politicas';
 import Terminos from './containers/Terminos/Terminos';
@@ -40,6 +43,7 @@ class App extends Component {
             <Route path="/recuperar" render={loggedGuard(Recover)} />
             <Route path="/login" render={loggedGuard(Auth)} />
             <Route path="/logout" render={authGuard(Logout)} />
+            <Route path="/mi-cuenta/agregar-servicio" render={authGuard(ServiceForm)} />
             <Route path="/mi-cuenta/agregar" render={authGuard(MachineForm)} />
             <Route
               path='/mi-cuenta/chat/usuario/:usuarioId'
@@ -49,6 +53,10 @@ class App extends Component {
               path='/mi-cuenta/maquina/id/:maquinaId'
               render={(props) => localStorage.getItem("token") ?  <MachineForm {...props} /> : <Redirect to="/login" />}
             />
+            <Route
+              path='/mi-cuenta/servicio/id/:servicioId'
+              render={(props) => localStorage.getItem("token") ?  <ServiceForm {...props} /> : <Redirect to="/login" />}
+            />
             <Route path="/mi-cuenta/editar" render={authGuard(AccountUpdate)} />
             <Route path="/mi-cuenta" render={authGuard(Account)} />
             <Route 
@@ -56,8 +64,16 @@ class App extends Component {
               render={(props) => localStorage.getItem("token") ?  <MachineCalendar {...props} /> : <Redirect to="/login" />}
               />
             <Route 
+              path="/servicio/calendario/id/:servicioId" 
+              render={(props) => localStorage.getItem("token") ?  <ServiceCalendar {...props} /> : <Redirect to="/login" />}
+              />
+            <Route 
               path="/maquina/id/:maquinaId" 
               render={(props) => localStorage.getItem("token") ?  <Machine {...props} /> : <Redirect to="/login" />}
+              />
+            <Route 
+              path="/servicio/id/:servicioId" 
+              render={(props) => localStorage.getItem("token") ?  <Service {...props} /> : <Redirect to="/login" />}
               />
             <Route 
               path="/usuario/id/:usuarioId"

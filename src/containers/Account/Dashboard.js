@@ -10,7 +10,7 @@ import BackgroundImage from '../../components/UI/Background/Image';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Listing from '../../components/Listing/Listing';
 import EmptyList from '../../components/Listing/Empty';
-import {IconAccount,IconMachine,IconContact,IconPlus} from '../../components/UI/Icon/Icon';
+import {IconAccount,IconMachine,IconService,IconContact,IconPlus} from '../../components/UI/Icon/Icon';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('chat');
@@ -69,6 +69,13 @@ const Dashboard = () => {
                         <span>Maquinaria</span>
                     </div>
                     <div 
+                        className={`dashboard__tabs__item${activeTab === 'service' ? ' active':''}`}
+                        onClick={() => setActiveTab('service')}
+                    >
+                        <IconService />
+                        <span>Servicios</span>
+                    </div>
+                    <div 
                         className={`dashboard__tabs__item${activeTab === 'chat' ? ' active':''}`}
                         onClick={() => setActiveTab('chat')}
                     >
@@ -93,6 +100,23 @@ const Dashboard = () => {
                         type="machine" 
                         action="edit" 
                         items={userState.data.maquinarias} 
+                    />}
+                </div>
+
+                <div 
+                    className={`dashboard__tab${activeTab === 'service' ? ' active':''}`}
+                >
+                    <div className="link-container calendar-cont__add">
+                        <Link to="/mi-cuenta/agregar-servicio" className="link">
+                            <IconPlus />
+                            AGREGAR SERVICIO NUEVO
+                        </Link>
+                    </div>
+                    {userState.data && userState.data.servicios && 
+                    <Listing
+                        type="service" 
+                        action="edit" 
+                        items={userState.data.servicios} 
                     />}
                 </div>
 

@@ -53,6 +53,23 @@ export {
 } from './machine';
 
 export {
+    clearFetchService,
+    fetchService,
+    fetchServiceTypes,
+    setTiposService,
+    setTipoPadreService,
+    createService,
+    updateService,
+    addCaracteristicaService,
+    removeCaracteristicaService,
+    setCaracteristicasService,
+    deleteService,
+    addCalendarDateService,
+    removeCalendarDateService,
+    setCalendarDatesService
+} from './service';
+
+export {
     fetchChats,
     fetchMessages,
     fetchUnreadMessages,

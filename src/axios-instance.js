@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
     // eslint-disable-next-line no-undef
-    baseURL: `${firebase.config().wordpress.url}`,
+    baseURL: `${process.env.REACT_APP_WORDPRESS_URL}`,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

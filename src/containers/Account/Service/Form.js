@@ -2,9 +2,9 @@ import React,{ useEffect, useState } from "react";
 import { Link, Redirect } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentNavigation, fetchMachine, fetchMachineTypes, clearFetchMachine } from '../../../store/actions/index';
-import { setTipoPadre, setTipos, addCaracteristica, removeCaracteristica } from '../../../store/actions/index';
-import { updateMachine, createMachine, removeCalendarDate } from '../../../store/actions/index';
+import { setCurrentNavigation, fetchService, fetchServiceTypes, clearFetchService } from '../../../store/actions/index';
+import { setTipoPadreService, setTiposService, addCaracteristicaService, removeCaracteristicaService } from '../../../store/actions/index';
+import { updateService, createService, removeCalendarDateService } from '../../../store/actions/index';
 import { useForm } from "react-hook-form";
 
 import Grid from "@material-ui/core/Grid";
@@ -19,10 +19,10 @@ import { IconPlus, IconAccount } from '../../../components/UI/Icon/Icon';
 import Listing from '../../../components/Listing/Listing';
 import BackgroundImage from '../../../components/UI/Background/Image';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import DeleteMachine from '../../../components/Machine/Delete';
+import DeleteService from '../../../components/Service/Delete';
 import CalendarAdd from '../../../components/Machine/Calendar/Add';
 
-const FormMachine = (props) => {
+const FormService = (props) => {
     const { register, handleSubmit, errors } = useForm();
     const [isEnabled, setEnabled] = useState(true);
     const [image, setImage] = useState(null);
@@ -32,7 +32,7 @@ const FormMachine = (props) => {
     const [caracteristicaText, setCaracteristicaText] = useState('');
     const [isDateFormOpen, setDateFormOpen] = useState(false);
 
-    const formState = useSelector(state => state.machine);
+    const formState = useSelector(state => state.service);
     const dispatch  = useDispatch();
 
     const onPlaceSelect = (place) => {
@@ -56,17 +56,17 @@ const FormMachine = (props) => {
 
     const handleAddCaracteristica = () => {
         if( caracteristicaText !== '' ){
-            dispatch( addCaracteristica({'descripcion': caracteristicaText}) );
+            dispatch( addCaracteristicaService({'descripcion': caracteristicaText}) );
             setCaracteristicaText('');
         }
     };
 
-    const handleDeleteCalendario = (key) => dispatch( removeCalendarDate(key) );
-    const handleDeleteCaracteristica = (key) => dispatch( removeCaracteristica(key) );
-    const handleTipoSelected = (id) => dispatch( setTipos(id) );
+    const handleDeleteCalendario = (key) => dispatch( removeCalendarDateService(key) );
+    const handleDeleteCaracteristica = (key) => dispatch( removeCaracteristicaService(key) );
+    const handleTipoSelected = (id) => dispatch( setTiposService(id) );
     const handlePadreSelected = (id) => {
         id = ( formState.selectedTipoPadre === id ) ? null:id;
-        dispatch( setTipoPadre(id) );
+        dispatch( setTipoPadreService(id) );
     };
 
     const onSubmit = ( data, event ) => {
@@ -84,28 +84,28 @@ const FormMachine = (props) => {
         data.estado          = isEnabled;
 
         if( props.match ){
-            data.id =   props.match.params.maquinaId;
-            dispatch(updateMachine( localStorage.getItem('token'), data ));
+            data.id =   props.match.params.servicioId;
+            dispatch(updateService( localStorage.getItem('token'), data ));
         }else{
-            dispatch(createMachine( localStorage.getItem('token'), data ));
+            dispatch(createService( localStorage.getItem('token'), data ));
         }
     };
 
     useEffect( () => {
-        dispatch( clearFetchMachine() );
+        dispatch( clearFetchService() );
 
         if( props.match ){
-            dispatch( setCurrentNavigation('edit-machine') );
+            dispatch( setCurrentNavigation('edit-service') );
 
-            //  fetch machine data
-            dispatch( fetchMachine( { id: props.match.params.maquinaId} ) );
+            //  fetch service data
+            dispatch( fetchService( { id: props.match.params.servicioId} ) );
 
-            formState.machine && setEnabled(formState.machine.estado);
+            formState.service && setEnabled(formState.service.estado);
         }else{
-            dispatch( setCurrentNavigation('new-machine') );
+            dispatch( setCurrentNavigation('new-service') );
         }
 
-        dispatch( fetchMachineTypes() );
+        dispatch( fetchServiceTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
         
@@ -117,13 +117,13 @@ const FormMachine = (props) => {
             <section className={`machine-data${formState.success ? ' background-overlay':''}`}>
                 <div className="machine-data-cont">
                     <div className="container">
-                        <SectionTitle text="MAQUINARIA" />
+                        <SectionTitle text="SERVICIO" />
                     </div>
 
                     {formState.loading ?
                     <Spinner />:
                     <div>
-                        {formState.machine && <DeleteMachine id={formState.machine.id} />}
+                        {formState.service && <DeleteService id={formState.service.id} />}
 
                         {formState.error && <div className="error-msg">{formState.error.message}</div>}
                         {formState.success &&
@@ -146,11 +146,11 @@ const FormMachine = (props) => {
                         {formState.tipos &&
                             <div>
                                 <div className="small-title--center">
-                                  <SmallTitle text="Tipo de Maquinaria" />
+                                  <SmallTitle text="Tipo de Servicio" />
                                 </div>
                                 <div className="machines__list">
                                     <Listing
-                                        type="machine-type"
+                                        type="service-type"
                                         items={formState.tipos}
                                         parentSelected={formState.selectedTipoPadre}
                                         childsSelected={formState.selectedTipos}
@@ -169,7 +169,7 @@ const FormMachine = (props) => {
                                     autoComplete="off"
                                     className="form-control"
                                     aria-describedby="Ingrese el modelo"
-                                    defaultValue={formState.machine?.modelo}
+                                    defaultValue={formState.service?.modelo}
                                     placeholder="Modelo"
                                     ref={register({
                                             required: {
@@ -203,7 +203,7 @@ const FormMachine = (props) => {
                                     className="form-control"
                                     aria-describedby="Ingrese el año"
                                     max={(new Date().getFullYear())}
-                                    defaultValue={formState.machine?.year}
+                                    defaultValue={formState.service?.year}
                                     placeholder="Año"
                                     ref={register({
                                             required: {
@@ -239,18 +239,18 @@ const FormMachine = (props) => {
                                 {image && ( <div className="user__image">
                                             <BackgroundImage path={image} alt="Imágen seleccionada" />
                                         </div>)}
-                                {(formState.machine && formState.machine.imagen && !image) &&
+                                {(formState.service && formState.service.imagen && !image) &&
                                 <div className="user__image">
-                                    <BackgroundImage path={formState.machine.imagen} alt="Imágen seleccionada" />
+                                    <BackgroundImage path={formState.service.imagen} alt="Imágen seleccionada" />
                                 </div>}
                             </div>
                         </div>
 
                         <div className="machine-data__box">
                             <label htmlFor="ubicacion">Ubicación actual</label>
-                            {(formState.machine && formState.machine.ubicacion) &&
+                            {(formState.service && formState.service.ubicacion) &&
                             <div className="ubicacion--actual">
-                                {formState.machine.ubicacion.address}
+                                {formState.service.ubicacion.address}
                             </div>}
 
                             <div className="ubicacion--actual">
@@ -265,10 +265,10 @@ const FormMachine = (props) => {
                         </div>
 
                         <div className="machine-data__box">
-                            {formState.machine &&
+                            {formState.service &&
                             <label htmlFor="estado">
                                 Estado Actual: 
-                                {formState.machine.estado ? 'Disponible':'No disponible'}
+                                {formState.service.estado ? 'Disponible':'No disponible'}
                             </label>}
                                 
                             <Grid component="label" container alignItems="center" spacing={1}>
@@ -315,16 +315,16 @@ const FormMachine = (props) => {
                             </div>
                         </div>
                         
-                        {formState.machine && 
+                        {formState.service && 
                         <div className="machine-data__box">
-                            <SmallTitle text="Calendario de Maquina" />
+                            <SmallTitle text="Calendario de Servicio" />
 
                             <div className="calendar-cont">
                                 <div className="calendar-cont__add" onClick={() => setDateFormOpen(!isDateFormOpen)}>
                                     <SmallTitle text="+ Agregar nueva fecha" />
                                 </div>
 
-                                {isDateFormOpen && <CalendarAdd id={formState.machine.id} />}
+                                {isDateFormOpen && <CalendarAdd id={formState.service.id} />}
                                     
                                 {(formState.fechas && formState.fechas.length) ?
                                 <div className="calendar-cont__list">
@@ -338,7 +338,7 @@ const FormMachine = (props) => {
                             </div>
                         </div>}
                             
-                        {(formState.selectedTipoPadre > 0 && (location !== null || (formState.machine && formState.machine.ubicacion))) &&
+                        {(formState.selectedTipoPadre > 0 && (location !== null || (formState.service && formState.service.ubicacion))) &&
                         <div className="machine-data__box">
                             <button type="submit" className="button button--full btn-outline-primary">
                                 Guardar
@@ -353,4 +353,4 @@ const FormMachine = (props) => {
     );
 }
 
-export default FormMachine;
+export default FormService;

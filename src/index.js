@@ -14,6 +14,7 @@ import navReducer from './store/reducers/navigation';
 import searchReducer from './store/reducers/search';
 import memberReducer from './store/reducers/member';
 import machineReducer from './store/reducers/machine';
+import serviceReducer from './store/reducers/service';
 import messengerReducer from './store/reducers/messenger';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   member: memberReducer,
   machine: machineReducer,
+  service: serviceReducer,
   messenger: messengerReducer,
 });
 

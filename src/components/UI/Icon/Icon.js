@@ -13,3 +13,4 @@ export { ReactComponent as IconPlus } from '../../../assets/icons/plus.svg';
 export { ReactComponent as IconSearch } from '../../../assets/icons/search.svg';
 export { ReactComponent as IconSettings } from '../../../assets/icons/settings.svg';
 export { ReactComponent as IconTrash } from '../../../assets/icons/trash.svg';
+export { ReactComponent as IconService } from '../../../assets/icons/machine.svg';
