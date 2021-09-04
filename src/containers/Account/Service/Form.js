@@ -20,7 +20,7 @@ import Listing from '../../../components/Listing/Listing';
 import BackgroundImage from '../../../components/UI/Background/Image';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import DeleteService from '../../../components/Service/Delete';
-import CalendarAdd from '../../../components/Machine/Calendar/Add';
+import CalendarAdd from '../../../components/Service/Calendar/Add';
 
 const FormService = (props) => {
     const { register, handleSubmit, errors } = useForm();
@@ -108,7 +108,7 @@ const FormService = (props) => {
         dispatch( fetchServiceTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-        
+   //     console.log(formState);
     if( formState.error !== null )
         return <Redirect to="/mi-cuenta/" />;
 
@@ -143,6 +143,39 @@ const FormService = (props) => {
                             </div>
                         </div>}
                         <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
+                        <div className="machine-data__box">
+                            <label htmlFor="modelo">Descripción</label>
+                            <input
+                                id="titulo"
+                                name="titulo"
+                                type="text"
+                                autoComplete="off"
+                                className="form-control"
+                                aria-describedby="Ingrese descripción"
+                                defaultValue={formState.service?.title}
+                                placeholder="Descripción"
+                                ref={register({
+                                        required: {
+                                            value: true,
+                                            message: "Por favor ingrese descripción",
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: "Mínimo 3 caracteres",
+                                        },
+                                        maxLength: {
+                                            value: 255,
+                                            message: "Máximo permitido de 255 caracteres",
+                                        },
+                                    })}
+                            />
+                            {errors.titulo && (
+                                <span className="error mandatory">
+                                    {errors.titulo.message}
+                                </span>
+                            )}
+                        </div>
+
                         {formState.tipos &&
                             <div>
                                 <div className="small-title--center">
@@ -158,72 +191,6 @@ const FormService = (props) => {
                                         childClick={handleTipoSelected} />
                                 </div>
                             </div>}
-
-                        <div className="machine-data__box">
-                            <div className="machine-data__model">
-                                <label htmlFor="modelo">Modelo</label>
-                                <input
-                                    id="modelo"
-                                    name="modelo"
-                                    type="text"
-                                    autoComplete="off"
-                                    className="form-control"
-                                    aria-describedby="Ingrese el modelo"
-                                    defaultValue={formState.service?.modelo}
-                                    placeholder="Modelo"
-                                    ref={register({
-                                            required: {
-                                                value: true,
-                                                message: "Por favor ingrese modelo",
-                                            },
-                                            minLength: {
-                                                value: 3,
-                                                message: "Mínimo 3 caracteres",
-                                            },
-                                            maxLength: {
-                                                value: 255,
-                                                message: "Máximo permitido de 255 caracteres",
-                                            },
-                                        })}
-                                />
-                                {errors.modelo && (
-                                    <span className="error mandatory">
-                                        {errors.modelo.message}
-                                    </span>
-                                )}
-                            </div>
-
-                            <div className="machine-data__year">
-                                <label htmlFor="year">Año</label>
-                                <input
-                                    id="year"
-                                    name="year"
-                                    type="number"
-                                    autoComplete="off"
-                                    className="form-control"
-                                    aria-describedby="Ingrese el año"
-                                    max={(new Date().getFullYear())}
-                                    defaultValue={formState.service?.year}
-                                    placeholder="Año"
-                                    ref={register({
-                                            required: {
-                                                value: true,
-                                                message: "Por favor ingrese el año",
-                                            },
-                                            validate: {
-                                                yearValid: value => {
-                                                    return (value.length === 4) && (parseInt(value) > 1950 && parseInt(value) <= new Date().getFullYear());
-                                                }
-                                            }
-                                        })}
-                                />
-                                {errors.year && (
-                                    <span className="error mandatory">
-                                        {errors.year.type === "yearValid" ? 'Por favor ingrese un año válido':errors.year.message}
-                                    </span>
-                                )}
-                            </div>
-                        </div>
 
                         <div className="machine-data__box">
                             <label htmlFor="imagen">Foto</label>
@@ -258,7 +225,7 @@ const FormService = (props) => {
                                 <GooglePlacesAutocomplete
                                     apiOptions={{ language: 'es', region: 'es' }}
                                     // eslint-disable-next-line no-undef
-                                    apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}
+                                    apiKey={firebase.config().googlemaps.key}
                                     selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                                     autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                             </div>
@@ -268,7 +235,7 @@ const FormService = (props) => {
                             {formState.service &&
                             <label htmlFor="estado">
                                 Estado Actual: 
-                                {formState.service.estado ? 'Disponible':'No disponible'}
+                                {formState.service.estado ? ' Disponible':' No disponible'}
                             </label>}
                                 
                             <Grid component="label" container alignItems="center" spacing={1}>

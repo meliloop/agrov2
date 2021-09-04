@@ -23,6 +23,7 @@ export {
     setPlace,
     filtersChanged,
     viewModeChanged,
+    searchTypeChanged,
     activeMarkerChanged,
     showingPopupChanged,
     toggleShowingFilters,

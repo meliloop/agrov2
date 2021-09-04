@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-    loading: true,
+    loading: false,
     member: null,
     service: {
         id: null,
@@ -33,7 +33,7 @@ const fetchServiceSuccess = ( state, action ) => {
         isDeleted: false
     } );
 };
-const fetchServiceClear = ( state, action ) =>  updateObject( state, { loading: true, service: { id: null, modelo: null, year: null, imagen: null, ubication: null, estado: null }, selectedTipoPadre: null, selectedTipos: [], tipos:[], caracteristicas:[], formData: null, error: null, success: null, isDeleted: false, } );
+const fetchServiceClear = ( state, action ) =>  updateObject( state, { loading: false, service: { id: null, modelo: null, year: null, imagen: null, ubication: null, estado: null }, selectedTipoPadre: null, selectedTipos: [], tipos:[], caracteristicas:[], formData: null, error: null, success: null, isDeleted: false, } );
 
 const fetchServiceTypeStart   = ( state, action ) => updateObject( state, { loading: true, error: null, success: null, isDeleted: false } );
 const fetchServiceTypeFail    = ( state, action ) => updateObject( state, { loading: false, error: action.error, success: null, isDeleted: false } );

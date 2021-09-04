@@ -54,7 +54,7 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
     // eslint-disable-next-line no-undef
-    apiKey: process.env.REACT_APP_GOOGLEMAPS_API_KEY,
+    apiKey: firebase.config().googlemaps.key,
     v: "3.30",
     language: 'es',
     LoadingContainer: Spinner

@@ -8,6 +8,7 @@ import { IconBackArrow } from '../../UI/Icon/Icon';
 
 const Filters = (props) => {
     const place = props.place;
+    const placePlaceholder = props.place ? props.place.label : 'Ubicación…';
     const onPlaceSelect = (place) => {
         geocodeByPlaceId(place.value.place_id)
             .then(results => getLatLng(results[0]))
@@ -34,7 +35,9 @@ const Filters = (props) => {
                 <div className="container">
                     <SectionTitle text="Busqueda" />
                     <div className="small-title--center">
-                    <SmallTitle text="Tipo de Maquinaria" />
+                        <SmallTitle 
+                            text={`Tipo de ${props.type === 'machine' ? 'Maquinaria':'Servicio'}`} 
+                        />
                     </div>
                 </div>
 
@@ -53,12 +56,22 @@ const Filters = (props) => {
                 <div className="search-cont__disponibility" style={{height: '270px'}}>
                     <div className="date">
                         <label>Fecha</label>
-                        <input type="date" min={new Date()} placeholder="Desde" onChange={props.handleFechaDesdeChange} />
-                        <input type="date" min={new Date()} placeholder="Hasta" onChange={props.handleFechaHastaChange} />
+                        <input type="date" 
+                            value={props.desdeSelected || ''} 
+                            min={new Date()} 
+                            placeholder="Desde" 
+                            onChange={props.handleFechaDesdeChange} 
+                        />
+                        <input type="date" 
+                            value={props.hastaSelected || ''} 
+                            min={new Date()} 
+                            placeholder="Hasta" 
+                            onChange={props.handleFechaHastaChange} 
+                        />
                     </div>
                     <div className="distance">
                         <label>Dist.</label>
-                        <select className="distance-dropdown" value={props.distance} onChange={props.handleDistanceChange}>
+                        <select className="distance-dropdown" value={props.distance || 100} onChange={props.handleDistanceChange}>
                             <option key="0" value="100">100km</option>
                             <option key="1" value="200">200km</option>
                             <option key="2" value="500">500km</option>
@@ -68,7 +81,7 @@ const Filters = (props) => {
                     <div className="distance">
                         <GooglePlacesAutocomplete
                             apiOptions={{ language: 'es', region: 'es' }}
-                            selectProps={{place, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
+                            selectProps={{place, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: placePlaceholder, noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                             autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                     </div>
                 </div>

@@ -12,6 +12,7 @@ const initialState = {
     filterFechaHasta: null,
     filterDistancia: 100,
     viewType: 'map',
+    type: 'machine',
     userLocation: null,
     place: null,
     showingPopup: false,
@@ -30,6 +31,7 @@ const fetchSearchLocationSuccess= ( state, action ) => updateObject( state, { ci
 const fetchSearchLocationFail   = ( state, action ) => updateObject( state, { loading: false } );
 
 const searchModeChanged = ( state, action ) => updateObject( state, { viewType: action.mode, showingPopup: false, activeMarker: null, selectedMachine: null, showingMarkerList: false } );
+const searchTypeChanged = ( state, action ) => updateObject( state, { type: action.type, showingPopup: false, activeMarker: null, selectedMachine: null, showingMarkerList: false } );
 const setShowingPopup   = ( state, action ) => updateObject( state, { showingPopup: action.status } );
 const setShowingMarkerList=( state, action )=> updateObject( state, { showingMarkerList: action.status } );
 const setActiveMarker   = ( state, action ) => updateObject( state, { activeMarker: action.marker } );
@@ -65,6 +67,7 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.FETCH_MARKER_LOCATION_SUCCESS: return fetchSearchLocationSuccess( state, action );
         case actionTypes.FETCH_MARKER_LOCATION_FAIL: return fetchSearchLocationFail( state, action );
         case actionTypes.CHANGE_SEARCH_MODE: return searchModeChanged( state, action );
+        case actionTypes.CHANGE_SEARCH_TYPE: return searchTypeChanged( state, action );
         case actionTypes.USER_LOCATION_DETECTED: return userLocationChanged( state, action );
         case actionTypes.CHANGE_SEARCH_PLACE: return placeChanged( state, action );
         case actionTypes.CHANGE_ACTIVE_MARKER: return setActiveMarker( state, action );

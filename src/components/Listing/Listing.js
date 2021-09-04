@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import Machine from '../Machine/Item';
 import MachineType from '../Machine/Type/Item';
+import Service from '../Service/Item';
+import ServiceType from '../Service/Type/Item';
 import Calendar from '../Machine/Calendar/Item';
 import Feature from '../Machine/Feature/Item';
 import User from '../User/Item';
@@ -40,6 +42,16 @@ const Listing = (props) => {
                                     </Link>
                                 </Machine>
                             );
+                        case 'service':
+                            return (
+                                <Service key={item.id} data={item}>
+                                    <Link 
+                                        to={`${props.action === 'view' ? '':'/mi-cuenta'}/servicio/id/${item.id}`}
+                                        className="icon--container">
+                                        {props.action === 'view' ? <IconPlus />:<IconEdit />}
+                                    </Link>
+                                </Service>
+                            );
                         case 'machine-type':
                             return (
                                 <MachineType 
@@ -51,7 +63,24 @@ const Listing = (props) => {
                                     childClick={props.childClick} 
                                 />
                             );
+                        case 'service-type':
+                            return (
+                                <ServiceType 
+                                    key={item.id} 
+                                    data={item} 
+                                    parentSelected={props.parentSelected}
+                                    childsSelected={props.childsSelected}
+                                    parentClick={props.parentClick}
+                                    childClick={props.childClick} 
+                                />
+                            );
                         case 'machine-type-list':
+                            return  (
+                                <div key={index} className="single-machine__features__item">
+                                    {item.title}
+                                </div>
+                            );
+                        case 'service-type-list':
                             return  (
                                 <div key={index} className="single-machine__features__item">
                                     {item.title}

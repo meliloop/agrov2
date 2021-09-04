@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch } from "react-redux";
 
-import { addCalendarDate } from '../../../store/actions/index';
+import { addCalendarDateService } from '../../../store/actions/index';
 
 import GooglePlacesAutocomplete, { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete';
 import SectionTitle from '../../UI/Title/Primary';
@@ -32,7 +32,7 @@ const Add = () => {
         data.desde    = selectedDate[0].getDate()+'/'+(selectedDate[0].getMonth()+1)+'/'+selectedDate[0].getFullYear();
         data.hasta    = selectedDate[1].getDate()+'/'+(selectedDate[1].getMonth()+1)+'/'+selectedDate[1].getFullYear();
             
-        dispatch(addCalendarDate(data));
+        dispatch(addCalendarDateService(data));
     };
 
     return (

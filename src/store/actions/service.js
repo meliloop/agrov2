@@ -10,7 +10,7 @@ export const fetchServiceStart = () => {
 export const fetchServiceSuccess = (data) => {
    return {
       type: actionTypes.FETCH_SERVICE_SUCCESS,
-      machine: data
+      service: data
    };
 };
 
@@ -34,6 +34,7 @@ export const fetchService = (data) => {
       axios.post("/agro/v1/servicio/", data)
          .then((res) => {
             if( res.data.result === 'ok' ){
+               console.log(res.data.servicio);
                dispatch(fetchServiceSuccess(res.data.servicio));
                   
                res.data.servicio.caracteristicas && dispatch( setCaracteristicasService(res.data.servicio.caracteristicas) );
@@ -41,7 +42,7 @@ export const fetchService = (data) => {
                res.data.servicio.fechas.sort((a, b) => (a.order > b.order) ? 1 : -1)
                res.data.servicio.fechas && dispatch( setCalendarDatesService(res.data.servicio.fechas) );
                res.data.servicio.tipo_servicio && dispatch( setTipoPadreService(res.data.servicio.tipo_servicio.id) );
-               res.data.servicio.cabezales && res.data.servicio.cabezales.map(item => dispatch( setTiposService(item.id) ) );
+               res.data.servicio.otros_tipos && res.data.servicio.otros_tipos.map(item => dispatch( setTiposService(item.id) ) );
             }else{
                dispatch(fetchServiceFail({message: res.data.err}));
             }
@@ -78,7 +79,6 @@ export const fetchServiceTypes = () => {
         
       axios.post("/agro/v1/tipos-servicio")
          .then((res) => {
-            console.log(res);
             if( res.data.result === 'ok' )
                dispatch(fetchServiceTypeSuccess(res.data.tipos));
             else 

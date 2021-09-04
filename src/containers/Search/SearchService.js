@@ -7,8 +7,8 @@ import Aux from '../../hoc/Auxiliar/Auxiliar';
 import { config } from '../../components/Map/Config';
 import Map from '../../components/Map/Map';
 import { setCurrentNavigation, fetchSearch, userLocated, setPlace, initSearchLocation } from '../../store/actions/index';
-import { viewModeChanged, searchTypeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters } from '../../store/actions/index';
-import { fetchMachineTypes, fetchServiceTypes, filtersChanged, showingMarkerListChanged, fetchMarkerLocations } from '../../store/actions/index';
+import { viewModeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters } from '../../store/actions/index';
+import { fetchServiceTypes, filtersChanged, showingMarkerListChanged, fetchMarkerLocations } from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Empty from '../../components/Listing/Empty';
 import Popup from '../../components/Machine/Popup/Popup';
@@ -24,11 +24,9 @@ const Search = () => {
     const [orderCityType, setOrderCityType] = useState('distancia');
     const searchState   = useSelector(state => state.search);
     const formState     = useSelector(state => state.machine);
-    const serviceState  = useSelector(state => state.service);
     const dispatch      = useDispatch();
 
     const handleModeChange       = (e)  => dispatch( viewModeChanged(e.target.checked ? 'map':'list') );
-    const handleTypeChange       = (e)  => dispatch( searchTypeChanged(e.target.checked ? 'map':'list') );
     const handleMapClick         = ()   => dispatch( showingPopupChanged(false) );
     const handleToggleFilters    = ()   => dispatch( toggleShowingFilters() );
     const handleTipoSelected     = (id) => dispatch( filtersChanged({key: 'tipo', value: id}) );
@@ -144,7 +142,6 @@ const Search = () => {
             dispatch( initSearchLocation(config.default_center) );
         });
 
-        dispatch( fetchMachineTypes() );
         dispatch( fetchServiceTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -166,8 +163,7 @@ const Search = () => {
 
                     {searchState.showingFilters &&
                         <Filters
-                          items={searchState.type === 'machine' ? formState.tipos:serviceState.tipos}
-                          type={searchState.type}
+                          items={formState.tipos}
                           handleTipoSelected={handleTipoSelected}
                           handlePadreSelected={handlePadreSelected}
                           parentSelected={searchState.filterPadreTipo}

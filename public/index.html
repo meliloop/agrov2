@@ -114,6 +114,7 @@
       });
 
       buttonCancelInstall.addEventListener('click', async () => {
+        localStorage.setItem('isInstalled', true);
         installContainer.classList.toggle('hidden', true);
       });
 

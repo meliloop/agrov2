@@ -67,6 +67,13 @@ export const viewModeChanged = ( mode ) => {
     };
 };
 
+export const searchTypeChanged = ( mode ) => {
+    return {
+        type: actionTypes.CHANGE_SEARCH_TYPE,
+        mode: mode
+    };
+};
+
 export const activeMarkerChanged = ( marker ) => {
     return {
         type: actionTypes.CHANGE_ACTIVE_MARKER,
