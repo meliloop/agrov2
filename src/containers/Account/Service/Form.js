@@ -24,8 +24,10 @@ import CalendarAdd from '../../../components/Service/Calendar/Add';
 
 const FormService = (props) => {
     const { register, handleSubmit, errors } = useForm();
+    const [estadoSeteado, setEstadoSeteado] = useState(false);
     const [isEnabled, setEnabled] = useState(true);
     const [image, setImage] = useState(null);
+    const [imageError, setImageError] = useState(false);
     const [locationAddress, setLocationAddress] = useState('');
     const [location, setLocation] = useState(null);
     const [placeId, setPlaceId] = useState(null);
@@ -50,8 +52,17 @@ const FormService = (props) => {
 
         let file_reader = new FileReader();
         let file = event.target.files[0];
-        file_reader.onload = () => setImage(file_reader.result);
-        file_reader.readAsDataURL(file);
+        // eslint-disable-next-line no-undef
+        const maxsize = typeof firebase !== 'undefined' ? firebase.config().wordpress.maxfilesize : process.env.REACT_APP_WORDPRESS_MAXFILESIZE;
+
+        if(file.size <= maxsize){
+            file_reader.onload = () => setImage(file_reader.result);
+            file_reader.readAsDataURL(file);
+            setImageError(false);
+        }else{
+            setImage(null);
+            setImageError(true);
+        }
     };
 
     const handleAddCaracteristica = () => {
@@ -108,7 +119,14 @@ const FormService = (props) => {
         dispatch( fetchServiceTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-   //     console.log(formState);
+
+    useEffect( () => {
+        if( estadoSeteado === false && props.match && formState.service?.estado !== null ){
+            setEstadoSeteado(true);
+            setEnabled(formState.service.estado);
+        }
+    }, [formState.service, props.match, estadoSeteado]);
+
     if( formState.error !== null )
         return <Redirect to="/mi-cuenta/" />;
 
@@ -203,6 +221,9 @@ const FormService = (props) => {
                                     accept=".jpg,.gif,.jpeg,.png"
                                     onChange={onFileUpload}
                                 />
+                                {imageError && <span className="error">
+                                                No se aceptan imágenes de más de 2MB
+                                                </span>}
                                 {image && ( <div className="user__image">
                                             <BackgroundImage path={image} alt="Imágen seleccionada" />
                                         </div>)}
@@ -225,7 +246,7 @@ const FormService = (props) => {
                                 <GooglePlacesAutocomplete
                                     apiOptions={{ language: 'es', region: 'es' }}
                                     // eslint-disable-next-line no-undef
-                                    apiKey={firebase.config().googlemaps.key}
+                                    apiKey={typeof firebase !== 'undefined' ? firebase.config().googlemaps.key : process.env.REACT_APP_GOOGLEMAPS_API_KEY}
                                     selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                                     autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                             </div>

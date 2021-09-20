@@ -14,7 +14,7 @@ import Member from './containers/Member/Member';
 import Machine from './containers/Machine/Machine';
 import MachineCalendar from './containers/Machine/Calendar';
 import MachineForm from './containers/Account/Machine/Form';
-import SearchServices from './containers/Search/SearchService';
+//import SearchServices from './containers/Search/SearchService';
 import Service from './containers/Service/Service';
 import ServiceCalendar from './containers/Service/Calendar';
 import ServiceForm from './containers/Account/Service/Form';
@@ -81,7 +81,7 @@ class App extends Component {
               render={(props) => localStorage.getItem("token") ?  <Member {...props} /> : <Redirect to="/login" />} 
               />
             <Route path="/busqueda" render={authGuard(Search)} />
-            <Route path="/servicios" render={authGuard(SearchServices)} />
+            {/*<Route path="/servicios" render={authGuard(SearchServices)} />*/}
             <Route path="/como-funciona" component={ComoFunciona} />
             <Route path="/terminos" component={Terminos} />
             <Route path="/politicas" component={Politicas} />

@@ -67,10 +67,10 @@ export const viewModeChanged = ( mode ) => {
     };
 };
 
-export const searchTypeChanged = ( mode ) => {
+export const searchTypeChanged = ( searchType ) => {
     return {
         type: actionTypes.CHANGE_SEARCH_TYPE,
-        mode: mode
+        searchType: searchType
     };
 };
 
@@ -149,7 +149,7 @@ export const fetchSearch = (filters) => {
         axios.post("/agro/v1/search",filters)
             .then( res => {
                 if( res.data.result === 'ok' )
-                    dispatch(fetchSearchSuccess(res.data.maquinarias, res.data.markers));
+                    dispatch(fetchSearchSuccess(res.data.items, res.data.markers));
                 else 
                     dispatch(fetchSearchFail(res.data.err));
             } )

@@ -23,17 +23,19 @@ import DeleteMachine from '../../../components/Machine/Delete';
 import CalendarAdd from '../../../components/Machine/Calendar/Add';
 
 const FormMachine = (props) => {
+    const formState = useSelector(state => state.machine);
+    const dispatch  = useDispatch();
+
     const { register, handleSubmit, errors } = useForm();
+    const [estadoSeteado, setEstadoSeteado] = useState(false);
     const [isEnabled, setEnabled] = useState(true);
     const [image, setImage] = useState(null);
+    const [imageError, setImageError] = useState(false);
     const [locationAddress, setLocationAddress] = useState('');
     const [location, setLocation] = useState(null);
     const [placeId, setPlaceId] = useState(null);
     const [caracteristicaText, setCaracteristicaText] = useState('');
     const [isDateFormOpen, setDateFormOpen] = useState(false);
-
-    const formState = useSelector(state => state.machine);
-    const dispatch  = useDispatch();
 
     const onPlaceSelect = (place) => {
         setLocationAddress(place.label);
@@ -50,8 +52,17 @@ const FormMachine = (props) => {
 
         let file_reader = new FileReader();
         let file = event.target.files[0];
-        file_reader.onload = () => setImage(file_reader.result);
-        file_reader.readAsDataURL(file);
+        // eslint-disable-next-line no-undef
+        const maxsize = typeof firebase !== 'undefined' ? firebase.config().wordpress.maxfilesize : process.env.REACT_APP_WORDPRESS_MAXFILESIZE;
+
+        if(file.size <= maxsize){
+            file_reader.onload = () => setImage(file_reader.result);
+            file_reader.readAsDataURL(file);
+            setImageError(false);
+        }else{
+            setImage(null);
+            setImageError(true);
+        }
     };
 
     const handleAddCaracteristica = () => {
@@ -100,7 +111,6 @@ const FormMachine = (props) => {
             //  fetch machine data
             dispatch( fetchMachine( { id: props.match.params.maquinaId} ) );
 
-            formState.machine && setEnabled(formState.machine.estado);
         }else{
             dispatch( setCurrentNavigation('new-machine') );
         }
@@ -108,6 +118,13 @@ const FormMachine = (props) => {
         dispatch( fetchMachineTypes() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+
+    useEffect( () => {
+        if( estadoSeteado === false && props.match && formState.machine?.estado !== null ){
+            setEstadoSeteado(true);
+            setEnabled(formState.machine.estado);
+        }
+    }, [formState.machine, props.match, estadoSeteado]);
         
     if( formState.error !== null )
         return <Redirect to="/mi-cuenta/" />;
@@ -236,6 +253,9 @@ const FormMachine = (props) => {
                                     accept=".jpg,.gif,.jpeg,.png"
                                     onChange={onFileUpload}
                                 />
+                                {imageError && <span className="error">
+                                                No se aceptan imágenes de más de 2MB
+                                                </span>}
                                 {image && ( <div className="user__image">
                                             <BackgroundImage path={image} alt="Imágen seleccionada" />
                                         </div>)}
@@ -258,7 +278,7 @@ const FormMachine = (props) => {
                                 <GooglePlacesAutocomplete
                                     apiOptions={{ language: 'es', region: 'es' }}
                                     // eslint-disable-next-line no-undef
-                                    apiKey={firebase.config().googlemaps.key}
+                                    apiKey={typeof firebase !== 'undefined' ? firebase.config().googlemaps.key : process.env.REACT_APP_GOOGLEMAPS_API_KEY}
                                     selectProps={{location, onChange: onPlaceSelect, loadingMessage: () => { return 'Buscando...'; }, placeholder: 'Ubicación…', noOptionsMessage: () => { return 'Escriba su ubicación...'}}}
                                     autocompletionRequest={{types: ['(cities)'], componentRestrictions: {country: ['ar']}}} />
                             </div>
@@ -268,7 +288,7 @@ const FormMachine = (props) => {
                             {formState.machine &&
                             <label htmlFor="estado">
                                 Estado Actual: 
-                                {formState.machine.estado ? 'Disponible':'No disponible'}
+                                {formState.machine.estado ? ' Disponible':' No disponible'}
                             </label>}
                                 
                             <Grid component="label" container alignItems="center" spacing={1}>

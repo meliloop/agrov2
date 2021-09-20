@@ -8,7 +8,7 @@ import { config } from '../../components/Map/Config';
 import Map from '../../components/Map/Map';
 import { setCurrentNavigation, fetchSearch, userLocated, setPlace, initSearchLocation } from '../../store/actions/index';
 import { viewModeChanged, searchTypeChanged, activeMarkerChanged, showingPopupChanged, toggleShowingFilters } from '../../store/actions/index';
-import { fetchMachineTypes, fetchServiceTypes, filtersChanged, showingMarkerListChanged, fetchMarkerLocations } from '../../store/actions/index';
+import { fetchMachineTypes, fetchServiceTypes, filtersChanged, showingMarkerListChanged } from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Empty from '../../components/Listing/Empty';
 import Popup from '../../components/Machine/Popup/Popup';
@@ -28,7 +28,7 @@ const Search = () => {
     const dispatch      = useDispatch();
 
     const handleModeChange       = (e)  => dispatch( viewModeChanged(e.target.checked ? 'map':'list') );
-    const handleTypeChange       = (e)  => dispatch( searchTypeChanged(e.target.checked ? 'map':'list') );
+    const handleTypeChange       = (type)=>dispatch( searchTypeChanged(type) );
     const handleMapClick         = ()   => dispatch( showingPopupChanged(false) );
     const handleToggleFilters    = ()   => dispatch( toggleShowingFilters() );
     const handleTipoSelected     = (id) => dispatch( filtersChanged({key: 'tipo', value: id}) );
@@ -40,7 +40,7 @@ const Search = () => {
         dispatch( setPlace(place) );
     }
 
-    const handlePadreSelected    = (id) => {
+    const handlePadreSelected = (id) => {
         id = ( formState.selectedTipoPadre === id ) ? null:id;
         dispatch( filtersChanged({key: 'padreTipo', value: id}) );
     };
@@ -71,7 +71,7 @@ const Search = () => {
     const handleMarkerClick = (props, marker, e) => {
         dispatch( activeMarkerChanged(marker) );
         dispatch( showingMarkerListChanged(true) );
-
+/*
         const filters = {
             ubicacion: marker.data.ubicacion,
             tipos: searchState.filterPadreTipo,
@@ -80,8 +80,9 @@ const Search = () => {
             fecha_desde: searchState.filterFechaDesde,
             fecha_hasta: searchState.filterFechaHasta,
             tipo: marker.data.tipo_maquinaria.id,
+            type: searchState.searchType,
         };
-        dispatch( fetchMarkerLocations(filters) );
+        dispatch( fetchMarkerLocations(filters) );*/
     };
 
     /*  cuando el city.map en vez de link tiene <div key={item.id} onClick={() => handleOpenPopupMachine(item)}>
@@ -114,18 +115,21 @@ const Search = () => {
             cabezales: searchState.filterCabezales,
             distancia: searchState.filterDistancia,
             fecha_desde: searchState.filterFechaDesde,
-            fecha_hasta: searchState.filterFechaHasta
+            fecha_hasta: searchState.filterFechaHasta,
+            type: searchState.searchType,
         };
             
         localStorage.setItem('userLocationLat', searchState.userLocation.lat);
         localStorage.setItem('userLocationLng', searchState.userLocation.lng);
+        handleBacktoMap();
         dispatch( toggleShowingFilters() );
         dispatch( fetchSearch(filters) );
     };
 
     const getZoom = (distance) => {
-        let zoom = Math.log(2)/Math.log(40000 / (distance / 2));
-        return zoom ? parseInt(zoom*100):10;
+        return distance === 800 ? 4.8 : distance === 500 ? 5.5 : distance === 200 ? 6.9 : 7.9;
+        //let zoom = Math.log(2)/Math.log(40000 / (distance / 2));
+        //return zoom ? parseInt(zoom*100):10;
     };
 
     useEffect( () => {
@@ -166,8 +170,8 @@ const Search = () => {
 
                     {searchState.showingFilters &&
                         <Filters
-                          items={searchState.type === 'machine' ? formState.tipos:serviceState.tipos}
-                          type={searchState.type}
+                          items={searchState.searchType === 'machine' ? formState.tipos:serviceState.tipos}
+                          type={searchState.searchType}
                           handleTipoSelected={handleTipoSelected}
                           handlePadreSelected={handlePadreSelected}
                           parentSelected={searchState.filterPadreTipo}
@@ -180,6 +184,7 @@ const Search = () => {
                           handleFechaDesdeChange={handleFechaDesdeChange}
                           handleFechaHastaChange={handleFechaHastaChange}
                           handleDistanceChange={handleDistanceChange}
+                          handleTypeChange={handleTypeChange}
                           distance={searchState.filterDistancia}
                           place={searchState.place}
                         />}
@@ -203,6 +208,7 @@ const Search = () => {
                             <Map
                                 zoom={getZoom(searchState.filterDistancia)}
                                 markers={searchState.markers}
+                                radius={searchState.filterDistancia}
                                 userLocation={searchState.userLocation}
                                 markerClick={handleMarkerClick}
                                 mapClick={handleMapClick}
@@ -210,6 +216,7 @@ const Search = () => {
                                 />
                             {searchState.showingPopup && <Popup data={searchState.selectedMachine} />}
                         </div>
+
                         <div className={`list--container ${searchState.viewType === 'map' && 'hidden'}`}>
                             <div className="order-container">
                                 <SmallTitle text="ORDENAR POR" />
@@ -222,14 +229,15 @@ const Search = () => {
                                 </div>
                             </div>
                             {searchState.items ?
-                                searchState.items.map(item => ( <Link key={item.id} to={"/maquina/id/"+item.id}>
+                                searchState.items.map(item => ( <Link key={item.id} 
+                                                                    to={`/${searchState.searchType === 'machine' ? 'maquina':'servicio'}/id/${item.id}`}>
                                                                     <Machine data={item}>
                                                                         <Distance distancia={item.distancia} />
                                                                     </Machine>
                                                                 </Link>)):
                                 <Empty />}
                         </div>
-                        
+                            
                         {searchState.showingMarkerList &&
                         <div className={`list--container list--container-city`}>
                             <div className="order-container">
@@ -242,8 +250,9 @@ const Search = () => {
                                     </select>
                                 </div>
                             </div>
-                            {searchState.city_items ?
-                                searchState.city_items.map(item => (<Link key={item.id} to={"/maquina/id/"+item.id}>
+                            {(searchState.markers && searchState.activeMarker ) ?
+                                searchState.activeMarker.data.map(item => (<Link key={item.id} 
+                                                                        to={`/${searchState.searchType === 'machine' ? 'maquina':'servicio'}/id/${item.id}`}>
                                                                         <Machine data={item}>
                                                                             <Distance distancia={item.distancia} />
                                                                         </Machine>

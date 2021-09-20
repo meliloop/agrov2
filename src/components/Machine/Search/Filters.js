@@ -16,7 +16,7 @@ const Filters = (props) => {
                 props.handleSelectPlace({ lat, lng }, place)
             );
     };
-
+    
     return (
         <form onSubmit={props.handleSubmit} noValidate autoComplete="off">
             <section className="search-cont">
@@ -25,6 +25,14 @@ const Filters = (props) => {
                         <div className="back_arrow" onClick={props.handleFiltersClose}>
                             <IconBackArrow />
                         </div>
+
+                        {props.type === 'machine' ?
+                        <div className="button small-button" onClick={() => props.handleTypeChange('service')}>
+                            Cambiar a Servicios
+                        </div> :
+                        <div className="button small-button" onClick={() => props.handleTypeChange('machine')}>
+                            Cambiar a Maquinarias
+                        </div>}
 
                         <button type="submit" className="button button--small">
                             Buscar

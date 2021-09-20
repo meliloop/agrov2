@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
@@ -28,6 +28,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [avatar, setAvatar] = useState(null);
+    const [avatarError, setAvatarError] = useState(false);
     const [changePassword, setChangePassword] = useState(false);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
 
@@ -36,8 +37,17 @@ const Register = () => {
 
         let file_reader = new FileReader();
         let file = event.target.files[0];
-        file_reader.onload = () => setAvatar(file_reader.result);
-        file_reader.readAsDataURL(file);
+        // eslint-disable-next-line no-undef
+        const maxsize = typeof firebase !== 'undefined' ? firebase.config().wordpress.maxfilesize : process.env.REACT_APP_WORDPRESS_MAXFILESIZE;
+
+        if(file.size <= maxsize){
+            file_reader.onload = () => setAvatar(file_reader.result);
+            file_reader.readAsDataURL(file);
+            setAvatarError(false);
+        }else{
+            setAvatar(null);
+            setAvatarError(true);
+        }
     };
 
     const onSubmit = ( data, event ) => {
@@ -175,6 +185,9 @@ const Register = () => {
                                                     accept=".jpg,.gif,.jpeg,.png"
                                                     onChange={onFileUpload}
                                                     />
+                                                {avatarError && <span className="error">
+                                                                No se aceptan imágenes de más de 2MB
+                                                                </span>}
                                                 {avatar && 
                                                     <div className="user__image">
                                                         <BackgroundImage path={avatar} alt="Imágen seleccionada" />

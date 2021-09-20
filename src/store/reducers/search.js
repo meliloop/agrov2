@@ -12,7 +12,7 @@ const initialState = {
     filterFechaHasta: null,
     filterDistancia: 100,
     viewType: 'map',
-    type: 'machine',
+    searchType: 'machine',
     userLocation: null,
     place: null,
     showingPopup: false,
@@ -31,7 +31,7 @@ const fetchSearchLocationSuccess= ( state, action ) => updateObject( state, { ci
 const fetchSearchLocationFail   = ( state, action ) => updateObject( state, { loading: false } );
 
 const searchModeChanged = ( state, action ) => updateObject( state, { viewType: action.mode, showingPopup: false, activeMarker: null, selectedMachine: null, showingMarkerList: false } );
-const searchTypeChanged = ( state, action ) => updateObject( state, { type: action.type, showingPopup: false, activeMarker: null, selectedMachine: null, showingMarkerList: false } );
+const searchTypeChanged = ( state, action ) => updateObject( state, { searchType: action.searchType, showingPopup: false, activeMarker: null, selectedMachine: null, showingMarkerList: false } );
 const setShowingPopup   = ( state, action ) => updateObject( state, { showingPopup: action.status } );
 const setShowingMarkerList=( state, action )=> updateObject( state, { showingMarkerList: action.status } );
 const setActiveMarker   = ( state, action ) => updateObject( state, { activeMarker: action.marker } );
