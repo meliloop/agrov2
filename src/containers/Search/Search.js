@@ -35,16 +35,15 @@ const Search = () => {
     const handleFechaDesdeChange = (e)  => dispatch( filtersChanged({key: 'fechaDesde', value: e.target.value}) );
     const handleFechaHastaChange = (e)  => dispatch( filtersChanged({key: 'fechaHasta', value: e.target.value}) );
     const handleDistanceChange   = (e)  => dispatch( filtersChanged({key: 'distancia',  value: e.target.value}) );
-    const handleSelectPlace = (position, place)=> {
-        dispatch( userLocated(position) );
-        dispatch( setPlace(place) );
-    }
+    const handlePadreSelected    = (id) => dispatch( filtersChanged({key: 'padreTipo', value: ( formState.selectedTipoPadre === id ) ? null:id}) );
+    const handleSelectPlace = (position, place)=> { dispatch( userLocated(position) ); dispatch( setPlace(place) ); }
+    const handleMarkerClick = (props, marker, e) => { dispatch( activeMarkerChanged(marker) ); dispatch( showingMarkerListChanged(true) ); }
+    const handleBacktoMap = () => { dispatch( activeMarkerChanged(null) ); dispatch( showingMarkerListChanged(false) ); };
+    const handleOrderChange = (e) => { setOrderType(e.target.value); searchState.items.sort(compareValues(e.target.value, 'asc')); };
+    const handleCityOrderChange = (e) => { setOrderCityType(e.target.value); searchState.city_items.sort(compareValues(e.target.value, 'asc')); };
 
-    const handlePadreSelected = (id) => {
-        id = ( formState.selectedTipoPadre === id ) ? null:id;
-        dispatch( filtersChanged({key: 'padreTipo', value: id}) );
-    };
-
+    const getZoom = (distance) => distance === 800 ? 4.8 : distance === 500 ? 5.5 : distance === 200 ? 6.9 : 7.9;
+        
     const compareValues = (key, order = 'asc') => {
         return function innerSort(a, b) {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key))
@@ -68,43 +67,12 @@ const Search = () => {
         };
     };
 
-    const handleMarkerClick = (props, marker, e) => {
-        dispatch( activeMarkerChanged(marker) );
-        dispatch( showingMarkerListChanged(true) );
-/*
-        const filters = {
-            ubicacion: marker.data.ubicacion,
-            tipos: searchState.filterPadreTipo,
-            cabezales: searchState.filterCabezales,
-            distancia: searchState.filterDistancia,
-            fecha_desde: searchState.filterFechaDesde,
-            fecha_hasta: searchState.filterFechaHasta,
-            tipo: marker.data.tipo_maquinaria.id,
-            type: searchState.searchType,
-        };
-        dispatch( fetchMarkerLocations(filters) );*/
-    };
-
     /*  cuando el city.map en vez de link tiene <div key={item.id} onClick={() => handleOpenPopupMachine(item)}>
     const handleOpenPopupMachine = (data) => {
         dispatch( showingMarkerListChanged(false) );
         dispatch( selectedMachineChanged(data) );
         dispatch( showingPopupChanged(true) );
     };*/
-    const handleBacktoMap = () => {
-        dispatch( activeMarkerChanged(null) );
-        dispatch( showingMarkerListChanged(false) );
-    };
-
-    const handleOrderChange = (e) => {
-        setOrderType(e.target.value);
-        searchState.items.sort(compareValues(e.target.value, 'asc'));
-    };
-
-    const handleCityOrderChange = (e) => {
-        setOrderCityType(e.target.value);
-        searchState.city_items.sort(compareValues(e.target.value, 'asc'));
-    };
 
     const handleFiltersSubmit = (event) => {
         event.preventDefault();
@@ -126,16 +94,20 @@ const Search = () => {
         dispatch( fetchSearch(filters) );
     };
 
-    const getZoom = (distance) => {
-        return distance === 800 ? 4.8 : distance === 500 ? 5.5 : distance === 200 ? 6.9 : 7.9;
-        //let zoom = Math.log(2)/Math.log(40000 / (distance / 2));
-        //return zoom ? parseInt(zoom*100):10;
-    };
-
     useEffect( () => {
         dispatch( setCurrentNavigation('search') );
         dispatch( activeMarkerChanged(null) );
         dispatch( showingMarkerListChanged(false) );
+
+        const filters = {
+            ubicacion: searchState.userLocation,
+            tipos: searchState.filterPadreTipo,
+            cabezales: searchState.filterCabezales,
+            distancia: searchState.filterDistancia,
+            fecha_desde: searchState.filterFechaDesde,
+            fecha_hasta: searchState.filterFechaHasta,
+            type: searchState.searchType,
+        };
 
         navigator.geolocation.getCurrentPosition(position => {
             const currentPosition = {
@@ -143,9 +115,9 @@ const Search = () => {
                 lng: position.coords.longitude
             };
 
-            dispatch( initSearchLocation(currentPosition) );
+            dispatch( initSearchLocation(currentPosition, filters) );
         }, error => {
-            dispatch( initSearchLocation(config.default_center) );
+            dispatch( initSearchLocation(config.default_center, filters) );
         });
 
         dispatch( fetchMachineTypes() );

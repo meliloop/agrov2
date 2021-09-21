@@ -125,14 +125,8 @@ export const filtersChanged = ( filters ) => {
     }
 };
 
-export const initSearchLocation = (position) => {
+export const initSearchLocation = (position, filters) => {
     return dispatch => {
-        const filters = {
-            ubicacion: position,
-            distancia: 1000,
-            cabezales: [],
-        };
-            
         if( position ){
             localStorage.setItem('userLocationLat', position.lat);
             localStorage.setItem('userLocationLng', position.lng);

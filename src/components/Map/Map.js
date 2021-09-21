@@ -43,7 +43,7 @@ export class MapContainer extends Component {
                                                 position={this.props.userLocation} 
                                                 name="Tu ubicación" 
                                                 icon={config.userIcon} />}
-            {this.props.radius && <Circle
+            {(this.props.radius && this.props.userLocation) && <Circle
                                     radius={this.props.radius*1000}
                                     center={this.props.userLocation}
                                     strokeColor='transparent'

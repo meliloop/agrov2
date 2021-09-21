@@ -8,6 +8,7 @@ import Aux from '../../hoc/Auxiliar/Auxiliar';
 import BackgroundImage from '../../components/UI/Background/Image';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import CalendarData from '../../components/Machine/Calendar/Data';
+import Distance from '../../components/Machine/Distance/Distance';
 import UserItem from '../../components/User/Item';
 import UserAvatar from '../../components/User/Avatar';
 import SmallTitle from '../../components/UI/Title/Small';
@@ -43,6 +44,10 @@ const Machine = (props) => {
                             <div className="container">
                                 <div className="machine__calendar-data-cont">
                                     <CalendarData data={machineState.machine} />
+                                    <Distance 
+                                        lugar={machineState.machine.ubicacion} 
+                                        ocultarText={true} 
+                                    />
                                 </div>
                                 <div className="machine__item">
                                     {machineState.machine.tipo_maquinaria &&

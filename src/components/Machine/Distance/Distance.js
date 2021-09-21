@@ -4,7 +4,7 @@ const Distance = (props) => {
     const getDistance = (location) => {
         const lat1 = localStorage.getItem('userLocationLat');
         const lon1 = localStorage.getItem('userLocationLng');
-
+            
         if( !lat1 || !lon1 )
             return 0;
 
@@ -29,10 +29,10 @@ const Distance = (props) => {
                 </div>
             </div>}
 
-            {(props.lugar !== undefined && localStorage.getItem('userLocation')) && 
+            {(props.lugar !== undefined && localStorage.getItem('userLocationLat')) && 
             <div className="machine__location">
                 <div className="row">
-                    <span className="h4">ESTAS A</span>
+                    {props.ocultarText || <span className="h4">ESTAS A</span>}
                     <p className="h3">
                         <strong>{getDistance(props.lugar)} KM</strong>
                     </p>
