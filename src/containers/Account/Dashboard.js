@@ -10,7 +10,7 @@ import BackgroundImage from '../../components/UI/Background/Image';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Listing from '../../components/Listing/Listing';
 import EmptyList from '../../components/Listing/Empty';
-import {IconAccount,IconMachine,IconService,IconContact,IconPlus} from '../../components/UI/Icon/Icon';
+import {IconAccount,IconPlus} from '../../components/UI/Icon/Icon';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('chat');
