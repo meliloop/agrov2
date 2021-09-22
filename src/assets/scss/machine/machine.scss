@@ -101,6 +101,9 @@
     select {
       border: none;
       text-transform: none;
+      background-color: $white;
+      background-image: url(select-dark.svg);
+      color: $black;
       @extend .h4;
     }
   }
