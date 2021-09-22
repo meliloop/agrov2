@@ -65,21 +65,21 @@ const Dashboard = () => {
                         className={`dashboard__tabs__item${activeTab === 'machine' ? ' active':''}`}
                         onClick={() => setActiveTab('machine')}
                     >
-                        <IconMachine />
+                        {/* <IconMachine /> */}
                         <span>Maquinaria</span>
                     </div>
                     <div 
                         className={`dashboard__tabs__item${activeTab === 'service' ? ' active':''}`}
                         onClick={() => setActiveTab('service')}
                     >
-                        <IconService />
+                        {/* <IconService /> */}
                         <span>Servicios</span>
                     </div>
                     <div 
                         className={`dashboard__tabs__item${activeTab === 'chat' ? ' active':''}`}
                         onClick={() => setActiveTab('chat')}
                     >
-                        <IconContact />
+                        {/* <IconContact /> */}
                         <span>Mensajes</span>
                         {userState.data.unread > 0 && 
                             <span className="new">{userState.data.unread}</span>}
