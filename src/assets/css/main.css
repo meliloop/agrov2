@@ -1725,6 +1725,9 @@ select {
 .order-container .orderby--container select {
   border: none;
   text-transform: none;
+  background-color: #ffffff;
+  background-image: url(select-dark.svg);
+  color: #000;
 }
 
 .list--container .machine__item__data {
@@ -2128,6 +2131,7 @@ select {
 .dashboard .user__item {
   padding: 0;
   text-align: center;
+  margin-bottom: 20px;
 }
 .dashboard .user__item__place {
   color: #72B230;
@@ -2343,6 +2347,10 @@ select {
   margin-bottom: 20px;
 }
 
+.calendar-cont__disponibility .buttons-cont {
+  margin-bottom: 20px;
+}
+
 .messages__item {
   float: left;
   width: 100%;
@@ -2434,6 +2442,17 @@ select {
   top: 0;
   z-index: 200;
 }
+.search-cont .section-title, .search-cont .small-title--center {
+  text-align: left;
+}
+.search-cont .button-search-type {
+  position: absolute;
+  right: 20px;
+  top: 105px;
+  width: auto;
+  float: left;
+  font-size: 12px;
+}
 .search-cont .header .button--small {
   width: auto !important;
 }
@@ -2446,9 +2465,8 @@ select {
   margin-left: 0px !important;
 }
 .search-cont__disponibility {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  float: left;
+  width: 100%;
   padding: 20px;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#191c22+0,2a2d33+100 */
   background: #191c22;
@@ -2461,12 +2479,6 @@ select {
   /* IE6-9 */
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
   height: auto !important;
-}
-@media only screen and (min-width: 1024px) {
-  .search-cont__disponibility {
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
 }
 .search-cont__disponibility label {
   width: 55px;
@@ -2509,7 +2521,8 @@ select {
   float: left;
   width: 100%;
   text-align: left;
-  padding-bottom: 140px;
+  max-height: calc(100vh - 318px);
+  overflow: scroll;
 }
 @media only screen and (min-width: 1024px) {
   .machines__list {

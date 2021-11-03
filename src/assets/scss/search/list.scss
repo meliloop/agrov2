@@ -1,12 +1,18 @@
 .machines__list {
   @include row();
   text-align: left;
-  padding-bottom: 140px;
+  //padding-bottom: 140px;
+  max-height: calc(100vh - 318px);
+  overflow: scroll;
 
   @include responsiveto('tablet-h') {
     float: none;
     width: 1024px;
     margin: 0 auto;
+  }
+
+  @include responsive('') {
+  
   }
 
   .MuiCollapse-wrapper {

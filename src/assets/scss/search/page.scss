@@ -4,6 +4,20 @@
   top: 0;
   z-index: 200;
 
+  .section-title, .small-title--center {
+    text-align: left;
+  }
+
+  .button-search-type {
+    position: absolute;
+    right: 20px;
+    top: 105px;
+    width: auto;
+    float: left;
+    font-size: 12px;
+  }
+  
+
   .header {
     .button--small {
       width: auto !important;
@@ -21,17 +35,18 @@
   }
 
   &__disponibility {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    //position: fixed;
+    //left: 0;
+    //bottom: 0;
+    @include row();
     padding: 20px;
     @include background();
     box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
     height: auto !important;
 
     @include responsiveto('tablet-h') {
-      left: 50%;
-      transform: translate(-50%,0);
+      //left: 50%;
+      //transform: translate(-50%,0);
     }
 
     label {
