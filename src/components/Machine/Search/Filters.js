@@ -27,11 +27,11 @@ const Filters = (props) => {
                         </div>
 
                         {props.type === 'machine' ?
-                        <div className="button small-button" onClick={() => props.handleTypeChange('service')}>
-                            Cambiar a Servicios
+                        <div className="button button--small button-search-type button--line" onClick={() => props.handleTypeChange('service')}>
+                            Buscar Servicios
                         </div> :
-                        <div className="button small-button" onClick={() => props.handleTypeChange('machine')}>
-                            Cambiar a Maquinarias
+                        <div className="button button--small button-search-type button--line" onClick={() => props.handleTypeChange('machine')}>
+                            Buscar Maquinarias
                         </div>}
 
                         <button type="submit" className="button button--small">
@@ -41,7 +41,7 @@ const Filters = (props) => {
                 </section>
 
                 <div className="container">
-                    <SectionTitle text="Busqueda" />
+                    <SectionTitle text={`${props.type === 'machine' ? 'Maquinarias':'Servicios'}`}  />
                     <div className="small-title--center">
                         <SmallTitle 
                             text={`Tipo de ${props.type === 'machine' ? 'Maquinaria':'Servicio'}`} 
